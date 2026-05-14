@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="ms">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RBT Futuristic UI</title>
+<title>RBT Futuristik</title>
+
+<!-- GOOGLE FONT -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +17,8 @@
 
 <style>
 
+/* RESET */
+
 *{
     margin:0;
     padding:0;
@@ -21,58 +26,63 @@
     font-family:'Poppins',sans-serif;
 }
 
+/* BODY */
+
 body{
-    min-height:100vh;
     overflow-x:hidden;
-    background:#060b2d;
+    background:#07113a;
 }
 
 /* MAIN CONTAINER */
 
 .container{
+
     width:100%;
     min-height:100vh;
-    position:relative;
     overflow:hidden;
+    position:relative;
 
     background:
-    linear-gradient(135deg,
+    linear-gradient(
+    135deg,
     #edf4ff 0%,
-    #cce1ff 30%,
-    #80aaff 60%,
-    #6a5cff 100%);
+    #cfe2ff 30%,
+    #8ab4ff 65%,
+    #6b5cff 100%);
 }
 
 /* GRID EFFECT */
 
 .container::before{
+
     content:'';
     position:absolute;
     inset:0;
 
     background-image:
-    linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.10) 1px, transparent 1px);
 
-    background-size:55px 55px;
+    background-size:50px 50px;
+
 }
 
-/* PURPLE OVERLAY */
+/* PURPLE GLOW */
 
 .container::after{
+
     content:'';
     position:absolute;
     inset:0;
 
     background:
     radial-gradient(circle at top right,
-    rgba(168,85,247,0.5),
+    rgba(168,85,247,0.45),
     transparent 35%);
 
-    pointer-events:none;
 }
 
-/* GLOW EFFECT */
+/* EXTRA GLOW */
 
 .glow{
     position:absolute;
@@ -84,50 +94,47 @@ body{
     width:350px;
     height:350px;
     background:#3b82f6;
-    top:20%;
-    left:10%;
+    left:-100px;
+    bottom:-100px;
 }
 
 .glow2{
-    width:450px;
-    height:450px;
+    width:350px;
+    height:350px;
     background:#8b5cf6;
-    right:-10%;
-    top:0%;
-}
-
-.glow3{
-    width:300px;
-    height:300px;
-    background:#2563eb;
-    bottom:-10%;
-    left:0%;
+    right:-100px;
+    top:-100px;
 }
 
 /* NAVBAR */
 
 nav{
+
     width:100%;
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    padding:20px 35px;
-    gap:20px;
+    padding:20px 40px;
+
+    position:relative;
+    z-index:10;
+
     flex-wrap:wrap;
+    gap:20px;
 }
 
 /* LOGO */
 
 .logo h1{
-    font-size:42px;
-    color:#142e8f;
+    font-size:52px;
     line-height:0.8;
+    color:#17328f;
     font-weight:800;
 }
 
 .logo span{
-    font-size:16px;
+    font-size:18px;
     font-weight:700;
     color:#111827;
 }
@@ -135,17 +142,22 @@ nav{
 /* MENU */
 
 .menu{
+
     display:flex;
     gap:20px;
-    flex-wrap:wrap;
     list-style:none;
+
+    flex-wrap:wrap;
 }
 
 .menu a{
+
     text-decoration:none;
     color:#111827;
+
+    font-size:15px;
     font-weight:600;
-    font-size:14px;
+
     transition:0.3s;
 }
 
@@ -153,37 +165,52 @@ nav{
     color:#2563eb;
 }
 
+/* ACTIVE BUTTON */
+
 .active{
+
     background:#2563eb;
     color:white !important;
+
     padding:14px 28px;
+
     border-radius:40px;
-    box-shadow:0 15px 35px rgba(37,99,235,0.4);
+
+    box-shadow:
+    0 10px 30px rgba(37,99,235,0.4);
 }
 
 /* HERO SECTION */
 
 .hero{
+
     width:100%;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    padding:20px 35px;
-    flex-direction:row;
+    padding:20px 40px 0px;
+
     position:relative;
-    z-index:2;
+    z-index:5;
+
+    gap:40px;
 }
 
-/* LEFT SIDE */
+/* LEFT */
 
 .left{
     width:45%;
 }
 
+/* TAG */
+
 .tag{
+
     width:90px;
     height:55px;
+
     background:#2563eb;
 
     border-radius:40px;
@@ -193,68 +220,86 @@ nav{
     align-items:center;
 
     color:white;
-    font-weight:700;
     font-size:28px;
+    font-weight:700;
 
     margin-bottom:35px;
 
-    box-shadow:0 10px 25px rgba(37,99,235,0.4);
+    box-shadow:
+    0 10px 25px rgba(37,99,235,0.4);
 }
 
+/* MAIN TITLE */
+
 .left h2{
-    font-size:58px;
+
+    font-size:60px;
     line-height:1.05;
-    color:#142e8f;
+
+    color:#17328f;
     font-weight:800;
 
     margin-bottom:30px;
 }
 
+/* YELLOW TAG */
+
 .yellow-tag{
+
     display:inline-block;
 
     background:#facc15;
 
-    padding:14px 28px;
+    padding:14px 26px;
 
     border-radius:50px;
 
-    font-size:24px;
+    font-size:22px;
     font-weight:700;
 
     margin-bottom:30px;
 }
 
+/* DESCRIPTION */
+
 .desc{
-    font-size:24px;
+
+    font-size:22px;
     line-height:1.8;
+
     color:#1f2937;
 
-    margin-bottom:40px;
+    max-width:600px;
 
-    max-width:650px;
+    margin-bottom:40px;
 }
 
 /* BUTTON */
 
 .btn{
+
     display:inline-flex;
     align-items:center;
     gap:15px;
 
-    background:linear-gradient(90deg,#2563eb,#4338ca);
+    background:
+    linear-gradient(
+    90deg,
+    #2563eb,
+    #4338ca);
 
-    padding:20px 35px;
+    padding:18px 35px;
 
     border-radius:60px;
 
     color:white;
     text-decoration:none;
 
-    font-size:22px;
+    font-size:20px;
     font-weight:600;
 
-    box-shadow:0 15px 35px rgba(37,99,235,0.35);
+    box-shadow:
+    0 15px 35px rgba(37,99,235,0.35);
 
     transition:0.4s;
 }
@@ -263,21 +308,29 @@ nav{
     transform:translateY(-5px);
 }
 
-/* RIGHT SIDE */
+/* RIGHT */
 
 .right{
-    width:50%;
+
+    width:55%;
+    position:relative;
+
     display:flex;
     justify-content:center;
-    position:relative;
+    align-items:center;
 }
 
 /* MAIN IMAGE */
 
 .main-image{
+
     width:100%;
+    max-width:850px;
+
     animation:float 5s ease-in-out infinite;
 }
+
+/* FLOAT ANIMATION */
 
 @keyframes float{
 
@@ -298,131 +351,138 @@ nav{
 /* FLOATING ICON */
 
 .icon{
+
     position:absolute;
 
-    width:85px;
-    height:85px;
+    width:80px;
+    height:80px;
 
-    border-radius:28px;
+    border-radius:25px;
 
     background:rgba(255,255,255,0.18);
 
     border:1px solid rgba(255,255,255,0.25);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter:blur(15px);
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    font-size:38px;
+    font-size:35px;
 
     color:white;
 
-    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.15);
 }
 
 .icon1{
     top:20%;
-    left:-4%;
+    left:0;
 }
 
 .icon2{
-    bottom:18%;
-    left:2%;
+    bottom:20%;
+    left:5%;
 }
 
 .icon3{
-    top:25%;
-    right:-4%;
+    top:22%;
+    right:0;
 }
 
 /* FEATURE BOX */
 
 .features{
-    width:70%;
+
+    width:72%;
 
     margin-left:auto;
     margin-right:40px;
 
     margin-top:-40px;
 
-    background:rgba(8,20,90,0.45);
-
-    backdrop-filter:blur(18px);
+    background:
+    rgba(8,20,90,0.45);
 
     border:1px solid rgba(255,255,255,0.15);
 
+    backdrop-filter:blur(18px);
+
     border-radius:35px;
+
+    padding:30px;
 
     display:grid;
     grid-template-columns:repeat(4,1fr);
 
     gap:25px;
 
-    padding:30px;
-
     position:relative;
     z-index:5;
 
-    box-shadow:0 20px 40px rgba(0,0,0,0.2);
+    box-shadow:
+    0 20px 45px rgba(0,0,0,0.2);
 }
 
-/* FEATURE ITEM */
+/* FEATURE */
 
 .feature{
     color:white;
 }
 
 .feature h3{
-    font-size:22px;
+
+    font-size:20px;
     margin-bottom:10px;
 }
 
 .feature p{
-    font-size:15px;
+
+    font-size:14px;
     line-height:1.8;
+
     color:#dbeafe;
-}
-
-/* WAVE EFFECT */
-
-.wave{
-    position:absolute;
-    bottom:-120px;
-    left:0;
-    width:100%;
-    opacity:0.9;
 }
 
 /* DOTS */
 
 .dots{
+
     width:100%;
+
     display:flex;
     justify-content:center;
+
     gap:10px;
 
     margin-top:20px;
+
     position:relative;
-    z-index:10;
+    z-index:5;
 }
 
 .dot{
+
     width:10px;
     height:10px;
+
     border-radius:50%;
+
     background:white;
+
     opacity:0.5;
 }
 
-.dot.active-dot{
+.active-dot{
     opacity:1;
 }
 
-/* SCROLL */
+/* SCROLL ICON */
 
 .scroll{
+
     width:55px;
     height:55px;
 
@@ -434,73 +494,29 @@ nav{
     justify-content:center;
     align-items:center;
 
-    margin:20px auto 30px;
-
     color:white;
+
     font-size:28px;
 
+    margin:20px auto 30px;
+
     position:relative;
-    z-index:10;
+    z-index:5;
+}
+
+/* WAVE */
+
+.wave{
+
+    position:absolute;
+    bottom:-120px;
+    left:0;
+
+    width:100%;
 }
 
 /* RESPONSIVE */
 
-@media(max-width:1300px){
-
-    .hero{
-        flex-direction:column;
-    }
-
-    .left,
-    .right{
-        width:100%;
-    }
-
-    .left{
-        text-align:center;
-    }
-
-    .desc{
-        margin:auto;
-        margin-bottom:40px;
-    }
-
-    .features{
-        width:90%;
-        margin:auto;
-        margin-top:40px;
-
-        grid-template-columns:1fr 1fr;
-    }
-
-}
-
-@media(max-width:900px){
-
-    nav{
-        flex-direction:column;
-        gap:30px;
-    }
-
-    .menu{
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:20px;
-    }
-
-    .left h2{
-        font-size:50px;
-    }
-
-    .desc{
-        font-size:20px;
-    }
-
-    .features{
-        grid-template-columns:1fr;
-    }
-
-}
 @media(max-width:1200px){
 
     .hero{
@@ -513,27 +529,30 @@ nav{
         width:100%;
     }
 
-    .left h2{
-        font-size:48px;
-    }
-
     .desc{
         margin:auto;
+        margin-bottom:40px;
     }
 
     .features{
-        grid-template-columns:1fr 1fr;
+
         width:90%;
+
         margin:auto;
         margin-top:40px;
+
+        grid-template-columns:1fr 1fr;
     }
 
 }
+
+/* MOBILE */
 
 @media(max-width:768px){
 
     nav{
         flex-direction:column;
+        text-align:center;
     }
 
     .menu{
@@ -541,11 +560,23 @@ nav{
     }
 
     .left h2{
-        font-size:38px;
+        font-size:42px;
+    }
+
+    .desc{
+        font-size:18px;
     }
 
     .features{
         grid-template-columns:1fr;
+    }
+
+    .yellow-tag{
+        font-size:18px;
+    }
+
+    .btn{
+        font-size:18px;
     }
 
 }
@@ -562,15 +593,16 @@ nav{
 
 <div class="glow glow1"></div>
 <div class="glow glow2"></div>
-<div class="glow glow3"></div>
 
 <!-- NAVBAR -->
 
 <nav>
 
 <div class="logo">
+
 <h1>RBT</h1>
 <span>TINGKATAN 1</span>
+
 </div>
 
 <ul class="menu">
@@ -607,15 +639,21 @@ DAN TEKNOLOGI
 </h2>
 
 <div class="yellow-tag">
+
 1.1 Dunia Reka Bentuk
+
 </div>
 
 <p class="desc">
+
 1.1.2 Mengenalpasti elemen reka bentuk berdasarkan produk yang dipilih.
+
 </p>
 
 <a href="#" class="btn">
+
 Teruskan Pembelajaran →
+
 </a>
 
 </div>
@@ -628,7 +666,8 @@ Teruskan Pembelajaran →
 <div class="icon icon2">💡</div>
 <div class="icon icon3">⬡</div>
 
-<img class="main-image"
+<img
+class="main-image"
 src="https://i.imgur.com/2DhmtJ4.png"
 alt="RBT">
 
@@ -641,23 +680,43 @@ alt="RBT">
 <section class="features">
 
 <div class="feature">
+
 <h3>📦 Kreatif</h3>
-<p>Mencipta idea inovatif melalui projek reka bentuk.</p>
+
+<p>
+Mencipta idea inovatif melalui projek reka bentuk.
+</p>
+
 </div>
 
 <div class="feature">
+
 <h3>✏️ Reka Bentuk</h3>
-<p>Mereka bentuk produk dengan teliti dan sistematik.</p>
+
+<p>
+Mereka bentuk produk secara sistematik dan kreatif.
+</p>
+
 </div>
 
 <div class="feature">
+
 <h3>⚙️ Teknologi</h3>
-<p>Menggunakan teknologi moden dalam pembelajaran.</p>
+
+<p>
+Menggunakan teknologi moden dalam pembelajaran.
+</p>
+
 </div>
 
 <div class="feature">
+
 <h3>👥 Kolaborasi</h3>
-<p>Bekerjasama menghasilkan projek abad ke-21.</p>
+
+<p>
+Bekerjasama menghasilkan projek abad ke-21.
+</p>
+
 </div>
 
 </section>
@@ -677,14 +736,19 @@ alt="RBT">
 <!-- SCROLL -->
 
 <div class="scroll">
+
 ⌄
+
 </div>
 
 <!-- WAVE -->
 
 <svg class="wave" viewBox="0 0 1440 320">
 
-<path fill="#081451" fill-opacity="1"
+<path
+fill="#081451"
+fill-opacity="1"
+
 d="M0,224L60,208C120,192,240,160,360,170.7C480,181,600,235,720,234.7C840,235,960,181,1080,176C1200,171,1320,213,1380,234.7L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
 
 </path>
