@@ -1,491 +1,454 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RBT Tingkatan 1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>RBT Futuristik</title>
 
-  <style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins',sans-serif;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    body{
-      min-height:100vh;
-      overflow-x:hidden;
-      background: linear-gradient(135deg,#eef4ff,#dbeafe,#c7d2fe,#ddd6fe);
-      position:relative;
-      color:#111827;
-    }
+<style>
 
-    /* Animated background */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-    body::before{
-      content:'';
-      position:absolute;
-      width:100%;
-      height:100%;
-      background:
-      radial-gradient(circle at 20% 30%,rgba(59,130,246,0.35),transparent 25%),
-      radial-gradient(circle at 80% 20%,rgba(168,85,247,0.30),transparent 25%),
-      radial-gradient(circle at 50% 80%,rgba(37,99,235,0.25),transparent 25%);
-      animation: floatBG 10s ease-in-out infinite alternate;
-      z-index:-2;
-    }
+body{
+    overflow-x:hidden;
+    min-height:100vh;
+    background:
+    linear-gradient(135deg,#edf4ff 0%,#cfe3ff 35%,#8ab4ff 70%,#6c63ff 100%);
+    position:relative;
+    color:#111827;
+}
 
-    @keyframes floatBG{
-      from{
-        transform:translateY(0px) scale(1);
-      }
-      to{
-        transform:translateY(-20px) scale(1.05);
-      }
-    }
+/* GRID BACKGROUND */
 
-    .grid{
-      position:fixed;
-      width:100%;
-      height:100%;
-      background-image:
-      linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px);
-      background-size:40px 40px;
-      z-index:-1;
-      animation: moveGrid 15s linear infinite;
-    }
+body::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+    background-size:55px 55px;
+    z-index:-2;
+}
 
-    @keyframes moveGrid{
-      from{
+/* GLOW */
+
+.glow1,
+.glow2,
+.glow3{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(120px);
+    z-index:-1;
+}
+
+.glow1{
+    width:400px;
+    height:400px;
+    background:#3b82f6;
+    top:20%;
+    left:15%;
+}
+
+.glow2{
+    width:500px;
+    height:500px;
+    background:#8b5cf6;
+    right:-10%;
+    top:10%;
+}
+
+.glow3{
+    width:300px;
+    height:300px;
+    background:#2563eb;
+    bottom:0;
+    left:0;
+}
+
+/* NAVBAR */
+
+nav{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:35px 70px;
+}
+
+.logo h1{
+    font-size:72px;
+    color:#1e3a8a;
+    line-height:0.8;
+    font-weight:800;
+}
+
+.logo span{
+    font-size:26px;
+    font-weight:700;
+}
+
+.menu{
+    display:flex;
+    gap:50px;
+    list-style:none;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#111827;
+    font-size:22px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.menu a:hover{
+    color:#2563eb;
+}
+
+.active{
+    background:#2563eb;
+    color:white !important;
+    padding:16px 34px;
+    border-radius:50px;
+    box-shadow:0 15px 35px rgba(37,99,235,0.4);
+}
+
+/* HERO */
+
+.hero{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:40px 70px;
+    gap:50px;
+}
+
+/* LEFT */
+
+.left{
+    width:48%;
+}
+
+.tag{
+    width:110px;
+    height:70px;
+    background:#2563eb;
+    border-radius:35px;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:34px;
+    font-weight:700;
+    margin-bottom:45px;
+    box-shadow:0 10px 25px rgba(37,99,235,0.4);
+}
+
+.left h2{
+    font-size:95px;
+    line-height:1.02;
+    color:#1e3a8a;
+    font-weight:800;
+    margin-bottom:35px;
+}
+
+.yellow-tag{
+    display:inline-block;
+    background:#facc15;
+    padding:16px 34px;
+    border-radius:50px;
+    font-size:30px;
+    font-weight:700;
+    margin-bottom:35px;
+}
+
+.desc{
+    font-size:33px;
+    line-height:1.7;
+    color:#1f2937;
+    margin-bottom:45px;
+    max-width:750px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:18px;
+    background:linear-gradient(90deg,#2563eb,#4338ca);
+    padding:24px 42px;
+    border-radius:70px;
+    text-decoration:none;
+    color:white;
+    font-size:28px;
+    font-weight:600;
+    box-shadow:0 20px 40px rgba(37,99,235,0.4);
+    transition:0.4s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+/* RIGHT */
+
+.right{
+    width:52%;
+    position:relative;
+}
+
+.main-image{
+    width:100%;
+    border-radius:40px;
+    animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{
         transform:translateY(0px);
-      }
-      to{
-        transform:translateY(40px);
-      }
     }
 
-    /* Navbar */
-
-    nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:30px 80px;
+    50%{
+        transform:translateY(-12px);
     }
 
-    .logo h1{
-      font-size:60px;
-      color:#1e3a8a;
-      line-height:0.9;
-      font-weight:800;
+    100%{
+        transform:translateY(0px);
     }
+}
 
-    .logo span{
-      font-size:28px;
-      font-weight:700;
-      color:#1f2937;
-    }
+/* FLOATING ICONS */
 
-    .menu{
-      display:flex;
-      gap:40px;
-      list-style:none;
-    }
+.icon{
+    position:absolute;
+    width:90px;
+    height:90px;
+    border-radius:28px;
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.25);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:42px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
 
-    .menu li a{
-      text-decoration:none;
-      color:#111827;
-      font-weight:600;
-      transition:0.3s;
-      position:relative;
-    }
+.icon1{
+    top:10%;
+    left:-5%;
+}
 
-    .menu li a:hover{
-      color:#2563eb;
-    }
+.icon2{
+    bottom:18%;
+    left:0;
+}
 
-    .active{
-      background:#2563eb;
-      color:white !important;
-      padding:12px 28px;
-      border-radius:40px;
-      box-shadow:0 10px 30px rgba(37,99,235,0.4);
-    }
+.icon3{
+    top:20%;
+    right:-5%;
+}
 
-    /* Hero Section */
+/* FEATURE BOX */
+
+.features{
+    width:85%;
+    margin:auto;
+    margin-top:-30px;
+    margin-bottom:50px;
+    background:rgba(16,24,80,0.45);
+    border:1px solid rgba(255,255,255,0.2);
+    backdrop-filter:blur(18px);
+    border-radius:35px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    padding:40px;
+    gap:30px;
+    box-shadow:0 20px 45px rgba(0,0,0,0.2);
+}
+
+.feature{
+    color:white;
+}
+
+.feature h3{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.feature p{
+    font-size:22px;
+    line-height:1.7;
+    color:#dbeafe;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1400px){
 
     .hero{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:40px 80px 80px;
-      gap:60px;
-      min-height:85vh;
+        flex-direction:column;
+    }
+
+    .left,
+    .right{
+        width:100%;
     }
 
     .left{
-      flex:1;
-    }
-
-    .tag{
-      display:inline-block;
-      background:#2563eb;
-      color:white;
-      padding:12px 24px;
-      border-radius:50px;
-      margin-bottom:30px;
-      font-weight:700;
-      box-shadow:0 10px 20px rgba(37,99,235,0.3);
-    }
-
-    .hero h2{
-      font-size:90px;
-      line-height:1;
-      color:#1e3a8a;
-      margin-bottom:30px;
-      font-weight:800;
-      text-transform:uppercase;
-    }
-
-    .subtag{
-      display:inline-block;
-      background:#facc15;
-      padding:14px 30px;
-      border-radius:50px;
-      font-weight:700;
-      margin-bottom:30px;
+        text-align:center;
     }
 
     .desc{
-      font-size:28px;
-      line-height:1.7;
-      color:#374151;
-      max-width:700px;
-      margin-bottom:40px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:15px;
-      padding:20px 40px;
-      border-radius:60px;
-      background:linear-gradient(90deg,#2563eb,#4f46e5);
-      color:white;
-      text-decoration:none;
-      font-size:22px;
-      font-weight:600;
-      box-shadow:0 15px 35px rgba(37,99,235,0.4);
-      transition:0.4s;
-    }
-
-    .btn:hover{
-      transform:translateY(-5px) scale(1.03);
-    }
-
-    /* Right side */
-
-    .right{
-      flex:1;
-      position:relative;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-
-    .image-card{
-      position:relative;
-      width:100%;
-      max-width:750px;
-      border-radius:40px;
-      overflow:hidden;
-      backdrop-filter:blur(20px);
-      background:rgba(255,255,255,0.15);
-      border:1px solid rgba(255,255,255,0.3);
-      box-shadow:0 25px 50px rgba(0,0,0,0.15);
-      animation:floatCard 4s ease-in-out infinite;
-    }
-
-    @keyframes floatCard{
-      0%{
-        transform:translateY(0px);
-      }
-      50%{
-        transform:translateY(-12px);
-      }
-      100%{
-        transform:translateY(0px);
-      }
-    }
-
-    .image-card img{
-      width:100%;
-      display:block;
-    }
-
-    .glow{
-      position:absolute;
-      width:200px;
-      height:200px;
-      border-radius:50%;
-      background:rgba(59,130,246,0.4);
-      filter:blur(100px);
-      z-index:-1;
-    }
-
-    .glow.one{
-      top:-40px;
-      left:-40px;
-    }
-
-    .glow.two{
-      bottom:-40px;
-      right:-40px;
-      background:rgba(168,85,247,0.4);
-    }
-
-    /* Floating icons */
-
-    .icon{
-      position:absolute;
-      width:80px;
-      height:80px;
-      border-radius:25px;
-      background:rgba(255,255,255,0.7);
-      backdrop-filter:blur(10px);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      font-size:35px;
-      box-shadow:0 10px 25px rgba(0,0,0,0.1);
-      animation:floatIcon 5s ease-in-out infinite;
-    }
-
-    @keyframes floatIcon{
-      0%{
-        transform:translateY(0px);
-      }
-      50%{
-        transform:translateY(-15px);
-      }
-      100%{
-        transform:translateY(0px);
-      }
-    }
-
-    .icon1{
-      top:10%;
-      left:0;
-    }
-
-    .icon2{
-      bottom:15%;
-      left:5%;
-      animation-delay:1s;
-    }
-
-    .icon3{
-      top:25%;
-      right:0;
-      animation-delay:2s;
-    }
-
-    /* Feature box */
-
-    .features{
-      width:90%;
-      margin:auto;
-      margin-top:-40px;
-      margin-bottom:50px;
-      padding:35px;
-      border-radius:35px;
-      background:rgba(37,99,235,0.15);
-      backdrop-filter:blur(15px);
-      border:1px solid rgba(255,255,255,0.3);
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:30px;
-      box-shadow:0 15px 35px rgba(0,0,0,0.08);
-    }
-
-    .feature{
-      color:white;
-    }
-
-    .feature h3{
-      color:#ffffff;
-      font-size:28px;
-      margin-bottom:10px;
-    }
-
-    .feature p{
-      color:#e5e7eb;
-      line-height:1.6;
-      font-size:18px;
-    }
-
-    /* Responsive */
-
-    @media(max-width:1200px){
-
-      .hero{
-        flex-direction:column;
-        text-align:center;
-      }
-
-      .hero h2{
-        font-size:65px;
-      }
-
-      .desc{
         margin:auto;
         margin-bottom:40px;
-      }
+    }
 
-      .features{
+    .features{
         grid-template-columns:1fr 1fr;
-      }
+    }
 
-      nav{
+}
+
+@media(max-width:900px){
+
+    nav{
         flex-direction:column;
         gap:30px;
-      }
+    }
 
-      .menu{
+    .menu{
         flex-wrap:wrap;
         justify-content:center;
-      }
+        gap:25px;
     }
 
-    @media(max-width:768px){
+    .left h2{
+        font-size:58px;
+    }
 
-      nav,
-      .hero{
-        padding:30px;
-      }
+    .desc{
+        font-size:24px;
+    }
 
-      .hero h2{
-        font-size:48px;
-      }
-
-      .desc{
-        font-size:22px;
-      }
-
-      .features{
+    .features{
         grid-template-columns:1fr;
-      }
-
-      .menu{
-        gap:20px;
-      }
-
     }
 
-  </style>
+}
+
+</style>
+
 </head>
+
 <body>
 
-  <div class="grid"></div>
+<div class="glow1"></div>
+<div class="glow2"></div>
+<div class="glow3"></div>
 
-  <!-- Navbar -->
+<!-- NAVBAR -->
 
-  <nav>
+<nav>
 
-    <div class="logo">
-      <h1>RBT</h1>
-      <span>TINGKATAN 1</span>
-    </div>
+<div class="logo">
+<h1>RBT</h1>
+<span>TINGKATAN 1</span>
+</div>
 
-    <ul class="menu">
-      <li><a class="active" href="#">Home</a></li>
-      <li><a href="#">Pengenalan</a></li>
-      <li><a href="#">Elemen Reka Bentuk</a></li>
-      <li><a href="#">Teroka</a></li>
-      <li><a href="#">Aktiviti</a></li>
-      <li><a href="#">Uji Minda</a></li>
-      <li><a href="#">Refleksi</a></li>
-    </ul>
+<ul class="menu">
+<li><a href="#" class="active">Home</a></li>
+<li><a href="#">Pengenalan</a></li>
+<li><a href="#">Elemen Reka Bentuk</a></li>
+<li><a href="#">Teroka</a></li>
+<li><a href="#">Aktiviti</a></li>
+<li><a href="#">Uji Minda</a></li>
+<li><a href="#">Refleksi</a></li>
+</ul>
 
-  </nav>
+</nav>
 
-  <!-- Hero Section -->
+<!-- HERO -->
 
-  <section class="hero">
+<section class="hero">
 
-    <div class="left">
+<div class="left">
 
-      <div class="tag">1.0</div>
+<div class="tag">1.0</div>
 
-      <h2>
-        PENGENALAN <br>
-        KEPADA <br>
-        REKA BENTUK <br>
-        DAN TEKNOLOGI
-      </h2>
+<h2>
+PENGENALAN<br>
+KEPADA<br>
+REKA BENTUK<br>
+DAN TEKNOLOGI
+</h2>
 
-      <div class="subtag">1.1 Dunia Reka Bentuk</div>
+<div class="yellow-tag">
+1.1 Dunia Reka Bentuk
+</div>
 
-      <p class="desc">
-        1.1.2 Mengenalpasti elemen reka bentuk berdasarkan produk yang dipilih.
-      </p>
+<p class="desc">
+1.1.2 Mengenalpasti elemen reka bentuk berdasarkan produk yang dipilih.
+</p>
 
-      <a href="#" class="btn">
-        Teruskan Pembelajaran →
-      </a>
+<a href="#" class="btn">
+Teruskan Pembelajaran →
+</a>
 
-    </div>
+</div>
 
-    <div class="right">
+<div class="right">
 
-      <div class="glow one"></div>
-      <div class="glow two"></div>
+<div class="icon icon1">⚙️</div>
+<div class="icon icon2">💡</div>
+<div class="icon icon3">⬡</div>
 
-      <div class="icon icon1">⚙️</div>
-      <div class="icon icon2">💡</div>
-      <div class="icon icon3">⬡</div>
+<img class="main-image"
+src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1800&auto=format&fit=crop"
+alt="RBT">
 
-      <div class="image-card">
-        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop" alt="RBT Design">
-      </div>
+</div>
 
-    </div>
+</section>
 
-  </section>
+<!-- FEATURES -->
 
-  <!-- Features -->
+<section class="features">
 
-  <section class="features">
+<div class="feature">
+<h3>Kreatif</h3>
+<p>Mencipta idea inovatif melalui projek reka bentuk.</p>
+</div>
 
-    <div class="feature">
-      <h3>Kreatif</h3>
-      <p>Mencipta idea inovatif melalui proses reka bentuk moden.</p>
-    </div>
+<div class="feature">
+<h3>Reka Bentuk</h3>
+<p>Mereka bentuk produk secara kreatif dan sistematik.</p>
+</div>
 
-    <div class="feature">
-      <h3>Reka Bentuk</h3>
-      <p>Mereka bentuk produk secara sistematik dan kreatif.</p>
-    </div>
+<div class="feature">
+<h3>Teknologi</h3>
+<p>Menggunakan teknologi moden dalam pembelajaran.</p>
+</div>
 
-    <div class="feature">
-      <h3>Teknologi</h3>
-      <p>Menggunakan teknologi digital dalam pembelajaran interaktif.</p>
-    </div>
+<div class="feature">
+<h3>Kolaborasi</h3>
+<p>Bekerjasama menghasilkan projek abad ke-21.</p>
+</div>
 
-    <div class="feature">
-      <h3>Kolaborasi</h3>
-      <p>Bekerjasama dalam menghasilkan projek inovatif abad ke-21.</p>
-    </div>
-
-  </section>
+</section>
 
 </body>
 </html>
-
