@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RBT Futuristik</title>
+<title>RBT Futuristic UI</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,60 +22,86 @@
 }
 
 body{
-    overflow-x:hidden;
     min-height:100vh;
-    background:
-    linear-gradient(135deg,#edf4ff 0%,#cfe3ff 35%,#8ab4ff 70%,#6c63ff 100%);
-    position:relative;
-    color:#111827;
+    overflow-x:hidden;
+    background:#060b2d;
 }
 
-/* GRID BACKGROUND */
+/* MAIN CONTAINER */
 
-body::before{
+.container{
+    width:100%;
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+
+    background:
+    linear-gradient(135deg,
+    #edf4ff 0%,
+    #cce1ff 30%,
+    #80aaff 60%,
+    #6a5cff 100%);
+}
+
+/* GRID EFFECT */
+
+.container::before{
     content:'';
     position:absolute;
     inset:0;
+
     background-image:
     linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+
     background-size:55px 55px;
-    z-index:-2;
 }
 
-/* GLOW */
+/* PURPLE OVERLAY */
 
-.glow1,
-.glow2,
-.glow3{
+.container::after{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top right,
+    rgba(168,85,247,0.5),
+    transparent 35%);
+
+    pointer-events:none;
+}
+
+/* GLOW EFFECT */
+
+.glow{
     position:absolute;
     border-radius:50%;
     filter:blur(120px);
-    z-index:-1;
 }
 
 .glow1{
-    width:400px;
-    height:400px;
+    width:350px;
+    height:350px;
     background:#3b82f6;
     top:20%;
-    left:15%;
+    left:10%;
 }
 
 .glow2{
-    width:500px;
-    height:500px;
+    width:450px;
+    height:450px;
     background:#8b5cf6;
     right:-10%;
-    top:10%;
+    top:0%;
 }
 
 .glow3{
     width:300px;
     height:300px;
     background:#2563eb;
-    bottom:0;
-    left:0;
+    bottom:-10%;
+    left:0%;
 }
 
 /* NAVBAR */
@@ -84,32 +111,40 @@ nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:35px 70px;
+
+    padding:30px 60px;
+    position:relative;
+    z-index:5;
 }
 
+/* LOGO */
+
 .logo h1{
-    font-size:72px;
-    color:#1e3a8a;
+    font-size:60px;
+    color:#142e8f;
     line-height:0.8;
     font-weight:800;
 }
 
 .logo span{
-    font-size:26px;
+    font-size:22px;
     font-weight:700;
+    color:#111827;
 }
+
+/* MENU */
 
 .menu{
     display:flex;
-    gap:50px;
+    gap:45px;
     list-style:none;
 }
 
 .menu a{
     text-decoration:none;
     color:#111827;
-    font-size:22px;
     font-weight:600;
+    font-size:18px;
     transition:0.3s;
 }
 
@@ -120,81 +155,105 @@ nav{
 .active{
     background:#2563eb;
     color:white !important;
-    padding:16px 34px;
-    border-radius:50px;
+    padding:14px 28px;
+    border-radius:40px;
     box-shadow:0 15px 35px rgba(37,99,235,0.4);
 }
 
-/* HERO */
+/* HERO SECTION */
 
 .hero{
     width:100%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:40px 70px;
-    gap:50px;
+
+    padding:30px 60px 0px;
+    position:relative;
+    z-index:2;
 }
 
-/* LEFT */
+/* LEFT SIDE */
 
 .left{
-    width:48%;
+    width:45%;
 }
 
 .tag{
-    width:110px;
-    height:70px;
+    width:90px;
+    height:55px;
     background:#2563eb;
-    border-radius:35px;
-    color:white;
+
+    border-radius:40px;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:34px;
+
+    color:white;
     font-weight:700;
-    margin-bottom:45px;
+    font-size:28px;
+
+    margin-bottom:35px;
+
     box-shadow:0 10px 25px rgba(37,99,235,0.4);
 }
 
 .left h2{
-    font-size:95px;
-    line-height:1.02;
-    color:#1e3a8a;
+    font-size:78px;
+    line-height:1.05;
+    color:#142e8f;
     font-weight:800;
-    margin-bottom:35px;
+
+    margin-bottom:30px;
 }
 
 .yellow-tag{
     display:inline-block;
+
     background:#facc15;
-    padding:16px 34px;
+
+    padding:14px 28px;
+
     border-radius:50px;
-    font-size:30px;
+
+    font-size:24px;
     font-weight:700;
-    margin-bottom:35px;
+
+    margin-bottom:30px;
 }
 
 .desc{
-    font-size:33px;
-    line-height:1.7;
+    font-size:24px;
+    line-height:1.8;
     color:#1f2937;
-    margin-bottom:45px;
-    max-width:750px;
+
+    margin-bottom:40px;
+
+    max-width:650px;
 }
+
+/* BUTTON */
 
 .btn{
     display:inline-flex;
     align-items:center;
-    gap:18px;
+    gap:15px;
+
     background:linear-gradient(90deg,#2563eb,#4338ca);
-    padding:24px 42px;
-    border-radius:70px;
-    text-decoration:none;
+
+    padding:20px 35px;
+
+    border-radius:60px;
+
     color:white;
-    font-size:28px;
+    text-decoration:none;
+
+    font-size:22px;
     font-weight:600;
-    box-shadow:0 20px 40px rgba(37,99,235,0.4);
+
+    box-shadow:0 15px 35px rgba(37,99,235,0.35);
+
     transition:0.4s;
 }
 
@@ -202,102 +261,187 @@ nav{
     transform:translateY(-5px);
 }
 
-/* RIGHT */
+/* RIGHT SIDE */
 
 .right{
-    width:52%;
+    width:55%;
     position:relative;
 }
 
+/* MAIN IMAGE */
+
 .main-image{
     width:100%;
-    border-radius:40px;
     animation:float 5s ease-in-out infinite;
 }
 
 @keyframes float{
+
     0%{
         transform:translateY(0px);
     }
 
     50%{
-        transform:translateY(-12px);
+        transform:translateY(-10px);
     }
 
     100%{
         transform:translateY(0px);
     }
+
 }
 
-/* FLOATING ICONS */
+/* FLOATING ICON */
 
 .icon{
     position:absolute;
-    width:90px;
-    height:90px;
+
+    width:85px;
+    height:85px;
+
     border-radius:28px;
+
     background:rgba(255,255,255,0.18);
-    backdrop-filter:blur(15px);
+
     border:1px solid rgba(255,255,255,0.25);
+
+    backdrop-filter:blur(18px);
+
     display:flex;
     justify-content:center;
     align-items:center;
+
+    font-size:38px;
+
     color:white;
-    font-size:42px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
 .icon1{
-    top:10%;
-    left:-5%;
+    top:20%;
+    left:-4%;
 }
 
 .icon2{
     bottom:18%;
-    left:0;
+    left:2%;
 }
 
 .icon3{
-    top:20%;
-    right:-5%;
+    top:25%;
+    right:-4%;
 }
 
 /* FEATURE BOX */
 
 .features{
-    width:85%;
-    margin:auto;
-    margin-top:-30px;
-    margin-bottom:50px;
-    background:rgba(16,24,80,0.45);
-    border:1px solid rgba(255,255,255,0.2);
+    width:70%;
+
+    margin-left:auto;
+    margin-right:40px;
+
+    margin-top:-40px;
+
+    background:rgba(8,20,90,0.45);
+
     backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,0.15);
+
     border-radius:35px;
+
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    padding:40px;
-    gap:30px;
-    box-shadow:0 20px 45px rgba(0,0,0,0.2);
+
+    gap:25px;
+
+    padding:30px;
+
+    position:relative;
+    z-index:5;
+
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
 }
+
+/* FEATURE ITEM */
 
 .feature{
     color:white;
 }
 
 .feature h3{
-    font-size:32px;
+    font-size:22px;
     margin-bottom:10px;
 }
 
 .feature p{
-    font-size:22px;
-    line-height:1.7;
+    font-size:15px;
+    line-height:1.8;
     color:#dbeafe;
+}
+
+/* WAVE EFFECT */
+
+.wave{
+    position:absolute;
+    bottom:-120px;
+    left:0;
+    width:100%;
+    opacity:0.9;
+}
+
+/* DOTS */
+
+.dots{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+
+    margin-top:20px;
+    position:relative;
+    z-index:10;
+}
+
+.dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:white;
+    opacity:0.5;
+}
+
+.dot.active-dot{
+    opacity:1;
+}
+
+/* SCROLL */
+
+.scroll{
+    width:55px;
+    height:55px;
+
+    border-radius:50%;
+
+    border:2px solid white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin:20px auto 30px;
+
+    color:white;
+    font-size:28px;
+
+    position:relative;
+    z-index:10;
 }
 
 /* RESPONSIVE */
 
-@media(max-width:1400px){
+@media(max-width:1300px){
 
     .hero{
         flex-direction:column;
@@ -318,6 +462,10 @@ nav{
     }
 
     .features{
+        width:90%;
+        margin:auto;
+        margin-top:40px;
+
         grid-template-columns:1fr 1fr;
     }
 
@@ -333,15 +481,15 @@ nav{
     .menu{
         flex-wrap:wrap;
         justify-content:center;
-        gap:25px;
+        gap:20px;
     }
 
     .left h2{
-        font-size:58px;
+        font-size:50px;
     }
 
     .desc{
-        font-size:24px;
+        font-size:20px;
     }
 
     .features{
@@ -356,9 +504,13 @@ nav{
 
 <body>
 
-<div class="glow1"></div>
-<div class="glow2"></div>
-<div class="glow3"></div>
+<div class="container">
+
+<!-- GLOW -->
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+<div class="glow glow3"></div>
 
 <!-- NAVBAR -->
 
@@ -370,6 +522,7 @@ nav{
 </div>
 
 <ul class="menu">
+
 <li><a href="#" class="active">Home</a></li>
 <li><a href="#">Pengenalan</a></li>
 <li><a href="#">Elemen Reka Bentuk</a></li>
@@ -377,6 +530,7 @@ nav{
 <li><a href="#">Aktiviti</a></li>
 <li><a href="#">Uji Minda</a></li>
 <li><a href="#">Refleksi</a></li>
+
 </ul>
 
 </nav>
@@ -385,15 +539,19 @@ nav{
 
 <section class="hero">
 
+<!-- LEFT -->
+
 <div class="left">
 
 <div class="tag">1.0</div>
 
 <h2>
+
 PENGENALAN<br>
 KEPADA<br>
 REKA BENTUK<br>
 DAN TEKNOLOGI
+
 </h2>
 
 <div class="yellow-tag">
@@ -410,6 +568,8 @@ Teruskan Pembelajaran →
 
 </div>
 
+<!-- RIGHT -->
+
 <div class="right">
 
 <div class="icon icon1">⚙️</div>
@@ -417,7 +577,7 @@ Teruskan Pembelajaran →
 <div class="icon icon3">⬡</div>
 
 <img class="main-image"
-src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1800&auto=format&fit=crop"
+src="https://i.imgur.com/2DhmtJ4.png"
 alt="RBT">
 
 </div>
@@ -429,26 +589,57 @@ alt="RBT">
 <section class="features">
 
 <div class="feature">
-<h3>Kreatif</h3>
+<h3>📦 Kreatif</h3>
 <p>Mencipta idea inovatif melalui projek reka bentuk.</p>
 </div>
 
 <div class="feature">
-<h3>Reka Bentuk</h3>
-<p>Mereka bentuk produk secara kreatif dan sistematik.</p>
+<h3>✏️ Reka Bentuk</h3>
+<p>Mereka bentuk produk dengan teliti dan sistematik.</p>
 </div>
 
 <div class="feature">
-<h3>Teknologi</h3>
+<h3>⚙️ Teknologi</h3>
 <p>Menggunakan teknologi moden dalam pembelajaran.</p>
 </div>
 
 <div class="feature">
-<h3>Kolaborasi</h3>
+<h3>👥 Kolaborasi</h3>
 <p>Bekerjasama menghasilkan projek abad ke-21.</p>
 </div>
 
 </section>
+
+<!-- DOTS -->
+
+<div class="dots">
+
+<div class="dot active-dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+
+</div>
+
+<!-- SCROLL -->
+
+<div class="scroll">
+⌄
+</div>
+
+<!-- WAVE -->
+
+<svg class="wave" viewBox="0 0 1440 320">
+
+<path fill="#081451" fill-opacity="1"
+d="M0,224L60,208C120,192,240,160,360,170.7C480,181,600,235,720,234.7C840,235,960,181,1080,176C1200,171,1320,213,1380,234.7L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+
+</path>
+
+</svg>
+
+</div>
 
 </body>
 </html>
