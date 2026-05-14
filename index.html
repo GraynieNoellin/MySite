@@ -579,6 +579,263 @@ nav{
     }
 
 }
+/* =========================
+   TUKAR KE TEMA DARK TECH
+   ========================= */
+
+/* BODY */
+
+body{
+    background:#020617;
+    overflow-x:hidden;
+}
+
+/* MAIN CONTAINER */
+
+.container{
+
+    width:100%;
+    min-height:100vh;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+    135deg,
+    #050816 0%,
+    #0b1120 25%,
+    #111827 55%,
+    #1e1b4b 100%);
+}
+
+/* GRID EFFECT */
+
+.container::before{
+
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background-image:
+    linear-gradient(rgba(59,130,246,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.08) 1px, transparent 1px);
+
+    background-size:55px 55px;
+}
+
+/* TECH GLOW */
+
+.container::after{
+
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top right,
+    rgba(59,130,246,0.35),
+    transparent 35%);
+}
+
+/* GLOW */
+
+.glow1{
+
+    width:400px;
+    height:400px;
+
+    background:#2563eb;
+
+    left:-150px;
+    bottom:-150px;
+
+    opacity:0.6;
+}
+
+.glow2{
+
+    width:450px;
+    height:450px;
+
+    background:#4f46e5;
+
+    right:-120px;
+    top:-120px;
+
+    opacity:0.5;
+}
+
+/* LOGO */
+
+.logo h1{
+
+    color:#60a5fa;
+}
+
+.logo span{
+
+    color:#dbeafe;
+}
+
+/* MENU */
+
+.menu a{
+
+    color:#e5e7eb;
+}
+
+.menu a:hover{
+
+    color:#60a5fa;
+}
+
+/* ACTIVE BUTTON */
+
+.active{
+
+    background:
+    linear-gradient(
+    90deg,
+    #2563eb,
+    #4f46e5);
+
+    color:white !important;
+
+    box-shadow:
+    0 10px 30px rgba(37,99,235,0.5);
+}
+
+/* MAIN TITLE */
+
+.left h2{
+
+    color:#f8fafc;
+
+    text-shadow:
+    0 0 25px rgba(96,165,250,0.25);
+}
+
+/* TAG */
+
+.tag{
+
+    background:
+    linear-gradient(
+    90deg,
+    #2563eb,
+    #4f46e5);
+
+    box-shadow:
+    0 10px 30px rgba(37,99,235,0.5);
+}
+
+/* YELLOW TAG */
+
+.yellow-tag{
+
+    background:#facc15;
+
+    color:#111827;
+
+    box-shadow:
+    0 10px 25px rgba(250,204,21,0.3);
+}
+
+/* DESCRIPTION */
+
+.desc{
+
+    color:#cbd5e1;
+}
+
+/* BUTTON */
+
+.btn{
+
+    background:
+    linear-gradient(
+    90deg,
+    #2563eb,
+    #4f46e5);
+
+    box-shadow:
+    0 15px 35px rgba(37,99,235,0.45);
+}
+
+/* FLOATING ICONS */
+
+.icon{
+
+    background:
+    rgba(15,23,42,0.55);
+
+    border:
+    1px solid rgba(96,165,250,0.25);
+
+    color:#60a5fa;
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,0.4);
+}
+
+/* FEATURE BOX */
+
+.features{
+
+    background:
+    rgba(2,6,23,0.7);
+
+    border:
+    1px solid rgba(96,165,250,0.15);
+
+    box-shadow:
+    0 20px 45px rgba(0,0,0,0.45);
+}
+
+/* FEATURE TITLE */
+
+.feature h3{
+
+    color:#f8fafc;
+}
+
+/* FEATURE TEXT */
+
+.feature p{
+
+    color:#94a3b8;
+}
+
+/* DOTS */
+
+.dot{
+
+    background:#60a5fa;
+}
+
+/* SCROLL */
+
+.scroll{
+
+    border:2px solid #60a5fa;
+
+    color:#60a5fa;
+
+    background:
+    rgba(15,23,42,0.5);
+
+    backdrop-filter:blur(10px);
+}
+
+/* WAVE */
+
+.wave path{
+
+    fill:#020617;
+}
 
 </style>
 
