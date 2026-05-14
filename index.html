@@ -8,8 +8,6 @@
 
 <title>RBT Futuristik</title>
 
-<!-- GOOGLE FONT -->
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -26,11 +24,9 @@
     font-family:'Poppins',sans-serif;
 }
 
-/* BODY */
-
 body{
+    background:#09153d;
     overflow-x:hidden;
-    background:#07113a;
 }
 
 /* MAIN CONTAINER */
@@ -39,19 +35,20 @@ body{
 
     width:100%;
     min-height:100vh;
-    overflow:hidden;
+
     position:relative;
+    overflow:hidden;
 
     background:
     linear-gradient(
     135deg,
     #edf4ff 0%,
-    #cfe2ff 30%,
-    #8ab4ff 65%,
-    #6b5cff 100%);
+    #d9e7ff 30%,
+    #8cb7ff 65%,
+    #7b5cff 100%);
 }
 
-/* GRID EFFECT */
+/* GRID */
 
 .container::before{
 
@@ -60,14 +57,13 @@ body{
     inset:0;
 
     background-image:
-    linear-gradient(rgba(255,255,255,0.10) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.10) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
 
-    background-size:50px 50px;
-
+    background-size:55px 55px;
 }
 
-/* PURPLE GLOW */
+/* PURPLE LIGHT */
 
 .container::after{
 
@@ -79,29 +75,35 @@ body{
     radial-gradient(circle at top right,
     rgba(168,85,247,0.45),
     transparent 35%);
-
 }
 
-/* EXTRA GLOW */
+/* GLOW */
 
 .glow{
+
     position:absolute;
     border-radius:50%;
     filter:blur(120px);
 }
 
 .glow1{
-    width:350px;
-    height:350px;
+
+    width:400px;
+    height:400px;
+
     background:#3b82f6;
-    left:-100px;
-    bottom:-100px;
+
+    left:-150px;
+    bottom:-150px;
 }
 
 .glow2{
-    width:350px;
-    height:350px;
+
+    width:400px;
+    height:400px;
+
     background:#8b5cf6;
+
     right:-100px;
     top:-100px;
 }
@@ -111,6 +113,7 @@ body{
 nav{
 
     width:100%;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -119,24 +122,23 @@ nav{
 
     position:relative;
     z-index:10;
-
-    flex-wrap:wrap;
-    gap:20px;
 }
 
 /* LOGO */
 
 .logo h1{
-    font-size:52px;
+
+    font-size:58px;
     line-height:0.8;
-    color:#17328f;
+
+    color:#183494;
     font-weight:800;
 }
 
 .logo span{
+
     font-size:18px;
     font-weight:700;
-    color:#111827;
 }
 
 /* MENU */
@@ -144,15 +146,15 @@ nav{
 .menu{
 
     display:flex;
-    gap:20px;
-    list-style:none;
+    gap:35px;
 
-    flex-wrap:wrap;
+    list-style:none;
 }
 
 .menu a{
 
     text-decoration:none;
+
     color:#111827;
 
     font-size:15px;
@@ -165,14 +167,14 @@ nav{
     color:#2563eb;
 }
 
-/* ACTIVE BUTTON */
+/* ACTIVE */
 
 .active{
 
     background:#2563eb;
     color:white !important;
 
-    padding:14px 28px;
+    padding:14px 30px;
 
     border-radius:40px;
 
@@ -180,7 +182,7 @@ nav{
     0 10px 30px rgba(37,99,235,0.4);
 }
 
-/* HERO SECTION */
+/* HERO */
 
 .hero{
 
@@ -190,25 +192,25 @@ nav{
     justify-content:space-between;
     align-items:center;
 
-    padding:20px 40px 0px;
+    gap:20px;
+
+    padding:10px 40px 0px;
 
     position:relative;
     z-index:5;
-
-    gap:40px;
 }
 
 /* LEFT */
 
 .left{
-    width:45%;
+    width:42%;
 }
 
 /* TAG */
 
 .tag{
 
-    width:90px;
+    width:85px;
     height:55px;
 
     background:#2563eb;
@@ -220,6 +222,7 @@ nav{
     align-items:center;
 
     color:white;
+
     font-size:28px;
     font-weight:700;
 
@@ -233,10 +236,10 @@ nav{
 
 .left h2{
 
-    font-size:60px;
-    line-height:1.05;
+    font-size:74px;
+    line-height:1.02;
 
-    color:#17328f;
+    color:#183494;
     font-weight:800;
 
     margin-bottom:30px;
@@ -250,7 +253,7 @@ nav{
 
     background:#facc15;
 
-    padding:14px 26px;
+    padding:14px 28px;
 
     border-radius:50px;
 
@@ -269,9 +272,9 @@ nav{
 
     color:#1f2937;
 
-    max-width:600px;
-
     margin-bottom:40px;
+
+    max-width:550px;
 }
 
 /* BUTTON */
@@ -295,7 +298,7 @@ nav{
     color:white;
     text-decoration:none;
 
-    font-size:20px;
+    font-size:18px;
     font-weight:600;
 
     box-shadow:
@@ -305,6 +308,7 @@ nav{
 }
 
 .btn:hover{
+
     transform:translateY(-5px);
 }
 
@@ -312,7 +316,7 @@ nav{
 
 .right{
 
-    width:55%;
+    width:58%;
     position:relative;
 
     display:flex;
@@ -330,8 +334,6 @@ nav{
     animation:float 5s ease-in-out infinite;
 }
 
-/* FLOAT ANIMATION */
-
 @keyframes float{
 
     0%{
@@ -348,7 +350,7 @@ nav{
 
 }
 
-/* FLOATING ICON */
+/* FLOATING ICONS */
 
 .icon{
 
@@ -357,76 +359,81 @@ nav{
     width:80px;
     height:80px;
 
-    border-radius:25px;
+    border-radius:28px;
 
-    background:rgba(255,255,255,0.18);
+    background:
+    rgba(255,255,255,0.18);
 
-    border:1px solid rgba(255,255,255,0.25);
+    border:
+    1px solid rgba(255,255,255,0.25);
 
-    backdrop-filter:blur(15px);
+    backdrop-filter:blur(18px);
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    font-size:35px;
-
     color:white;
+    font-size:35px;
 
     box-shadow:
     0 10px 30px rgba(0,0,0,0.15);
 }
 
 .icon1{
+
     top:20%;
-    left:0;
+    left:2%;
 }
 
 .icon2{
-    bottom:20%;
+
+    bottom:18%;
     left:5%;
 }
 
 .icon3{
+
     top:22%;
     right:0;
 }
 
-/* FEATURE BOX */
+/* FEATURES */
 
 .features{
 
-    width:72%;
+    width:62%;
 
     margin-left:auto;
-    margin-right:40px;
+    margin-right:30px;
 
-    margin-top:-40px;
+    margin-top:-35px;
 
     background:
     rgba(8,20,90,0.45);
 
-    border:1px solid rgba(255,255,255,0.15);
+    border:
+    1px solid rgba(255,255,255,0.15);
 
     backdrop-filter:blur(18px);
 
-    border-radius:35px;
+    border-radius:30px;
 
-    padding:30px;
+    padding:25px;
 
     display:grid;
     grid-template-columns:repeat(4,1fr);
 
-    gap:25px;
+    gap:20px;
 
     position:relative;
-    z-index:5;
+    z-index:10;
 
     box-shadow:
-    0 20px 45px rgba(0,0,0,0.2);
+    0 20px 40px rgba(0,0,0,0.2);
 }
 
-/* FEATURE */
+/* FEATURE ITEM */
 
 .feature{
     color:white;
@@ -434,13 +441,13 @@ nav{
 
 .feature h3{
 
-    font-size:20px;
+    font-size:18px;
     margin-bottom:10px;
 }
 
 .feature p{
 
-    font-size:14px;
+    font-size:13px;
     line-height:1.8;
 
     color:#dbeafe;
@@ -457,16 +464,16 @@ nav{
 
     gap:10px;
 
-    margin-top:20px;
+    margin-top:18px;
 
     position:relative;
-    z-index:5;
+    z-index:10;
 }
 
 .dot{
 
-    width:10px;
-    height:10px;
+    width:9px;
+    height:9px;
 
     border-radius:50%;
 
@@ -479,12 +486,12 @@ nav{
     opacity:1;
 }
 
-/* SCROLL ICON */
+/* SCROLL */
 
 .scroll{
 
-    width:55px;
-    height:55px;
+    width:50px;
+    height:50px;
 
     border-radius:50%;
 
@@ -494,14 +501,13 @@ nav{
     justify-content:center;
     align-items:center;
 
+    margin:18px auto 30px;
+
     color:white;
-
-    font-size:28px;
-
-    margin:20px auto 30px;
+    font-size:25px;
 
     position:relative;
-    z-index:5;
+    z-index:10;
 }
 
 /* WAVE */
@@ -509,8 +515,9 @@ nav{
 .wave{
 
     position:absolute;
-    bottom:-120px;
+
     left:0;
+    bottom:-110px;
 
     width:100%;
 }
@@ -546,17 +553,17 @@ nav{
 
 }
 
-/* MOBILE */
-
 @media(max-width:768px){
 
     nav{
         flex-direction:column;
-        text-align:center;
+        gap:20px;
     }
 
     .menu{
+        flex-wrap:wrap;
         justify-content:center;
+        gap:15px;
     }
 
     .left h2{
@@ -569,14 +576,6 @@ nav{
 
     .features{
         grid-template-columns:1fr;
-    }
-
-    .yellow-tag{
-        font-size:18px;
-    }
-
-    .btn{
-        font-size:18px;
     }
 
 }
@@ -668,7 +667,7 @@ Teruskan Pembelajaran →
 
 <img
 class="main-image"
-src="https://i.imgur.com/2DhmtJ4.png"
+src="https://i.imgur.com/fz7QK5A.png"
 alt="RBT">
 
 </div>
@@ -694,7 +693,7 @@ Mencipta idea inovatif melalui projek reka bentuk.
 <h3>✏️ Reka Bentuk</h3>
 
 <p>
-Mereka bentuk produk secara sistematik dan kreatif.
+Mereka bentuk produk dengan teliti dan sistematik.
 </p>
 
 </div>
@@ -758,4 +757,5 @@ d="M0,224L60,208C120,192,240,160,360,170.7C480,181,600,235,720,234.7C840,235,960
 </div>
 
 </body>
+
 </html>
