@@ -120,14 +120,14 @@ nav{
 /* LOGO */
 
 .logo h1{
-    font-size:60px;
+    font-size:42px;
     color:#142e8f;
     line-height:0.8;
     font-weight:800;
 }
 
 .logo span{
-    font-size:22px;
+    font-size:16px;
     font-weight:700;
     color:#111827;
 }
@@ -136,7 +136,8 @@ nav{
 
 .menu{
     display:flex;
-    gap:45px;
+    gap:20px;
+    flex-wrap:wrap;
     list-style:none;
 }
 
@@ -144,7 +145,7 @@ nav{
     text-decoration:none;
     color:#111827;
     font-weight:600;
-    font-size:18px;
+    font-size:14px;
     transition:0.3s;
 }
 
@@ -168,7 +169,8 @@ nav{
     justify-content:space-between;
     align-items:center;
 
-    padding:30px 60px 0px;
+    padding:20px 35px;
+    flex-direction:row;
     position:relative;
     z-index:2;
 }
@@ -200,7 +202,7 @@ nav{
 }
 
 .left h2{
-    font-size:78px;
+    font-size:58px;
     line-height:1.05;
     color:#142e8f;
     font-weight:800;
@@ -264,7 +266,9 @@ nav{
 /* RIGHT SIDE */
 
 .right{
-    width:55%;
+    width:50%;
+    display:flex;
+    justify-content:center;
     position:relative;
 }
 
@@ -490,6 +494,54 @@ nav{
 
     .desc{
         font-size:20px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+}
+@media(max-width:1200px){
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .left,
+    .right{
+        width:100%;
+    }
+
+    .left h2{
+        font-size:48px;
+    }
+
+    .desc{
+        margin:auto;
+    }
+
+    .features{
+        grid-template-columns:1fr 1fr;
+        width:90%;
+        margin:auto;
+        margin-top:40px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+    }
+
+    .menu{
+        justify-content:center;
+    }
+
+    .left h2{
+        font-size:38px;
     }
 
     .features{
