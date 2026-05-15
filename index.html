@@ -1,1013 +1,886 @@
 <!DOCTYPE html>
 <html lang="ms">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RBT Futuristik</title>
+<title>RBT Tingkatan 1</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
 
 <style>
 
-/* RESET */
+/* ================= RESET ================= */
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
+
+/* ================= BODY ================= */
 
 body{
-    background:#09153d;
-    overflow-x:hidden;
+
+background:
+
+linear-gradient(
+90deg,
+rgba(0,255,255,0.03) 1px,
+transparent 1px
+),
+
+linear-gradient(
+180deg,
+rgba(0,255,255,0.03) 1px,
+transparent 1px
+),
+
+radial-gradient(
+circle at top right,
+rgba(59,130,246,0.25),
+transparent 35%
+),
+
+#061417;
+
+background-size:
+80px 80px,
+80px 80px,
+100% 100%,
+100% 100%;
+
+overflow-x:hidden;
+padding:20px;
+color:white;
+position:relative;
 }
 
-/* MAIN CONTAINER */
+/* ================= CONTAINER ================= */
 
 .container{
-
-    width:100%;
-    min-height:100vh;
-
-    position:relative;
-    overflow:hidden;
-
-    background:
-    linear-gradient(
-    135deg,
-    #edf4ff 0%,
-    #d9e7ff 30%,
-    #8cb7ff 65%,
-    #7b5cff 100%);
+max-width:1450px;
+margin:auto;
+background:#0A1B1F;
+border-radius:35px;
+overflow:hidden;
+border:1px solid rgba(20,184,166,0.15);
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+position:relative;
 }
 
-/* GRID */
+/* TOP LIGHT */
 
 .container::before{
-
-    content:'';
-    position:absolute;
-    inset:0;
-
-    background-image:
-    linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
-
-    background-size:55px 55px;
-}
-
-/* PURPLE LIGHT */
-
-.container::after{
-
-    content:'';
-    position:absolute;
-    inset:0;
-
-    background:
-    radial-gradient(circle at top right,
-    rgba(168,85,247,0.45),
-    transparent 35%);
-}
-
-/* GLOW */
-
-.glow{
-
-    position:absolute;
-    border-radius:50%;
-    filter:blur(120px);
-}
-
-.glow1{
-
-    width:400px;
-    height:400px;
-
-    background:#3b82f6;
-
-    left:-150px;
-    bottom:-150px;
-}
-
-.glow2{
-
-    width:400px;
-    height:400px;
-
-    background:#8b5cf6;
-
-    right:-100px;
-    top:-100px;
-}
-
-/* NAVBAR */
-
-nav{
-
-    width:100%;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:20px 40px;
-
-    position:relative;
-    z-index:10;
-}
-
-/* LOGO */
-
-.logo h1{
-
-    font-size:58px;
-    line-height:0.8;
-
-    color:#183494;
-    font-weight:800;
-}
-
-.logo span{
-
-    font-size:18px;
-    font-weight:700;
-}
-
-/* MENU */
-
-.menu{
-
-    display:flex;
-    gap:35px;
-
-    list-style:none;
-}
-
-.menu a{
-
-    text-decoration:none;
-
-    color:#111827;
-
-    font-size:15px;
-    font-weight:600;
-
-    transition:0.3s;
-}
-
-.menu a:hover{
-    color:#2563eb;
-}
-
-/* ACTIVE */
-
-.active{
-
-    background:#2563eb;
-    color:white !important;
-
-    padding:14px 30px;
-
-    border-radius:40px;
-
-    box-shadow:
-    0 10px 30px rgba(37,99,235,0.4);
-}
-
-/* HERO */
-
-.hero{
-
-    width:100%;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    gap:20px;
-
-    padding:10px 40px 0px;
-
-    position:relative;
-    z-index:5;
-}
-
-/* LEFT */
-
-.left{
-    width:42%;
-}
-
-/* TAG */
-
-.tag{
-
-    width:85px;
-    height:55px;
-
-    background:#2563eb;
-
-    border-radius:40px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    color:white;
-
-    font-size:28px;
-    font-weight:700;
-
-    margin-bottom:35px;
-
-    box-shadow:
-    0 10px 25px rgba(37,99,235,0.4);
-}
-
-/* MAIN TITLE */
-
-.left h2{
-
-    font-size:74px;
-    line-height:1.02;
-
-    color:#183494;
-    font-weight:800;
-
-    margin-bottom:30px;
-}
-
-/* YELLOW TAG */
-
-.yellow-tag{
-
-    display:inline-block;
-
-    background:#facc15;
-
-    padding:14px 28px;
-
-    border-radius:50px;
-
-    font-size:22px;
-    font-weight:700;
-
-    margin-bottom:30px;
-}
-
-/* DESCRIPTION */
-
-.desc{
-
-    font-size:22px;
-    line-height:1.8;
-
-    color:#1f2937;
-
-    margin-bottom:40px;
-
-    max-width:550px;
-}
-
-/* BUTTON */
-
-.btn{
-
-    display:inline-flex;
-    align-items:center;
-    gap:15px;
-
-    background:
-    linear-gradient(
-    90deg,
-    #2563eb,
-    #4338ca);
-
-    padding:18px 35px;
-
-    border-radius:60px;
-
-    color:white;
-    text-decoration:none;
-
-    font-size:18px;
-    font-weight:600;
-
-    box-shadow:
-    0 15px 35px rgba(37,99,235,0.35);
-
-    transition:0.4s;
-}
-
-.btn:hover{
-
-    transform:translateY(-5px);
-}
-
-/* RIGHT */
-
-.right{
-
-    width:58%;
-    position:relative;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-/* MAIN IMAGE */
-
-.main-image{
-
-    width:100%;
-    max-width:850px;
-
-    animation:float 5s ease-in-out infinite;
-}
-
-@keyframes float{
-
-    0%{
-        transform:translateY(0px);
-    }
-
-    50%{
-        transform:translateY(-10px);
-    }
-
-    100%{
-        transform:translateY(0px);
-    }
-
-}
-
-/* FLOATING ICONS */
-
-.icon{
-
-    position:absolute;
-
-    width:80px;
-    height:80px;
-
-    border-radius:28px;
-
-    background:
-    rgba(255,255,255,0.18);
-
-    border:
-    1px solid rgba(255,255,255,0.25);
-
-    backdrop-filter:blur(18px);
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    color:white;
-    font-size:35px;
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,0.15);
-}
-
-.icon1{
-
-    top:20%;
-    left:2%;
-}
-
-.icon2{
-
-    bottom:18%;
-    left:5%;
-}
-
-.icon3{
-
-    top:22%;
-    right:0;
-}
-
-/* FEATURES */
-
-.features{
-
-    width:62%;
-
-    margin-left:auto;
-    margin-right:30px;
-
-    margin-top:-35px;
-
-    background:
-    rgba(8,20,90,0.45);
-
-    border:
-    1px solid rgba(255,255,255,0.15);
-
-    backdrop-filter:blur(18px);
-
-    border-radius:30px;
-
-    padding:25px;
-
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-
-    gap:20px;
-
-    position:relative;
-    z-index:10;
-
-    box-shadow:
-    0 20px 40px rgba(0,0,0,0.2);
-}
-
-/* FEATURE ITEM */
-
-.feature{
-    color:white;
-}
-
-.feature h3{
-
-    font-size:18px;
-    margin-bottom:10px;
-}
-
-.feature p{
-
-    font-size:13px;
-    line-height:1.8;
-
-    color:#dbeafe;
-}
-
-/* DOTS */
-
-.dots{
-
-    width:100%;
-
-    display:flex;
-    justify-content:center;
-
-    gap:10px;
-
-    margin-top:18px;
-
-    position:relative;
-    z-index:10;
-}
-
-.dot{
-
-    width:9px;
-    height:9px;
-
-    border-radius:50%;
-
-    background:white;
-
-    opacity:0.5;
-}
-
-.active-dot{
-    opacity:1;
-}
-
-/* SCROLL */
-
-.scroll{
-
-    width:50px;
-    height:50px;
-
-    border-radius:50%;
-
-    border:2px solid white;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    margin:18px auto 30px;
-
-    color:white;
-    font-size:25px;
-
-    position:relative;
-    z-index:10;
-}
-
-/* WAVE */
-
-.wave{
-
-    position:absolute;
-
-    left:0;
-    bottom:-110px;
-
-    width:100%;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:1200px){
-
-    .hero{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .left,
-    .right{
-        width:100%;
-    }
-
-    .desc{
-        margin:auto;
-        margin-bottom:40px;
-    }
-
-    .features{
-
-        width:90%;
-
-        margin:auto;
-        margin-top:40px;
-
-        grid-template-columns:1fr 1fr;
-    }
-
-}
-
-@media(max-width:768px){
-
-    nav{
-        flex-direction:column;
-        gap:20px;
-    }
-
-    .menu{
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:15px;
-    }
-
-    .left h2{
-        font-size:42px;
-    }
-
-    .desc{
-        font-size:18px;
-    }
-
-    .features{
-        grid-template-columns:1fr;
-    }
-
-}
-
-body{
-    background:#020617;
-    overflow-x:hidden;
-}
-
-/* MAIN CONTAINER */
-
-.container{
-
-    width:100%;
-    min-height:100vh;
-
-    position:relative;
-    overflow:hidden;
-
-    background:
-    linear-gradient(
-    135deg,
-    #050816 0%,
-    #0b1120 25%,
-    #111827 55%,
-    #1e1b4b 100%);
+content:'';
+position:absolute;
+top:-250px;
+right:-250px;
+width:700px;
+height:700px;
+
+background:
+radial-gradient(
+circle,
+rgba(59,130,246,0.35),
+transparent 70%
+);
+
+filter:blur(50px);
+pointer-events:none;
 }
 
 /* GRID EFFECT */
 
-.container::before{
-
-    content:'';
-    position:absolute;
-    inset:0;
-
-    background-image:
-    linear-gradient(rgba(59,130,246,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59,130,246,0.08) 1px, transparent 1px);
-
-    background-size:55px 55px;
-}
-
-/* TECH GLOW */
-
 .container::after{
+content:'';
+position:absolute;
+inset:0;
 
-    content:'';
-    position:absolute;
-    inset:0;
+background-image:
 
-    background:
-    radial-gradient(circle at top right,
-    rgba(59,130,246,0.35),
-    transparent 35%);
+linear-gradient(
+rgba(20,184,166,0.05) 1px,
+transparent 1px
+),
+
+linear-gradient(
+90deg,
+rgba(20,184,166,0.05) 1px,
+transparent 1px
+);
+
+background-size:80px 80px;
+
+pointer-events:none;
 }
 
-/* GLOW */
+/* ================= PARTICLES ================= */
 
-.glow1{
-
-    width:400px;
-    height:400px;
-
-    background:#2563eb;
-
-    left:-150px;
-    bottom:-150px;
-
-    opacity:0.6;
+.particles{
+position:absolute;
+inset:0;
+overflow:hidden;
+pointer-events:none;
+z-index:1;
 }
 
-.glow2{
-
-    width:450px;
-    height:450px;
-
-    background:#4f46e5;
-
-    right:-120px;
-    top:-120px;
-
-    opacity:0.5;
+.particles span{
+position:absolute;
+width:3px;
+height:3px;
+background:#5EEAD4;
+border-radius:50%;
+opacity:0.5;
+animation:particle 8s linear infinite;
 }
 
-/* LOGO */
+@keyframes particle{
 
-.logo h1{
+0%{
+transform:translateY(0px);
+opacity:0;
+}
 
-    color:#60a5fa;
+20%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-900px);
+opacity:0;
+}
+
+}
+
+/* ================= CYBER DOTS ================= */
+
+.cyber-dots{
+position:absolute;
+left:25px;
+top:200px;
+display:grid;
+grid-template-columns:repeat(2,10px);
+gap:12px;
+z-index:3;
+}
+
+.cyber-dots span{
+width:4px;
+height:4px;
+border-radius:50%;
+background:#14B8A6;
+
+box-shadow:
+0 0 10px #14B8A6;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:28px 45px;
+border-bottom:1px solid rgba(255,255,255,0.05);
+position:relative;
+z-index:5;
+}
+
+.logo{
+font-size:42px;
+font-weight:800;
+line-height:1;
 }
 
 .logo span{
-
-    color:#dbeafe;
+display:block;
+font-size:15px;
+font-weight:500;
+margin-top:8px;
+color:#14B8A6;
 }
 
-/* MENU */
+.menu{
+display:flex;
+gap:35px;
+}
 
 .menu a{
-
-    color:#e5e7eb;
+text-decoration:none;
+color:#E2E8F0;
+font-weight:500;
+transition:0.3s;
+position:relative;
 }
 
-.menu a:hover{
-
-    color:#60a5fa;
-}
-
-/* ACTIVE BUTTON */
+/* ACTIVE NAV */
 
 .active{
+position:relative;
 
-    background:
-    linear-gradient(
-    90deg,
-    #2563eb,
-    #4f46e5);
+background:
+linear-gradient(
+90deg,
+#2563EB,
+#4F46E5
+);
 
-    color:white !important;
+padding:18px 35px;
+border-radius:22px;
 
-    box-shadow:
-    0 10px 30px rgba(37,99,235,0.5);
+box-shadow:
+0 0 15px rgba(59,130,246,0.7),
+0 0 40px rgba(59,130,246,0.35);
+
 }
 
-/* MAIN TITLE */
+/* ================= HERO ================= */
 
-.left h2{
-
-    color:#f8fafc;
-
-    text-shadow:
-    0 0 25px rgba(96,165,250,0.25);
+.hero{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+padding:70px 50px;
+align-items:center;
+position:relative;
+z-index:5;
 }
 
-/* TAG */
+/* ================= HERO TEXT ================= */
 
 .tag{
+display:inline-block;
 
-    background:
-    linear-gradient(
-    90deg,
-    #2563eb,
-    #4f46e5);
+background:
+linear-gradient(
+90deg,
+#2563EB,
+#4F46E5
+);
 
-    box-shadow:
-    0 10px 30px rgba(37,99,235,0.5);
+padding:10px 22px;
+border-radius:50px;
+font-weight:700;
+font-size:22px;
+margin-bottom:25px;
+
+box-shadow:
+0 0 20px rgba(59,130,246,0.4);
 }
 
-/* YELLOW TAG */
-
-.yellow-tag{
-
-    background:#facc15;
-
-    color:#111827;
-
-    box-shadow:
-    0 10px 25px rgba(250,204,21,0.3);
+.hero h2{
+font-size:32px;
+font-weight:600;
+margin-bottom:15px;
+color:#E2E8F0;
 }
 
-/* DESCRIPTION */
+.hero h1{
+font-size:82px;
+line-height:1;
+font-weight:800;
+margin-bottom:25px;
+}
+
+.hero h1 span{
+
+color:#14B8A6;
+
+text-shadow:
+0 0 15px rgba(20,184,166,0.7),
+0 0 40px rgba(20,184,166,0.35);
+
+}
+
+.subtag{
+display:inline-block;
+background:#FACC15;
+color:#111827;
+padding:12px 25px;
+border-radius:50px;
+font-weight:700;
+font-size:22px;
+margin-bottom:25px;
+}
 
 .desc{
-
-    color:#cbd5e1;
+font-size:25px;
+line-height:1.8;
+color:#CBD5E1;
+max-width:650px;
+margin-bottom:35px;
 }
 
-/* BUTTON */
+/* ================= BUTTON ================= */
 
 .btn{
 
-    background:
-    linear-gradient(
-    90deg,
-    #2563eb,
-    #4f46e5);
+display:inline-flex;
+align-items:center;
+gap:15px;
 
-    box-shadow:
-    0 15px 35px rgba(37,99,235,0.45);
+padding:18px 35px;
+
+background:
+linear-gradient(
+90deg,
+#0F766E,
+#14B8A6
+);
+
+border:none;
+border-radius:60px;
+
+color:white;
+font-size:22px;
+font-weight:600;
+
+cursor:pointer;
+position:relative;
+overflow:hidden;
+
+box-shadow:
+0 0 20px rgba(20,184,166,0.4);
+
+transition:0.3s;
 }
 
-/* FLOATING ICONS */
-
-.icon{
-
-    background:
-    rgba(15,23,42,0.55);
-
-    border:
-    1px solid rgba(96,165,250,0.25);
-
-    color:#60a5fa;
-
-    backdrop-filter:blur(20px);
-
-    box-shadow:
-    0 10px 35px rgba(0,0,0,0.4);
+.btn:hover{
+transform:translateY(-5px);
 }
 
-/* FEATURE BOX */
+/* LIGHT EFFECT */
 
-.features{
+.btn::before{
 
-    background:
-    rgba(2,6,23,0.7);
+content:'';
 
-    border:
-    1px solid rgba(96,165,250,0.15);
+position:absolute;
+top:0;
+left:-100%;
 
-    box-shadow:
-    0 20px 45px rgba(0,0,0,0.45);
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,0.4),
+transparent
+);
+
+transition:0.8s;
 }
 
-/* FEATURE TITLE */
-
-.feature h3{
-
-    color:#f8fafc;
+.btn:hover::before{
+left:100%;
 }
 
-/* FEATURE TEXT */
+/* ================= HERO IMAGE ================= */
 
-.feature p{
-
-    color:#94a3b8;
+.hero-image{
+position:relative;
+height:650px;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-/* DOTS */
+/* FLOOR GLOW */
 
-.dot{
+.scene-circle{
+position:absolute;
+width:700px;
+height:280px;
 
-    background:#60a5fa;
+background:
+radial-gradient(
+circle,
+rgba(20,184,166,0.28),
+transparent 70%
+);
+
+bottom:10px;
+border-radius:50%;
+filter:blur(8px);
 }
 
-/* SCROLL */
+/* LIGHTING */
 
-.scroll{
+.hero-image::before{
 
-    border:2px solid #60a5fa;
+content:'';
 
-    color:#60a5fa;
+position:absolute;
 
-    background:
-    rgba(15,23,42,0.5);
+top:-120px;
+right:-100px;
 
-    backdrop-filter:blur(10px);
+width:450px;
+height:450px;
+
+background:
+radial-gradient(
+circle,
+rgba(59,130,246,0.35),
+transparent 70%
+);
+
+filter:blur(50px);
+
 }
 
-/* WAVE */
+/* CHAIR */
 
-.wave path{
+.chair{
+position:absolute;
+width:290px;
+left:120px;
+top:140px;
+z-index:3;
 
-    fill:#020617;
+filter:
+drop-shadow(0 20px 20px rgba(0,0,0,0.5));
+
+animation:float 5s ease-in-out infinite;
+}
+
+/* LAMP */
+
+.lamp{
+position:absolute;
+width:260px;
+right:120px;
+top:20px;
+z-index:2;
+
+filter:
+drop-shadow(0 20px 20px rgba(0,0,0,0.5));
+
+animation:float 6s ease-in-out infinite;
+}
+
+/* BOOK */
+
+.book{
+position:absolute;
+width:300px;
+right:40px;
+bottom:70px;
+z-index:4;
+transform:rotate(-8deg);
+
+filter:
+drop-shadow(0 20px 20px rgba(0,0,0,0.5));
+}
+
+/* PLANT */
+
+.plant{
+position:absolute;
+width:85px;
+left:320px;
+bottom:70px;
+z-index:5;
+}
+
+/* PENCILS */
+
+.pencil1{
+position:absolute;
+width:170px;
+right:0;
+bottom:70px;
+z-index:5;
+transform:rotate(-15deg);
+}
+
+.pencil2{
+position:absolute;
+width:170px;
+right:40px;
+bottom:45px;
+z-index:5;
+transform:rotate(-20deg);
+}
+
+/* FLOATING BOX */
+
+.float-box{
+
+position:absolute;
+
+width:90px;
+height:90px;
+
+background:
+rgba(8,20,23,0.7);
+
+backdrop-filter:blur(14px);
+
+border:
+1px solid rgba(94,234,212,0.2);
+
+border-radius:25px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:40px;
+color:#14B8A6;
+
+box-shadow:
+0 0 20px rgba(20,184,166,0.15);
+
+z-index:5;
+}
+
+.box1{
+top:80px;
+left:20px;
+}
+
+.box2{
+right:20px;
+top:140px;
+}
+
+.box3{
+left:40px;
+bottom:150px;
+color:#FACC15;
+}
+
+/* FLOAT */
+
+@keyframes float{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* ================= LEARNING ================= */
+
+.learning{
+padding:50px;
+position:relative;
+z-index:5;
+}
+
+.section-title{
+font-size:36px;
+font-weight:700;
+margin-bottom:35px;
+text-align:center;
+}
+
+.section-title span{
+color:#14B8A6;
+}
+
+/* ================= CARDS ================= */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.card{
+
+background:
+linear-gradient(
+180deg,
+rgba(14,34,39,0.95),
+rgba(8,20,23,0.95)
+);
+
+padding:35px;
+
+border-radius:25px;
+
+border:
+1px solid rgba(20,184,166,0.12);
+
+backdrop-filter:blur(12px);
+
+transition:0.4s;
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+border-color:
+rgba(94,234,212,0.5);
+
+box-shadow:
+0 0 20px rgba(20,184,166,0.25),
+0 0 50px rgba(20,184,166,0.08);
+
+}
+
+.card-icon{
+width:90px;
+height:90px;
+border-radius:50%;
+
+background:
+rgba(20,184,166,0.08);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:42px;
+color:#14B8A6;
+
+margin-bottom:25px;
+
+box-shadow:
+0 0 20px rgba(20,184,166,0.15);
+}
+
+.card h3{
+font-size:28px;
+margin-bottom:15px;
+}
+
+.card p{
+font-size:18px;
+line-height:1.8;
+color:#CBD5E1;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1100px){
+
+.hero{
+grid-template-columns:1fr;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:58px;
+}
+
+.menu{
+display:none;
+}
+
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-<!-- GLOW -->
+<!-- PARTICLES -->
 
-<div class="glow glow1"></div>
-<div class="glow glow2"></div>
+<div class="particles">
+
+<span style="left:10%; animation-delay:0s;"></span>
+<span style="left:20%; animation-delay:2s;"></span>
+<span style="left:35%; animation-delay:1s;"></span>
+<span style="left:50%; animation-delay:4s;"></span>
+<span style="left:65%; animation-delay:3s;"></span>
+<span style="left:80%; animation-delay:5s;"></span>
+<span style="left:90%; animation-delay:6s;"></span>
+
+</div>
+
+<!-- CYBER DOTS -->
+
+<div class="cyber-dots">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
 
 <!-- NAVBAR -->
 
-<nav>
+<div class="navbar">
 
 <div class="logo">
-
-<h1>RBT</h1>
+RBT
 <span>TINGKATAN 1</span>
-
 </div>
 
-<ul class="menu">
+<div class="menu">
+<a href="#" class="active">Home</a>
+<a href="#">Pengenalan</a>
+<a href="#">Elemen Reka Bentuk</a>
+<a href="#">Teroka</a>
+<a href="#">Aktiviti</a>
+<a href="#">Uji Minda</a>
+<a href="#">Refleksi</a>
+</div>
 
-<li><a href="#" class="active">Home</a></li>
-<li><a href="#">Pengenalan</a></li>
-<li><a href="#">Elemen Reka Bentuk</a></li>
-<li><a href="#">Teroka</a></li>
-<li><a href="#">Aktiviti</a></li>
-<li><a href="#">Uji Minda</a></li>
-<li><a href="#">Refleksi</a></li>
-
-</ul>
-
-</nav>
+</div>
 
 <!-- HERO -->
 
-<section class="hero">
+<div class="hero">
 
 <!-- LEFT -->
 
-<div class="left">
+<div>
 
-<div class="tag">1.0</div>
+<div class="tag">
+1.0
+</div>
 
-<h2>
+<h2>PENGENALAN KEPADA</h2>
 
-PENGENALAN<br>
-KEPADA<br>
-REKA BENTUK<br>
-DAN TEKNOLOGI
+<h1>
+REKA BENTUK
+<br>
+<span>DAN TEKNOLOGI</span>
+</h1>
 
-</h2>
-
-<div class="yellow-tag">
-
+<div class="subtag">
 1.1 Dunia Reka Bentuk
-
 </div>
 
 <p class="desc">
-
-1.1.2 Mengenalpasti elemen reka bentuk berdasarkan produk yang dipilih.
-
+1.1.2 Mengenalpasti elemen reka bentuk
+berdasarkan produk yang dipilih.
 </p>
 
-<a href="#" class="btn">
-
-Teruskan Pembelajaran →
-
-</a>
+<button class="btn">
+MULA BELAJAR
+<i class="fa-solid fa-arrow-right"></i>
+</button>
 
 </div>
 
 <!-- RIGHT -->
 
-<div class="right">
+<div class="hero-image">
 
-<div class="icon icon1">⚙️</div>
-<div class="icon icon2">💡</div>
-<div class="icon icon3">⬡</div>
+<div class="scene-circle"></div>
 
-<img
-class="main-image"
-src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1800&auto=format&fit=crop"
-alt="RBT">
+<img src="https://cdn-icons-png.flaticon.com/512/3082/3082037.png"
+class="chair">
+
+<img src="https://cdn-icons-png.flaticon.com/512/1048/1048941.png"
+class="lamp">
+
+<img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png"
+class="book">
+
+<img src="https://cdn-icons-png.flaticon.com/512/628/628324.png"
+class="plant">
+
+<img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png"
+class="pencil1">
+
+<img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png"
+class="pencil2">
+
+<div class="float-box box1">
+<i class="fa-solid fa-lightbulb"></i>
+</div>
+
+<div class="float-box box2">
+<i class="fa-solid fa-cube"></i>
+</div>
+
+<div class="float-box box3">
+<i class="fa-solid fa-pencil-ruler"></i>
+</div>
 
 </div>
 
-</section>
+</div>
 
-<!-- FEATURES -->
+<!-- LEARNING -->
 
-<section class="features">
+<div class="learning">
 
-<div class="feature">
+<h2 class="section-title">
+Apa yang akan <span>anda</span> pelajari?
+</h2>
 
-<h3>📦 Kreatif</h3>
+<div class="cards">
+
+<div class="card">
+
+<div class="card-icon">
+<i class="fa-solid fa-magnifying-glass"></i>
+</div>
+
+<h3>Mengenal Elemen</h3>
 
 <p>
-Mencipta idea inovatif melalui projek reka bentuk.
+Kenali semua elemen reka bentuk melalui aktiviti interaktif.
 </p>
 
 </div>
 
-<div class="feature">
+<div class="card">
 
-<h3>✏️ Reka Bentuk</h3>
+<div class="card-icon">
+<i class="fa-solid fa-chart-column"></i>
+</div>
+
+<h3>Analisis Produk</h3>
 
 <p>
-Mereka bentuk produk dengan teliti dan sistematik.
+Teroka elemen reka bentuk pada produk pilihan.
 </p>
 
 </div>
 
-<div class="feature">
+<div class="card">
 
-<h3>⚙️ Teknologi</h3>
+<div class="card-icon">
+<i class="fa-solid fa-gamepad"></i>
+</div>
+
+<h3>Aktiviti Interaktif</h3>
 
 <p>
-Menggunakan teknologi moden dalam pembelajaran.
+Belajar melalui permainan, kuiz dan eksplorasi.
 </p>
 
 </div>
 
-<div class="feature">
-
-<h3>👥 Kolaborasi</h3>
-
-<p>
-Bekerjasama menghasilkan projek abad ke-21.
-</p>
-
 </div>
 
-</section>
-
-<!-- DOTS -->
-
-<div class="dots">
-
-<div class="dot active-dot"></div>
-<div class="dot"></div>
-<div class="dot"></div>
-<div class="dot"></div>
-<div class="dot"></div>
-
 </div>
-
-<!-- SCROLL -->
-
-<div class="scroll">
-
-⌄
-
-</div>
-
-<!-- WAVE -->
-
-<svg class="wave" viewBox="0 0 1440 320">
-
-<path
-fill="#081451"
-fill-opacity="1"
-
-d="M0,224L60,208C120,192,240,160,360,170.7C480,181,600,235,720,234.7C840,235,960,181,1080,176C1200,171,1320,213,1380,234.7L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
-
-</path>
-
-</svg>
 
 </div>
 
 </body>
-
 </html>
