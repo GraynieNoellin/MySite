@@ -78,10 +78,14 @@ position:relative;
 /* TOP LIGHT */
 
 .container::before{
+
 content:'';
+
 position:absolute;
+
 top:-250px;
 right:-250px;
+
 width:700px;
 height:700px;
 
@@ -93,13 +97,17 @@ transparent 70%
 );
 
 filter:blur(50px);
+
 pointer-events:none;
+
 }
 
 /* GRID EFFECT */
 
 .container::after{
+
 content:'';
+
 position:absolute;
 inset:0;
 
@@ -119,6 +127,7 @@ transparent 1px
 background-size:80px 80px;
 
 pointer-events:none;
+
 }
 
 /* ================= PARTICLES ================= */
@@ -132,13 +141,20 @@ z-index:1;
 }
 
 .particles span{
+
 position:absolute;
+
 width:3px;
 height:3px;
+
 background:#5EEAD4;
+
 border-radius:50%;
+
 opacity:0.5;
+
 animation:particle 8s linear infinite;
+
 }
 
 @keyframes particle{
@@ -162,50 +178,76 @@ opacity:0;
 /* ================= CYBER DOTS ================= */
 
 .cyber-dots{
+
 position:absolute;
+
 left:25px;
 top:200px;
+
 display:grid;
 grid-template-columns:repeat(2,10px);
+
 gap:12px;
+
 z-index:3;
+
 }
 
 .cyber-dots span{
+
 width:4px;
 height:4px;
+
 border-radius:50%;
+
 background:#14B8A6;
 
 box-shadow:
 0 0 10px #14B8A6;
+
 }
 
 /* ================= NAVBAR ================= */
 
 .navbar{
+
 display:flex;
 justify-content:space-between;
 align-items:center;
+
 padding:28px 45px;
+
 border-bottom:1px solid rgba(255,255,255,0.05);
+
 position:relative;
 z-index:5;
+
 }
 
+/* LOGO */
+
 .logo{
+
 font-size:42px;
 font-weight:800;
 line-height:1;
+
 }
 
 .logo span{
+
 display:block;
+
 font-size:15px;
 font-weight:500;
+
 margin-top:8px;
+
 color:#14B8A6;
+
 }
+
+/* MENU */
 
 .menu{
 display:flex;
@@ -213,17 +255,20 @@ gap:35px;
 }
 
 .menu a{
+
 text-decoration:none;
+
 color:#E2E8F0;
+
 font-weight:500;
+
 transition:0.3s;
-position:relative;
+
 }
 
-/* ACTIVE NAV */
+/* ACTIVE MENU */
 
 .active{
-position:relative;
 
 background:
 linear-gradient(
@@ -233,9 +278,11 @@ linear-gradient(
 );
 
 padding:18px 35px;
+
 border-radius:22px;
 
 box-shadow:
+
 0 0 15px rgba(59,130,246,0.7),
 0 0 40px rgba(59,130,246,0.35);
 
@@ -244,18 +291,25 @@ box-shadow:
 /* ================= HERO ================= */
 
 .hero{
+
 display:grid;
 grid-template-columns:1fr 1fr;
+
 gap:30px;
+
 padding:70px 50px;
+
 align-items:center;
+
 position:relative;
 z-index:5;
+
 }
 
 /* ================= HERO TEXT ================= */
 
 .tag{
+
 display:inline-block;
 
 background:
@@ -266,27 +320,39 @@ linear-gradient(
 );
 
 padding:10px 22px;
+
 border-radius:50px;
+
 font-weight:700;
 font-size:22px;
+
 margin-bottom:25px;
 
 box-shadow:
 0 0 20px rgba(59,130,246,0.4);
+
 }
 
 .hero h2{
+
 font-size:32px;
 font-weight:600;
+
 margin-bottom:15px;
+
 color:#E2E8F0;
+
 }
 
 .hero h1{
+
 font-size:82px;
 line-height:1;
+
 font-weight:800;
+
 margin-bottom:25px;
+
 }
 
 .hero h1 span{
@@ -299,23 +365,39 @@ text-shadow:
 
 }
 
+/* SUBTAG */
+
 .subtag{
+
 display:inline-block;
+
 background:#FACC15;
 color:#111827;
+
 padding:12px 25px;
+
 border-radius:50px;
+
 font-weight:700;
 font-size:22px;
+
 margin-bottom:25px;
+
 }
 
+/* DESCRIPTION */
+
 .desc{
+
 font-size:25px;
 line-height:1.8;
+
 color:#CBD5E1;
+
 max-width:650px;
+
 margin-bottom:35px;
+
 }
 
 /* ================= BUTTON ================= */
@@ -336,13 +418,16 @@ linear-gradient(
 );
 
 border:none;
+
 border-radius:60px;
 
 color:white;
+
 font-size:22px;
 font-weight:600;
 
 cursor:pointer;
+
 position:relative;
 overflow:hidden;
 
@@ -350,6 +435,7 @@ box-shadow:
 0 0 20px rgba(20,184,166,0.4);
 
 transition:0.3s;
+
 }
 
 .btn:hover{
@@ -363,6 +449,7 @@ transform:translateY(-5px);
 content:'';
 
 position:absolute;
+
 top:0;
 left:-100%;
 
@@ -378,6 +465,7 @@ transparent
 );
 
 transition:0.8s;
+
 }
 
 .btn:hover::before{
@@ -387,177 +475,31 @@ left:100%;
 /* ================= HERO IMAGE ================= */
 
 .hero-image{
+
 position:relative;
-height:650px;
+
 display:flex;
 align-items:center;
 justify-content:center;
-}
-
-/* FLOOR GLOW */
-
-.scene-circle{
-position:absolute;
-width:700px;
-height:280px;
-
-background:
-radial-gradient(
-circle,
-rgba(20,184,166,0.28),
-transparent 70%
-);
-
-bottom:10px;
-border-radius:50%;
-filter:blur(8px);
-}
-
-/* LIGHTING */
-
-.hero-image::before{
-
-content:'';
-
-position:absolute;
-
-top:-120px;
-right:-100px;
-
-width:450px;
-height:450px;
-
-background:
-radial-gradient(
-circle,
-rgba(59,130,246,0.35),
-transparent 70%
-);
-
-filter:blur(50px);
 
 }
 
-/* CHAIR */
+/* HERO BACKGROUND IMAGE */
 
-.chair{
-position:absolute;
-width:290px;
-left:120px;
-top:140px;
-z-index:3;
+.hero-background{
 
-filter:
-drop-shadow(0 20px 20px rgba(0,0,0,0.5));
+width:100%;
+max-width:750px;
+
+display:block;
 
 animation:float 5s ease-in-out infinite;
-}
-
-/* LAMP */
-
-.lamp{
-position:absolute;
-width:260px;
-right:120px;
-top:20px;
-z-index:2;
 
 filter:
-drop-shadow(0 20px 20px rgba(0,0,0,0.5));
-
-animation:float 6s ease-in-out infinite;
-}
-
-/* BOOK */
-
-.book{
-position:absolute;
-width:300px;
-right:40px;
-bottom:70px;
-z-index:4;
-transform:rotate(-8deg);
-
-filter:
-drop-shadow(0 20px 20px rgba(0,0,0,0.5));
-}
-
-/* PLANT */
-
-.plant{
-position:absolute;
-width:85px;
-left:320px;
-bottom:70px;
-z-index:5;
-}
-
-/* PENCILS */
-
-.pencil1{
-position:absolute;
-width:170px;
-right:0;
-bottom:70px;
-z-index:5;
-transform:rotate(-15deg);
-}
-
-.pencil2{
-position:absolute;
-width:170px;
-right:40px;
-bottom:45px;
-z-index:5;
-transform:rotate(-20deg);
-}
-
-/* FLOATING BOX */
-
-.float-box{
-
-position:absolute;
-
-width:90px;
-height:90px;
-
-background:
-rgba(8,20,23,0.7);
-
-backdrop-filter:blur(14px);
-
-border:
-1px solid rgba(94,234,212,0.2);
-
-border-radius:25px;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:40px;
-color:#14B8A6;
-
-box-shadow:
-0 0 20px rgba(20,184,166,0.15);
+drop-shadow(0 20px 30px rgba(0,0,0,0.5));
 
 z-index:5;
-}
 
-.box1{
-top:80px;
-left:20px;
-}
-
-.box2{
-right:20px;
-top:140px;
-}
-
-.box3{
-left:40px;
-bottom:150px;
-color:#FACC15;
 }
 
 /* FLOAT */
@@ -581,16 +523,25 @@ transform:translateY(0px);
 /* ================= LEARNING ================= */
 
 .learning{
+
 padding:50px;
+
 position:relative;
 z-index:5;
+
 }
 
+/* TITLE */
+
 .section-title{
+
 font-size:36px;
 font-weight:700;
+
 margin-bottom:35px;
+
 text-align:center;
+
 }
 
 .section-title span{
@@ -600,10 +551,15 @@ color:#14B8A6;
 /* ================= CARDS ================= */
 
 .cards{
+
 display:grid;
 grid-template-columns:repeat(3,1fr);
+
 gap:25px;
+
 }
+
+/* CARD */
 
 .card{
 
@@ -624,6 +580,7 @@ border:
 backdrop-filter:blur(12px);
 
 transition:0.4s;
+
 }
 
 .card:hover{
@@ -634,14 +591,20 @@ border-color:
 rgba(94,234,212,0.5);
 
 box-shadow:
+
 0 0 20px rgba(20,184,166,0.25),
+
 0 0 50px rgba(20,184,166,0.08);
 
 }
 
+/* CARD ICON */
+
 .card-icon{
+
 width:90px;
 height:90px;
+
 border-radius:50%;
 
 background:
@@ -658,17 +621,28 @@ margin-bottom:25px;
 
 box-shadow:
 0 0 20px rgba(20,184,166,0.15);
+
 }
+
+/* CARD TITLE */
 
 .card h3{
+
 font-size:28px;
+
 margin-bottom:15px;
+
 }
 
+/* CARD TEXT */
+
 .card p{
+
 font-size:18px;
 line-height:1.8;
+
 color:#CBD5E1;
+
 }
 
 /* ================= RESPONSIVE ================= */
@@ -714,20 +688,7 @@ display:none;
 
 </div>
 
-<!-- CYBER DOTS -->
-
-<div class="cyber-dots">
-
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-
-</div>
-
-<!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 
 <div class="navbar">
 
@@ -748,17 +709,13 @@ RBT
 
 </div>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <div class="hero">
 
 <!-- LEFT -->
 
 <div>
-
-<div class="tag">
-1.0
-</div>
 
 <h2>PENGENALAN KEPADA</h2>
 
@@ -778,8 +735,11 @@ berdasarkan produk yang dipilih.
 </p>
 
 <button class="btn">
+
 MULA BELAJAR
+
 <i class="fa-solid fa-arrow-right"></i>
+
 </button>
 
 </div>
@@ -788,51 +748,26 @@ MULA BELAJAR
 
 <div class="hero-image">
 
-<div class="scene-circle"></div>
-
-<img src="https://cdn-icons-png.flaticon.com/512/3082/3082037.png"
-class="chair">
-
-<img src="https://cdn-icons-png.flaticon.com/512/1048/1048941.png"
-class="lamp">
-
-<img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png"
-class="book">
-
-<img src="https://cdn-icons-png.flaticon.com/512/628/628324.png"
-class="plant">
-
-<img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png"
-class="pencil1">
-
-<img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png"
-class="pencil2">
-
-<div class="float-box box1">
-<i class="fa-solid fa-lightbulb"></i>
-</div>
-
-<div class="float-box box2">
-<i class="fa-solid fa-cube"></i>
-</div>
-
-<div class="float-box box3">
-<i class="fa-solid fa-pencil-ruler"></i>
-</div>
+<img src="Image/Background.png"
+class="hero-background">
 
 </div>
 
 </div>
 
-<!-- LEARNING -->
+<!-- ================= LEARNING ================= -->
 
 <div class="learning">
 
 <h2 class="section-title">
+
 Apa yang akan <span>anda</span> pelajari?
+
 </h2>
 
 <div class="cards">
+
+<!-- CARD 1 -->
 
 <div class="card">
 
@@ -848,6 +783,8 @@ Kenali semua elemen reka bentuk melalui aktiviti interaktif.
 
 </div>
 
+<!-- CARD 2 -->
+
 <div class="card">
 
 <div class="card-icon">
@@ -861,6 +798,8 @@ Teroka elemen reka bentuk pada produk pilihan.
 </p>
 
 </div>
+
+<!-- CARD 3 -->
 
 <div class="card">
 
