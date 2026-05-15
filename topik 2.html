@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Topik 1.1.2</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+/* ================= RESET ================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:
+linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+#111827;
+background-size:70px 70px;
+color:white;
+overflow-x:hidden;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+width:100%;
+padding:25px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:fixed;
+top:0;
+left:0;
+z-index:1000;
+background:rgba(17,24,39,0.9);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.logo{
+font-size:42px;
+font-weight:800;
+line-height:1;
+color:#F97316;
+}
+
+.logo span{
+display:block;
+font-size:14px;
+font-weight:500;
+color:#E5E7EB;
+margin-top:5px;
+}
+
+.menu{
+display:flex;
+gap:35px;
+}
+
+.menu a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:0.3s;
+}
+
+.menu a:hover{
+color:#F97316;
+}
+
+.active{
+background:linear-gradient(90deg,#F97316,#FB923C);
+padding:12px 28px;
+border-radius:50px;
+box-shadow:0 0 20px rgba(249,115,22,0.4);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+min-height:100vh;
+padding:150px 70px 80px;
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+gap:50px;
+position:relative;
+}
+
+/* LEFT */
+
+.badge{
+display:inline-block;
+padding:12px 25px;
+border-radius:50px;
+background:linear-gradient(90deg,#F97316,#FB923C);
+font-weight:700;
+font-size:20px;
+margin-bottom:30px;
+box-shadow:0 0 20px rgba(249,115,22,0.4);
+}
+
+.hero h2{
+font-size:32px;
+margin-bottom:10px;
+color:#E5E7EB;
+}
+
+.hero h1{
+font-size:88px;
+line-height:1;
+font-weight:800;
+margin-bottom:25px;
+}
+
+.hero h1 span{
+color:#F97316;
+text-shadow:0 0 25px rgba(249,115,22,0.5);
+}
+
+.subtopic{
+display:inline-block;
+padding:12px 25px;
+background:#FACC15;
+color:#111827;
+font-weight:700;
+border-radius:50px;
+margin-bottom:25px;
+}
+
+.desc{
+font-size:24px;
+line-height:1.8;
+max-width:650px;
+color:#D1D5DB;
+margin-bottom:35px;
+}
+
+.button-group{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:18px 35px;
+border:none;
+border-radius:60px;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn-primary{
+background:linear-gradient(90deg,#F97316,#FB923C);
+color:white;
+box-shadow:0 0 20px rgba(249,115,22,0.4);
+}
+
+.btn-secondary{
+background:transparent;
+border:2px solid #F97316;
+color:#F97316;
+}
+
+.btn:hover{
+transform:translateY(-5px);
+}
+
+/* RIGHT */
+
+.hero-image{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.glow-circle{
+position:absolute;
+width:650px;
+height:650px;
+border-radius:50%;
+background:radial-gradient(circle, rgba(249,115,22,0.35), transparent 70%);
+filter:blur(10px);
+}
+
+.hero-image img{
+width:100%;
+max-width:700px;
+position:relative;
+z-index:2;
+animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-12px);}
+100%{transform:translateY(0px);}
+}
+
+.floating-box{
+position:absolute;
+width:90px;
+height:90px;
+border-radius:25px;
+background:rgba(17,24,39,0.7);
+backdrop-filter:blur(12px);
+border:1px solid rgba(249,115,22,0.2);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:38px;
+color:#F97316;
+box-shadow:0 0 20px rgba(249,115,22,0.2);
+z-index:5;
+}
+
+.box1{
+left:20px;
+top:80px;
+}
+
+.box2{
+right:20px;
+top:180px;
+}
+
+.box3{
+left:60px;
+bottom:80px;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+padding:80px 70px;
+}
+
+.section-title{
+font-size:42px;
+text-align:center;
+margin-bottom:50px;
+font-weight:800;
+}
+
+.section-title span{
+color:#F97316;
+}
+
+/* ================= ELEMENT CARDS ================= */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+
+.card{
+background:rgba(31,41,55,0.9);
+border:1px solid rgba(249,115,22,0.15);
+padding:35px;
+border-radius:28px;
+transition:0.4s;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(180deg, rgba(249,115,22,0.08), transparent);
+opacity:0;
+transition:0.4s;
+}
+
+.card:hover::before{
+opacity:1;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px rgba(249,115,22,0.15);
+}
+
+.card-icon{
+width:90px;
+height:90px;
+border-radius:50%;
+background:rgba(249,115,22,0.08);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:42px;
+margin:auto;
+margin-bottom:20px;
+color:#F97316;
+}
+
+.card h3{
+font-size:24px;
+margin-bottom:15px;
+}
+
+.card p{
+font-size:17px;
+line-height:1.8;
+color:#D1D5DB;
+}
+
+/* ================= PRODUCT SECTION ================= */
+
+.product-section{
+padding:80px 70px;
+}
+
+.product-container{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+.product-card{
+background:#1F2937;
+padding:30px;
+border-radius:30px;
+text-align:center;
+transition:0.4s;
+border:1px solid rgba(249,115,22,0.1);
+}
+
+.product-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px rgba(249,115,22,0.15);
+}
+
+.product-card img{
+width:100%;
+max-width:250px;
+margin-bottom:20px;
+}
+
+.product-card h3{
+font-size:28px;
+margin-bottom:15px;
+}
+
+.product-btn{
+margin-top:20px;
+padding:14px 30px;
+border:none;
+border-radius:50px;
+background:linear-gradient(90deg,#F97316,#FB923C);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.product-btn:hover{
+transform:scale(1.05);
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+padding:40px;
+text-align:center;
+background:#0F172A;
+color:#D1D5DB;
+margin-top:50px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1200px){
+
+.cards{
+grid-template-columns:repeat(2,1fr);
+}
+
+.product-container{
+grid-template-columns:1fr;
+}
+
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.desc{
+margin:auto;
+margin-bottom:35px;
+}
+
+.button-group{
+justify-content:center;
+}
+
+.hero h1{
+font-size:60px;
+}
+
+}
+
+@media(max-width:700px){
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.navbar{
+padding:20px;
+}
+
+.menu{
+display:none;
+}
+
+.hero{
+padding:150px 25px 80px;
+}
+
+.section,
+.product-section{
+padding:80px 25px;
+}
+
+.hero h1{
+font-size:45px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+
+<div class="logo">
+RBT
+<span>TINGKATAN 1</span>
+</div>
+
+<div class="menu">
+<a href="#" class="active">Home</a>
+<a href="#elemen">Elemen</a>
+<a href="#produk">Produk</a>
+<a href="#aktiviti">Aktiviti</a>
+<a href="#kuiz">Kuiz</a>
+</div>
+
+</div>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div>
+
+<div class="badge">
+1.1.2
+</div>
+
+<h2>MENGENAL PASTI</h2>
+
+<h1>
+ELEMEN
+<br>
+<span>REKA BENTUK</span>
+</h1>
+
+<div class="subtopic">
+Berdasarkan Produk Yang Dipilih
+</div>
+
+<p class="desc">
+Pelajari elemen reka bentuk seperti garisan, rupa, bentuk, tekstur, warna dan ruang melalui penerokaan produk secara interaktif.
+</p>
+
+<div class="button-group">
+
+<button class="btn btn-primary">
+MULA TEROKA
+</button>
+
+<button class="btn btn-secondary">
+UJ I MINDA
+</button>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<div class="glow-circle"></div>
+
+<img src="images/Background.png">
+
+<div class="floating-box box1">
+<i class="fa-solid fa-lightbulb"></i>
+</div>
+
+<div class="floating-box box2">
+<i class="fa-solid fa-cube"></i>
+</div>
+
+<div class="floating-box box3">
+<i class="fa-solid fa-pencil-ruler"></i>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= ELEMENTS ================= -->
+
+<section class="section" id="elemen">
+
+<h2 class="section-title">
+8 <span>Elemen</span> Reka Bentuk
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-icon">
+<i class="fa-solid fa-wave-square"></i>
+</div>
+<h3>Garisan</h3>
+<p>Unsur yang menghubungkan titik dan menghasilkan arah.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">
+<i class="fa-regular fa-circle"></i>
+</div>
+<h3>Rupa</h3>
+<p>Bentuk dua dimensi yang mempunyai panjang dan lebar.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">
+<i class="fa-solid fa-cube"></i>
+</div>
+<h3>Bentuk</h3>
+<p>Objek tiga dimensi yang mempunyai isipadu.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">
+<i class="fa-solid fa-brush"></i>
+</div>
+<h3>Tekstur</h3>
+<p>Kesan permukaan yang boleh dilihat atau disentuh.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">
+<i class="fa-solid fa-ruler-combined"></i>
+</div>
+<h3>Saiz</h3>
+<p>Ukuran besar, kecil, panjang atau pendek sesuatu objek.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">
+<i class="fa-solid fa-palette"></i>
+</div>
+<h3>Warna</h3>
+<p>Memberi identiti dan emosi pada reka bentuk.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">
+<i class="fa-solid fa-expand"></i>
+</div>
+<h3>Ruang</h3>
+<p>Kawasan kosong atau terisi dalam reka bentuk.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">
+<i class="fa-solid fa-circle-half-stroke"></i>
+</div>
+<h3>Nilai</h3>
+<p>Tahap gelap atau terang sesuatu warna.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= PRODUCT SECTION ================= -->
+
+<section class="product-section" id="produk">
+
+<h2 class="section-title">
+Teroka <span>Produk</span>
+</h2>
+
+<div class="product-container">
+
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/2933/2933245.png">
+<h3>Kerusi</h3>
+<p>Kenal pasti elemen reka bentuk pada produk kerusi.</p>
+<button class="product-btn">TEROKA</button>
+</div>
+
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/1048/1048941.png">
+<h3>Lampu</h3>
+<p>Analisis penggunaan bentuk, warna dan tekstur.</p>
+<button class="product-btn">TEROKA</button>
+</div>
+
+<div class="product-card">
+<img src="https://cdn-icons-png.flaticon.com/512/3050/3050525.png">
+<h3>Botol Air</h3>
+<p>Lihat bagaimana elemen digunakan dalam produk harian.</p>
+<button class="product-btn">TEROKA</button>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<div class="footer">
+© 2026 RBT Tingkatan 1 — Pembelajaran Interaktif
+</div>
+
+</body>
+</html>
