@@ -1,1140 +1,921 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>1.1.3 Prinsip Reka Bentuk</title>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
-
-<style>
-
-/* ================= RESET ================= */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
-}
-
-/* ================= BODY ================= */
-
-body{
-
-background:
-linear-gradient(
-180deg,
-#F8FBFF 0%,
-#EEF5FF 45%,
-#FFFFFF 100%
-);
-
-overflow-x:hidden;
-color:#0F172A;
-position:relative;
-
-}
-
-/* ================= GRID BACKGROUND ================= */
-
-body::before{
-
-content:'';
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background:
-
-linear-gradient(
-rgba(37,99,235,0.05) 1px,
-transparent 1px
-),
-
-linear-gradient(
-90deg,
-rgba(37,99,235,0.05) 1px,
-transparent 1px
-);
-
-background-size:80px 80px;
-
-z-index:-2;
-
-}
-
-/* ================= FLOATING SHAPES ================= */
-
-.shape{
-position:absolute;
-border-radius:50%;
-filter:blur(90px);
-z-index:-1;
-}
-
-.shape1{
-width:300px;
-height:300px;
-background:rgba(37,99,235,0.10);
-top:100px;
-left:-100px;
-}
-
-.shape2{
-width:260px;
-height:260px;
-background:rgba(168,85,247,0.08);
-right:-60px;
-top:250px;
-}
-
-.shape3{
-width:220px;
-height:220px;
-background:rgba(34,211,238,0.08);
-bottom:80px;
-left:40%;
-}
-
-/* ================= NAVBAR ================= */
-
-.navbar{
-
-width:100%;
-padding:22px 70px;
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-position:fixed;
-top:0;
-left:0;
-
-background:rgba(255,255,255,0.88);
-
-backdrop-filter:blur(12px);
-
-border-bottom:1px solid rgba(0,0,0,0.05);
-
-z-index:1000;
-
-}
-
-/* ================= LOGO ================= */
-
-.logo{
-
-font-size:42px;
-font-weight:800;
-line-height:1;
-
-color:#2563EB;
-
-}
-
-.logo span{
-
-display:block;
-
-font-size:14px;
-font-weight:500;
-
-margin-top:5px;
-
-color:#64748B;
-
-}
-
-/* ================= MENU ================= */
-
-.menu{
-
-display:flex;
-gap:35px;
-
-}
-
-.menu a{
-
-text-decoration:none;
-
-color:#334155;
-
-font-weight:600;
-
-transition:0.3s;
-
-}
-
-.menu a:hover{
-color:#2563EB;
-}
-
-/* ACTIVE */
-
-.active{
-
-background:#2563EB;
-
-color:white !important;
-
-padding:12px 28px;
-
-border-radius:50px;
-
-box-shadow:
-0 12px 25px rgba(37,99,235,0.18);
-
-}
-
-/* ================= HERO ================= */
-
-.hero{
-
-min-height:100vh;
-
-padding:170px 80px 100px;
-
-display:grid;
-grid-template-columns:1.1fr 0.9fr;
-
-align-items:center;
-
-gap:60px;
-
-}
-
-/* ================= BADGE ================= */
-
-.badge{
-
-display:inline-block;
-
-padding:12px 25px;
-
-background:#2563EB;
-
-color:white;
-
-font-weight:700;
-
-font-size:20px;
-
-border-radius:50px;
-
-margin-bottom:30px;
-
-box-shadow:
-0 12px 25px rgba(37,99,235,0.18);
-
-}
-
-/* ================= HERO TEXT ================= */
-
-.hero h2{
-
-font-size:32px;
-font-weight:700;
-
-color:#334155;
-
-margin-bottom:12px;
-
-}
-
-/* ================= HERO TITLE ================= */
-
-.hero h1{
-
-font-size:90px;
-line-height:1.05;
-
-font-weight:800;
-
-margin-bottom:28px;
-
-color:#0F172A;
-
-}
-
-/* HIGHLIGHT */
-
-.hero h1 span{
-
-color:#2563EB;
-
-}
-
-/* ================= SUBTOPIC ================= */
-
-.subtopic{
-
-display:inline-block;
-
-padding:14px 28px;
-
-border-radius:50px;
-
-border:2px solid #BFDBFE;
-
-background:#EFF6FF;
-
-font-size:18px;
-font-weight:600;
-
-color:#2563EB;
-
-margin-bottom:30px;
-
-}
-
-/* ================= DESCRIPTION ================= */
-
-.desc{
-
-font-size:21px;
-line-height:1.9;
-
-max-width:620px;
-
-color:#475569;
-
-margin-bottom:40px;
-
-}
-
-/* ================= BUTTON GROUP ================= */
-
-.button-group{
-
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-
-}
-
-/* ================= BUTTON ================= */
-
-.btn{
-
-padding:18px 35px;
-
-border:none;
-
-border-radius:60px;
-
-font-size:18px;
-font-weight:600;
-
-cursor:pointer;
-
-display:flex;
-align-items:center;
-gap:12px;
-
-transition:0.3s;
-
-}
-
-/* PRIMARY */
-
-.btn-primary{
-
-background:#2563EB;
-
-color:white;
-
-box-shadow:
-0 12px 25px rgba(37,99,235,0.18);
-
-}
-
-/* SECONDARY */
-
-.btn-secondary{
-
-background:white;
-
-border:2px solid #BFDBFE;
-
-color:#2563EB;
-
-}
-
-.btn:hover{
-transform:translateY(-5px);
-}
-
-/* ================= HERO IMAGE ================= */
-
-.hero-image{
-
-position:relative;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-}
-
-/* IMAGE BOX */
-
-.image-box{
-
-background:white;
-
-padding:40px;
-
-border-radius:40px;
-
-position:relative;
-
-box-shadow:
-0 20px 40px rgba(0,0,0,0.06);
-
-}
-
-/* IMAGE */
-
-.image-box img{
-
-width:100%;
-max-width:550px;
-
-display:block;
-
-}
-
-/* ================= FLOAT ICON ================= */
-
-.float-icon{
-
-position:absolute;
-
-width:90px;
-height:90px;
-
-border-radius:50%;
-
-background:white;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:36px;
-
-box-shadow:
-0 12px 25px rgba(0,0,0,0.08);
-
-}
-
-/* POSITIONS */
-
-.icon1{
-top:30px;
-left:-20px;
-color:#60A5FA;
-}
-
-.icon2{
-top:50px;
-right:-20px;
-color:#A855F7;
-}
-
-.icon3{
-bottom:30px;
-left:-20px;
-color:#2DD4BF;
-}
-
-.icon4{
-bottom:20px;
-right:-20px;
-color:#F59E0B;
-}
-
-/* ================= SECTION ================= */
-
-.section{
-
-padding:80px;
-
-}
-
-/* ================= TITLE ================= */
-
-.section-title{
-
-font-size:48px;
-font-weight:800;
-
-text-align:center;
-
-margin-bottom:20px;
-
-color:#0F172A;
-
-}
-
-.section-title span{
-color:#2563EB;
-}
-
-/* DESC */
-
-.section-desc{
-
-text-align:center;
-
-max-width:760px;
-
-margin:0 auto 70px;
-
-font-size:18px;
-line-height:1.8;
-
-color:#64748B;
-
-}
-
-/* ================= CARDS ================= */
-
-.cards{
-
-display:grid;
-grid-template-columns:repeat(4,1fr);
-
-gap:28px;
-
-}
-
-/* CARD */
-
-.card{
-
-background:white;
-
-padding:40px 30px;
-
-border-radius:32px;
-
-text-align:center;
-
-position:relative;
-
-overflow:hidden;
-
-transition:0.35s;
-
-box-shadow:
-0 15px 30px rgba(0,0,0,0.05);
-
-}
-
-/* TOP BORDER */
-
-.card::before{
-
-content:'';
-
-position:absolute;
-
-top:0;
-left:0;
-
-width:100%;
-height:5px;
-
-background:linear-gradient(
-90deg,
-#2563EB,
-#60A5FA
-);
-
-}
-
-/* HOVER */
-
-.card:hover{
-
-transform:translateY(-10px);
-
-box-shadow:
-0 20px 35px rgba(37,99,235,0.12);
-
-}
-
-/* ICON */
-
-.card-icon{
-
-width:100px;
-height:100px;
-
-border-radius:50%;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:42px;
-
-margin:auto;
-
-margin-bottom:25px;
-
-}
-
-/* COLORS */
-
-.blue{
-background:#DBEAFE;
-color:#2563EB;
-}
-
-.purple{
-background:#F3E8FF;
-color:#9333EA;
-}
-
-.teal{
-background:#CCFBF1;
-color:#14B8A6;
-}
-
-.orange{
-background:#FEF3C7;
-color:#F59E0B;
-}
-
-/* TITLE */
-
-.card h3{
-
-font-size:28px;
-font-weight:700;
-
-margin-bottom:18px;
-
-color:#0F172A;
-
-}
-
-/* TEXT */
-
-.card p{
-
-font-size:17px;
-line-height:1.9;
-
-color:#475569;
-
-}
-
-/* LINE */
-
-.line{
-
-width:50px;
-height:4px;
-
-border-radius:50px;
-
-margin:25px auto 0;
-
-}
-
-.line-blue{
-background:#2563EB;
-}
-
-.line-purple{
-background:#9333EA;
-}
-
-.line-teal{
-background:#14B8A6;
-}
-
-.line-orange{
-background:#F59E0B;
-}
-
-/* ================= ACTIVITY ================= */
-
-.activity{
-
-padding:20px 80px 100px;
-
-}
-
-/* ACTIVITY BOX */
-
-.activity-box{
-
-background:white;
-
-border-radius:35px;
-
-padding:50px;
-
-display:grid;
-grid-template-columns:1fr 1fr;
-
-align-items:center;
-
-gap:60px;
-
-box-shadow:
-0 20px 40px rgba(0,0,0,0.05);
-
-}
-
-/* IMAGE */
-
-.activity-image img{
-
-width:100%;
-max-width:500px;
-
-display:block;
-
-margin:auto;
-
-}
-
-/* CONTENT */
-
-.activity-content h2{
-
-font-size:54px;
-font-weight:800;
-
-margin-bottom:25px;
-
-color:#0F172A;
-
-}
-
-.activity-content h2 span{
-color:#2563EB;
-}
-
-/* TEXT */
-
-.activity-content p{
-
-font-size:19px;
-line-height:1.9;
-
-color:#475569;
-
-margin-bottom:35px;
-
-}
-
-/* BUTTON */
-
-.activity-btn{
-
-padding:18px 35px;
-
-border:none;
-
-border-radius:60px;
-
-background:#2563EB;
-
-color:white;
-
-font-size:18px;
-font-weight:600;
-
-cursor:pointer;
-
-display:flex;
-align-items:center;
-gap:12px;
-
-transition:0.3s;
-
-}
-
-.activity-btn:hover{
-transform:scale(1.05);
-}
-
-/* ================= FOOTER ================= */
-
-.footer{
-
-padding:40px;
-
-text-align:center;
-
-background:#EFF6FF;
-
-color:#475569;
-
-margin-top:80px;
-
-font-size:17px;
-
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:1200px){
-
-.hero{
-grid-template-columns:1fr;
-text-align:center;
-}
-
-.desc{
-margin:auto auto 40px;
-}
-
-.button-group{
-justify-content:center;
-}
-
-.cards{
-grid-template-columns:repeat(2,1fr);
-}
-
-.activity-box{
-grid-template-columns:1fr;
-}
-
-.hero h1{
-font-size:60px;
-}
-
-}
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-.navbar{
-padding:20px;
-}
-
-.menu{
-display:none;
-}
-
-.hero{
-padding:150px 25px 80px;
-}
-
-.section,
-.activity{
-padding:80px 20px;
-}
-
-.cards{
-grid-template-columns:1fr;
-}
-
-.hero h1{
-font-size:45px;
-}
-
-.activity-content h2{
-font-size:40px;
-}
-
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Topik 1.1.3 - Prinsip Reka Bentuk</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        /* ================= RESET ================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* ================= BODY ================= */
+
+        body {
+            background: linear-gradient( 180deg, #F8FBFF 0%, #EEF5FF 45%, #FFFFFF 100% );
+            overflow-x: hidden;
+            color: #0F172A;
+            position: relative;
+        }
+
+            /* ================= GRID BACKGROUND ================= */
+
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient( rgba(37,99,235,0.05) 1px, transparent 1px ), linear-gradient( 90deg, rgba(37,99,235,0.05) 1px, transparent 1px );
+                background-size: 80px 80px;
+                z-index: -2;
+            }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 22px 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        /* LOGO */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 16px;
+            background: #2563EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .logo-text h1 {
+            font-size: 38px;
+            font-weight: 800;
+            color: #2563EB;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            font-size: 14px;
+            color: #64748B;
+        }
+
+        /* MENU */
+
+        .menu {
+            display: flex;
+            gap: 35px;
+        }
+
+            .menu a {
+                text-decoration: none;
+                font-weight: 600;
+                color: #334155;
+                transition: 0.3s;
+            }
+
+                .menu a:hover {
+                    color: #2563EB;
+                }
+
+        /* ACTIVE */
+
+        .active {
+            color: #2563EB !important;
+            position: relative;
+        }
+
+            .active::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                border-radius: 50px;
+                background: #2563EB;
+            }
+
+        /* BUTTON */
+
+        .login-btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 50px;
+            background: #2563EB;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 12px 25px rgba(37,99,235,0.18);
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 90vh;
+            padding: 160px 90px 70px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 80px;
+        }
+
+        /* LEFT */
+
+        .hero-content h2 {
+            display: inline-block;
+            padding: 14px 26px;
+            border-radius: 50px;
+            background: #2563EB;
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .hero-content h1 {
+            font-size: 110px;
+            line-height: 0.95;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #0F172A;
+        }
+
+            .hero-content h1 span {
+                display: block;
+                color: #2563EB;
+            }
+
+        /* SUBTOPIC */
+
+        .subtopic {
+            display: inline-block;
+            padding: 16px 35px;
+            border-radius: 60px;
+            border: 2px solid #BFDBFE;
+            background: #EFF6FF;
+            font-size: 20px;
+            font-weight: 600;
+            color: #2563EB;
+            margin-bottom: 30px;
+        }
+
+        /* DESC */
+
+        .desc {
+            font-size: 22px;
+            line-height: 1.9;
+            max-width: 650px;
+            color: #475569;
+            margin-bottom: 40px;
+        }
+
+        /* BUTTON GROUP */
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* BUTTON */
+
+        .btn {
+            padding: 18px 35px;
+            border: none;
+            border-radius: 60px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.3s;
+        }
+
+        /* PRIMARY */
+
+        .btn-primary {
+            background: #2563EB;
+            color: white;
+            box-shadow: 0 15px 30px rgba(37,99,235,0.18);
+        }
+
+        /* SECONDARY */
+
+        .btn-secondary {
+            background: white;
+            color: #2563EB;
+            border: 2px solid #BFDBFE;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ================= HERO IMAGE ================= */
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* CIRCLE */
+
+        .image-box {
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            background: linear-gradient( 135deg, #DBEAFE, #EFF6FF );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(37,99,235,0.12);
+        }
+
+        /* CENTER ICON */
+
+        .center-icon {
+            font-size: 150px;
+            color: #2563EB;
+        }
+
+        /* FLOAT ICON */
+
+        .float-icon {
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* POSITIONS */
+
+        .icon1 {
+            top: 20px;
+            left: 30px;
+            color: #2563EB;
+        }
+
+        .icon2 {
+            top: 70px;
+            right: -10px;
+            color: #9333EA;
+        }
+
+        .icon3 {
+            bottom: 40px;
+            left: 20px;
+            color: #14B8A6;
+        }
+
+        .icon4 {
+            bottom: 30px;
+            right: 10px;
+            color: #F59E0B;
+        }
+
+        /* FLOAT */
+
+        @keyframes float {
+
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* ================= SECTION ================= */
+
+        .section {
+            padding: 40px 90px 100px;
+        }
+
+        /* TITLE */
+
+        .section-title {
+            font-size: 70px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            .section-title span {
+                color: #2563EB;
+            }
+
+        /* DESC */
+
+        .section-desc {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 70px;
+            font-size: 20px;
+            line-height: 1.9;
+            color: #64748B;
+        }
+
+        /* ================= CARDS ================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+            gap: 35px;
+        }
+
+        /* CARD */
+
+        .card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 30px;
+            text-align: center;
+            min-height: 340px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.35s;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+
+            /* TOP BORDER */
+
+            .card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 6px;
+            }
+
+            /* COLORS */
+
+            .card.blue::before {
+                background: #2563EB;
+            }
+
+            .card.purple::before {
+                background: #9333EA;
+            }
+
+            .card.teal::before {
+                background: #14B8A6;
+            }
+
+            .card.orange::before {
+                background: #F59E0B;
+            }
+
+            /* HOVER */
+
+            .card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(37,99,235,0.12);
+            }
+
+        /* ICON */
+
+        .card-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            margin: auto auto 25px;
+        }
+
+        /* ICON COLORS */
+
+        .icon-blue {
+            background: #DBEAFE;
+            color: #2563EB;
+        }
+
+        .icon-purple {
+            background: #F3E8FF;
+            color: #9333EA;
+        }
+
+        .icon-teal {
+            background: #CCFBF1;
+            color: #14B8A6;
+        }
+
+        .icon-orange {
+            background: #FEF3C7;
+            color: #F59E0B;
+        }
+
+        /* TITLE */
+
+        .card h3 {
+            font-size: 30px;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        /* TEXT */
+
+        .card p {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #475569;
+        }
+
+        /* ================= INFO BOX ================= */
+
+        .info-box {
+            margin-top: 70px;
+            background: #F8FBFF;
+            border-radius: 35px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            border: 1px solid #DBEAFE;
+        }
+
+        /* LEFT */
+
+        .info-left {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        /* ICON */
+
+        .info-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #DBEAFE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #2563EB;
+        }
+
+        /* TEXT */
+
+        .info-text {
+            font-size: 24px;
+            line-height: 1.8;
+            font-weight: 500;
+            color: #475569;
+            max-width: 650px;
+        }
+
+        /* RIGHT */
+
+        .info-right {
+            font-size: 100px;
+            color: #2563EB;
+        }
+
+        /* ================= FOOTER ================= */
+
+        .footer {
+            padding: 40px;
+            text-align: center;
+            background: #EFF6FF;
+            color: #475569;
+            font-size: 17px;
+            margin-top: 80px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:1200px) {
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 150px 40px 70px;
+            }
+
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+                .hero-content h1 {
+                    font-size: 75px;
+                }
+
+            .desc {
+                margin: auto auto 40px;
+            }
+
+            .button-group {
+                justify-content: center;
+            }
+
+            .info-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .info-left {
+                flex-direction: column;
+            }
+        }
+
+        /* MOBILE */
+
+        @media(max-width:700px) {
+
+            .navbar {
+                padding: 20px;
+            }
+
+            .menu {
+                display: none;
+            }
+
+            .hero {
+                padding: 140px 25px 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 55px;
+            }
+
+            .hero-content h2 {
+                font-size: 18px;
+            }
+
+            .subtopic {
+                font-size: 17px;
+            }
+
+            .desc {
+                font-size: 18px;
+            }
+
+            .image-box {
+                width: 330px;
+                height: 330px;
+            }
+
+            .center-icon {
+                font-size: 100px;
+            }
+
+            .float-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 30px;
+            }
+
+            .section {
+                padding: 30px 20px 80px;
+            }
+
+            .section-title {
+                font-size: 45px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .info-text {
+                font-size: 18px;
+            }
+
+            .info-right {
+                font-size: 70px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- FLOATING SHAPES -->
+    <!-- ================= NAVBAR ================= -->
 
-<div class="shape shape1"></div>
-<div class="shape shape2"></div>
-<div class="shape shape3"></div>
+    <div class="navbar">
 
-<!-- ================= NAVBAR ================= -->
+        <div class="logo">
 
-<div class="navbar">
+            <div class="logo-icon">
+                <i class="fa-solid fa-cube"></i>
+            </div>
 
-<div class="logo">
-RBT
-<span>TINGKATAN 1</span>
-</div>
+            <div class="logo-text">
 
-<div class="menu">
-  
-<a href="main.html" class="active">Home</a>
-<a href="#">Elemen</a>
-<a href="#">Aktiviti</a>
-<a href="#">Kuiz</a>
+                <h1>TOPIK 3</h1>
+                <span>Reka Bentuk & Teknologi</span>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-<!-- ================= HERO ================= -->
+        <div class="menu">
 
-<section class="hero">
+            <a href="main.html">Laman Utama</a>
+            <a href="#">Nota</a>
+            <a href="#">Aktiviti</a>
+            <a href="#">Kuiz</a>
+            <a href="#">Pentaksiran</a>
+            
 
-<!-- LEFT -->
+        </div>
 
-<div>
 
-<div class="badge">
-1.1.3
-</div>
+    </div>
 
-<h2>MENJELASKAN</h2>
+    <!-- ================= HERO ================= -->
 
-<h1>
-PRINSIP
-<br>
-<span>REKA BENTUK</span>
-</h1>
+    <section class="hero">
 
-<div class="subtopic">
-Asas Penghasilan Reka Bentuk
-</div>
+        <!-- LEFT -->
 
-<p class="desc">
+        <div class="hero-content">
 
-Pelajari prinsip reka bentuk seperti keseimbangan,
-penegasan, pengulangan dan harmoni dalam
-menghasilkan reka bentuk yang kreatif dan efektif.
+            <h2>1.1.3 MENJELASKAN</h2>
 
-</p>
+            <h1>
 
-<div class="button-group">
+                PRINSIP
+                <span>REKA BENTUK</span>
 
-<button class="btn btn-primary">
-<i class="fa-solid fa-book-open"></i>
-MULA BELAJAR
-</button>
+            </h1>
 
-<button class="btn btn-secondary">
-<i class="fa-solid fa-magnifying-glass"></i>
-TEROKA AKTIVITI
-</button>
+            <div class="subtopic">
 
-</div>
+                Asas Penghasilan Reka Bentuk
 
-</div>
+            </div>
 
-<!-- RIGHT -->
+            <p class="desc">
 
-<div class="hero-image">
+                Prinsip reka bentuk merupakan asas penting
+                dalam menghasilkan reka bentuk yang kreatif,
+                menarik, harmoni dan berfungsi dengan baik.
 
-<div class="image-box">
+            </p>
 
-<img src="images/Principle.png">
+        </div>
 
-<div class="float-icon icon1">
-<i class="fa-solid fa-scale-balanced"></i>
-</div>
+        <!-- RIGHT -->
 
-<div class="float-icon icon2">
-<i class="fa-solid fa-bullseye"></i>
-</div>
+        <div class="hero-image">
 
-<div class="float-icon icon3">
-<i class="fa-solid fa-repeat"></i>
-</div>
+            <div class="image-box">
 
-<div class="float-icon icon4">
-<i class="fa-solid fa-table-cells-large"></i>
-</div>
+                <div class="center-icon">
 
-</div>
+                    <i class="fa-solid fa-compass-drafting"></i>
 
-</div>
+                </div>
 
-</section>
+                <div class="float-icon icon1">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
 
-<!-- ================= PRINCIPLE SECTION ================= -->
+                <div class="float-icon icon2">
+                    <i class="fa-solid fa-repeat"></i>
+                </div>
 
-<section class="section">
+                <div class="float-icon icon3">
+                    <i class="fa-solid fa-puzzle-piece"></i>
+                </div>
 
-<h2 class="section-title">
+                <div class="float-icon icon4">
+                    <i class="fa-solid fa-palette"></i>
+                </div>
 
-Prinsip <span>Reka Bentuk</span>
+            </div>
 
-</h2>
+        </div>
 
-<p class="section-desc">
+    </section>
 
-Memahami prinsip reka bentuk membantu murid
-menghasilkan reka bentuk yang lebih tersusun,
-menarik dan berfungsi.
+    <!-- ================= SECTION ================= -->
 
-</p>
+    <section class="section">
 
-<div class="cards">
+        <h2 class="section-title">
 
-<!-- CARD 1 -->
+            PRINSIP <span>REKA BENTUK</span>
 
-<div class="card">
+        </h2>
 
-<div class="card-icon blue">
-<i class="fa-solid fa-scale-balanced"></i>
-</div>
+        <p class="section-desc">
 
-<h3>Keseimbangan</h3>
+            7 prinsip reka bentuk yang menjadi panduan
+            dalam penghasilan produk yang berkualiti.
 
-<p>
+        </p>
 
-Susunan elemen secara stabil dan seimbang
-dalam reka bentuk.
+        <div class="cards">
 
-</p>
+            <!-- CARD 1 -->
 
-<div class="line line-blue"></div>
+            <div class="card blue">
 
-</div>
+                <div class="card-icon icon-blue">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
 
-<!-- CARD 2 -->
+                <h3>1. Keseimbangan</h3>
 
-<div class="card">
+                <p>
 
-<div class="card-icon purple">
-<i class="fa-solid fa-bullseye"></i>
-</div>
+                    Susunan elemen yang stabil dan tidak berat sebelah.
+                    Terdapat keseimbangan simetri dan asimetri.
 
-<h3>Penegasan</h3>
+                </p>
 
-<p>
+            </div>
 
-Memberi fokus kepada bahagian penting
-dalam reka bentuk.
+            <!-- CARD 2 -->
 
-</p>
+            <div class="card purple">
 
-<div class="line line-purple"></div>
+                <div class="card-icon icon-purple">
+                    <i class="fa-solid fa-repeat"></i>
+                </div>
 
-</div>
+                <h3>2. Pengulangan</h3>
 
-<!-- CARD 3 -->
+                <p>
 
-<div class="card">
+                    Penggunaan elemen yang sama secara berulang
+                    untuk menghasilkan keseragaman dan identiti.
 
-<div class="card-icon teal">
-<i class="fa-solid fa-repeat"></i>
-</div>
+                </p>
 
-<h3>Pengulangan</h3>
+            </div>
 
-<p>
+            <!-- CARD 3 -->
 
-Penggunaan elemen secara berulang bagi
-menghasilkan kesatuan.
+            <div class="card teal">
 
-</p>
+                <div class="card-icon icon-teal">
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                </div>
 
-<div class="line line-teal"></div>
+                <h3>3. Kontras</h3>
 
-</div>
+                <p>
 
-<!-- CARD 4 -->
+                    Perbezaan ketara antara elemen seperti warna,
+                    saiz dan bentuk untuk menarik perhatian.
 
-<div class="card">
+                </p>
 
-<div class="card-icon orange">
-<i class="fa-solid fa-table-cells-large"></i>
-</div>
+            </div>
 
-<h3>Harmoni</h3>
+            <!-- CARD 4 -->
 
-<p>
+            <div class="card orange">
 
-Gabungan elemen yang menghasilkan
-reka bentuk yang serasi.
+                <div class="card-icon icon-orange">
+                    <i class="fa-solid fa-shapes"></i>
+                </div>
 
-</p>
+                <h3>4. Kepelbagaian</h3>
 
-<div class="line line-orange"></div>
+                <p>
 
-</div>
+                    Gabungan pelbagai elemen reka bentuk bagi
+                    menghasilkan produk yang menarik.
 
-</div>
+                </p>
 
-</section>
+            </div>
 
-<!-- ================= ACTIVITY ================= -->
+            <!-- CARD 5 -->
 
-<section class="activity">
+            <div class="card blue">
 
-<div class="activity-box">
+                <div class="card-icon icon-blue">
+                    <i class="fa-solid fa-object-group"></i>
+                </div>
 
-<!-- IMAGE -->
+                <h3>5. Kesatuan</h3>
 
-<div class="activity-image">
+                <p>
 
-<img src="images/Activity.png">
+                    Semua elemen reka bentuk digabungkan secara
+                    harmoni dan tersusun.
 
-</div>
+                </p>
 
-<!-- CONTENT -->
+            </div>
 
-<div class="activity-content">
+            <!-- CARD 6 -->
 
-<h2>
+            <div class="card purple">
 
-Aktiviti <span>Interaktif</span>
+                <div class="card-icon icon-purple">
+                    <i class="fa-solid fa-minimize"></i>
+                </div>
 
-</h2>
+                <h3>6. Keringkasan</h3>
 
-<p>
+                <p>
 
-Pilih satu produk dan kenal pasti prinsip
-reka bentuk yang digunakan. Murid boleh
-menganalisis keseimbangan, harmoni dan
-penegasan pada produk tersebut.
+                    Reka bentuk yang mudah tetapi jelas fungsi
+                    dan tujuan penggunaannya.
 
-</p>
+                </p>
 
-<button class="activity-btn">
+            </div>
 
-<i class="fa-solid fa-circle-play"></i>
+            <!-- CARD 7 -->
 
-MULA AKTIVITI
+            <div class="card teal">
 
-</button>
+                <div class="card-icon icon-teal">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
 
-</div>
+                <h3>7. Harmoni</h3>
 
-</div>
+                <p>
 
-</section>
+                    Gabungan elemen yang serasi dan menenangkan
+                    pandangan pengguna.
 
-<!-- ================= FOOTER ================= -->
+                </p>
 
-<div class="footer">
+            </div>
 
-<i class="fa-solid fa-graduation-cap"></i>
+        </div>
 
-© Graynie Noellin 2026 - RBT Tingkatan 1 
-</div>
+        <!-- ================= INFO BOX ================= -->
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <div class="footer">
+
+        © Graynie Noellin 2026 - RBT Tingkatan 1
+
+    </div>
 
 </body>
 </html>
