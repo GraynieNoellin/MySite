@@ -298,34 +298,63 @@
 
         /* ================= CARDS ================= */
 
+        /* ================= CARDS ================= */
+
+.cards{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+    margin-top:40px;
+
+    align-items:stretch;
+}
+
+/* ================= CARD ================= */
+
+        /* ================= CARDS ================= */
+
         .cards {
+            width: 100%;
             display: grid;
-            grid-template-columns: repeat(4,1fr);
-            gap: 25px;
+            grid-template-columns: repeat(3,1fr);
+            gap: 30px;
+            margin-top: 50px;
         }
 
-        /* CARD */
+        /* ================= CARD ================= */
 
         .card {
+            width: 100%;
             background: white;
-            padding: 35px;
-            border-radius: 28px;
+            padding: 45px 35px;
+            border-radius: 30px;
             text-align: center;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.04);
+            min-height: 330px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
             transition: 0.35s;
         }
 
+            /* HOVER EFFECT */
+
             .card:hover {
-                transform: translateY(-8px);
-                box-shadow: 0 20px 35px rgba(249,115,22,0.12);
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(249,115,22,0.15);
             }
 
-        /* ICON */
+        /* ================= ICON ================= */
 
         .card-icon {
-            width: 95px;
-            height: 95px;
-            margin: auto auto 22px;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 28px;
             border-radius: 50%;
             background: #fff7ed;
             color: #f97316;
@@ -335,18 +364,43 @@
             justify-content: center;
         }
 
-        /* TITLE */
+        /* ================= TITLE ================= */
 
         .card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: #0f172a;
         }
 
-        /* TEXT */
+        /* ================= TEXT ================= */
 
         .card p {
-            line-height: 1.8;
+            font-size: 18px;
+            line-height: 1.9;
             color: #4b5563;
+            flex-grow: 1;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:1200px) {
+
+            .cards {
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+
+        @media(max-width:700px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                min-height: auto;
+                padding: 40px 25px;
+            }
         }
 
         /* ================= PRODUCT ================= */
@@ -514,8 +568,8 @@
 
         <div class="menu">
 
-            <a href="#">Laman Utama</a>
-            <a href="#elemen">Nota</a>
+            <a href="main.html">Laman Utama</a>
+            <a href="nota 2.html">Nota</a>
             <a href="#produk">Aktiviti</a>
             <a href="#aktiviti">Kuiz</a>
             <a href="#aktiviti">Pentaksiran</a>
@@ -551,24 +605,9 @@
 
                 <p class="desc">
 
-                    Elemen reka bentuk ialah unsur asas
-                    yang digunakan untuk menghasilkan
-                    sesuatu karya visual yang kreatif,
-                    menarik dan berfungsi.
+                    Elemen reka bentuk ialah digunakan untuk menghasilkan sesuatu produk supaya lebih menarik, berfungsi dan sesuai digunakan.
 
                 </p>
-
-                <div class="button-group">
-
-                    <button class="btn btn-primary">
-                        MULA TEROKA
-                    </button>
-
-                    <button class="btn btn-secondary">
-                        UJI MINDA
-                    </button>
-
-                </div>
 
             </div>
 
@@ -641,7 +680,7 @@
     <section class="section" id="elemen">
 
         <h2 class="section-title">
-            8 <span>Elemen</span> Reka Bentuk
+            7 <span>Elemen</span> Reka Bentuk
         </h2>
 
         <p class="section-desc">
@@ -718,84 +757,60 @@
 
             </div>
 
-        </div>
+            <div class="card">
 
-    </section>
+                <div class="card-icon">
+                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                </div>
 
-    <!-- ================= PRODUCT SECTION ================= -->
-
-    <section class="product-section" id="produk">
-
-        <h2 class="section-title">
-            Teroka <span>Produk</span>
-        </h2>
-
-        <p class="section-desc">
-
-            Pilih produk dan kenal pasti elemen
-            reka bentuk yang terdapat padanya.
-
-        </p>
-
-        <div class="product-container">
-
-            <!-- PRODUCT -->
-
-            <div class="product-card">
-
-                <img src="https://cdn-icons-png.flaticon.com/512/2933/2933245.png">
-
-                <h3>Kerusi</h3>
+                <h3>Saiz</h3>
 
                 <p>
-                    Kenal pasti elemen reka bentuk pada produk kerusi.
+                    Ukuran sesuatu objek yang menunjukkan besar, kecil, panjang atau pendek.
                 </p>
-
-                <button class="product-btn">
-                    TEROKA
-                </button>
 
             </div>
 
-            <!-- PRODUCT -->
+            <!-- CARD -->
 
-            <div class="product-card">
+            <div class="card">
 
-                <img src="https://cdn-icons-png.flaticon.com/512/1048/1048941.png">
+                <div class="card-icon">
+                    <i class="fa-solid fa-palette"></i>
+                </div>
 
-                <h3>Lampu</h3>
+                <h3>Warna</h3>
 
                 <p>
-                    Analisis penggunaan bentuk, warna dan tekstur.
+                    Elemen visual yang memberikan identiti, emosi dan daya tarikan pada produk.
                 </p>
-
-                <button class="product-btn">
-                    TEROKA
-                </button>
 
             </div>
 
-            <!-- PRODUCT -->
+            <!-- CARD -->
 
-            <div class="product-card">
+            <div class="card">
 
-                <img src="https://cdn-icons-png.flaticon.com/512/3050/3050525.png">
+                <div class="card-icon">
+                    <i class="fa-solid fa-vector-square"></i>
+                </div>
 
-                <h3>Botol Air</h3>
+                <h3>Ruang</h3>
 
                 <p>
-                    Lihat bagaimana elemen digunakan dalam produk harian.
+                    Kawasan kosong atau jarak antara objek dalam sesuatu reka bentuk.
                 </p>
-
-                <button class="product-btn">
-                    TEROKA
-                </button>
 
             </div>
 
         </div>
 
+        <!-- CARD -->
+
+        
+
     </section>
+
 
     <!-- ================= FOOTER ================= -->
 
