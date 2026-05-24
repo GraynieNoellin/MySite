@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mission Elemen Reka Bentuk</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* ===================================================== */
+        /* ===== RESET ===== */
+        /* ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg,#eef5ff,#f8fbff);
+            padding: 50px 8%;
+            overflow-x: hidden;
+        }
+
+        /* ===================================================== */
+        /* ===== HEADER ===== */
+        /* ===================================================== */
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeDown 1s ease;
+        }
+
+            .header h1 {
+                font-size: 65px;
+                color: #0a2342;
+                margin-bottom: 15px;
+            }
+
+            .header p {
+                font-size: 22px;
+                color: #555;
+            }
+
+        /* ===================================================== */
+        /* ===== SCORE ===== */
+        /* ===================================================== */
+
+        .score-box {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            background: white;
+            padding: 18px 30px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6600;
+            animation: floatBox 4s ease-in-out infinite;
+        }
+
+        /* ===================================================== */
+        /* ===== PROGRESS BAR ===== */
+        /* ===================================================== */
+
+        .progress-container {
+            width: 100%;
+            max-width: 700px;
+            height: 20px;
+            background: #dbe7ff;
+            border-radius: 50px;
+            overflow: hidden;
+            margin: 0 auto 60px;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg,#ff6600,#ff944d);
+            transition: 0.5s;
+        }
+
+        /* ===================================================== */
+        /* ===== QUIZ CONTAINER ===== */
+        /* ===================================================== */
+
+        .quiz-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+            gap: 35px;
+        }
+
+        /* ===================================================== */
+        /* ===== QUIZ CARD ===== */
+        /* ===================================================== */
+
+        .quiz-card {
+            background: white;
+            border-radius: 35px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            transition: 0.4s;
+        }
+
+            .quiz-card:hover {
+                transform: translateY(-10px) scale(1.02);
+                box-shadow: 0 20px 40px rgba(255,102,0,0.18);
+            }
+
+        /* ===================================================== */
+        /* ===== QUIZ IMAGE ===== */
+        /* ===================================================== */
+
+        .quiz-image {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .quiz-card:hover .quiz-image {
+            transform: scale(1.05);
+        }
+
+        /* ===================================================== */
+        /* ===== QUIZ CONTENT ===== */
+        /* ===================================================== */
+
+        .quiz-content {
+            padding: 30px;
+        }
+
+            .quiz-content h3 {
+                text-align: center;
+                font-size: 23px;
+                line-height: 1.6;
+                color: #0a2342;
+                margin-bottom: 30px;
+            }
+
+        /* ===================================================== */
+        /* ===== OPTIONS ===== */
+        /* ===================================================== */
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .option-btn {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 50px;
+            background: #eef3ff;
+            color: #0a2342;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            .option-btn:hover {
+                background: #ff6600;
+                color: white;
+                transform: scale(1.08);
+            }
+
+        /* ===================================================== */
+        /* ===== CORRECT & WRONG ===== */
+        /* ===================================================== */
+
+        .correct {
+            background: #16a34a !important;
+            color: white !important;
+        }
+
+        .wrong {
+            background: #dc2626 !important;
+            color: white !important;
+        }
+
+        /* ===================================================== */
+        /* ===== POPUP ===== */
+        /* ===================================================== */
+
+        .popup {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: white;
+            padding: 18px 28px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            font-size: 18px;
+            font-weight: 700;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: 0.4s;
+            z-index: 999;
+        }
+
+            .popup.show {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        /* ===================================================== */
+        /* ===== COMPLETE BOX ===== */
+        /* ===================================================== */
+
+        .complete-box {
+            display: none;
+            margin-top: 70px;
+            background: white;
+            padding: 45px;
+            border-radius: 35px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            animation: fadeDown 0.8s ease;
+        }
+
+            .complete-box h2 {
+                font-size: 48px;
+                color: #16a34a;
+                margin-bottom: 20px;
+            }
+
+            .complete-box p {
+                font-size: 22px;
+                color: #444;
+                margin-bottom: 25px;
+            }
+
+        .badge {
+            display: inline-block;
+            padding: 14px 30px;
+            border-radius: 50px;
+            background: #ff6600;
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        /* ===================================================== */
+        /* ===== HOME BUTTON ===== */
+        /* ===================================================== */
+
+        .home {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: #0a2342;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: 0.3s;
+        }
+
+            .home:hover {
+                background: #ff6600;
+                transform: scale(1.1);
+            }
+
+        /* ===================================================== */
+        /* ===== ANIMATION ===== */
+        /* ===================================================== */
+
+        @keyframes fadeDown {
+
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatBox {
+
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* ===================================================== */
+        /* ===== RESPONSIVE ===== */
+        /* ===================================================== */
+
+        @media(max-width:768px) {
+
+            .header h1 {
+                font-size: 42px;
+            }
+
+            .header p {
+                font-size: 18px;
+            }
+
+            .quiz-content h3 {
+                font-size: 20px;
+            }
+
+            .complete-box h2 {
+                font-size: 34px;
+            }
+
+            .complete-box p {
+                font-size: 18px;
+            }
+        }
+
+        .footer {
+            padding: 40px;
+            text-align: center;
+            color: #4b5563;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ===================================================== -->
+    <!-- ===== HEADER ===== -->
+    <!-- ===================================================== -->
+
+    <div class="header">
+
+        <h1>🎮 Misi Elemen Reka Bentuk</h1>
+
+        <p>
+            Jawab semua soalan berdasarkan situasi sebenar.
+        </p>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- ===== SCORE ===== -->
+    <!-- ===================================================== -->
+
+    <div class="score-box">
+
+        ⭐ Skor :
+        <span id="score">0</span> / 7
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- ===== PROGRESS ===== -->
+    <!-- ===================================================== -->
+
+    <div class="progress-container">
+
+        <div class="progress-bar"
+             id="progressBar"></div>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- ===== QUIZ ===== -->
+    <!-- ===================================================== -->
+
+    <div class="quiz-container">
+
+        <!-- ===================================================== -->
+        <!-- ===== GARISAN ===== -->
+        <!-- ===================================================== -->
+
+        <div class="quiz-card">
+
+            <img src="image/garisan 2.jpg"
+                 class="quiz-image">
+
+            <div class="quiz-content">
+
+                <h3>
+
+                    Elemen apakah yang paling jelas
+                    dalam gambar ini?
+
+                </h3>
+
+                <div class="options">
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Garisan','Garisan')">
+
+                        Garisan
+
+                    </button>
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Warna','Garisan')">
+
+                        Warna
+
+                    </button>
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Tekstur','Garisan')">
+
+                        Tekstur
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- ===== RUPA ===== -->
+        <!-- ===================================================== -->
+
+        <div class="quiz-card">
+
+            <img src="image/rupa 2.jpg"
+                 class="quiz-image">
+
+            <div class="quiz-content">
+
+                <h3>
+
+                    Elemen apakah yang mempunyai
+                    permukaan rata?
+
+                </h3>
+
+                <div class="options">
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Rupa','Rupa')">
+
+                        Rupa
+
+                    </button>
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Ruang','Rupa')">
+
+                        Ruang
+
+                    </button>
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Saiz','Rupa')">
+
+                        Saiz
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- ===== BENTUK ===== -->
+        <!-- ===================================================== -->
+
+        <div class="quiz-card">
+
+            <img src="image/bentuk 2.png"
+                 class="quiz-image">
+
+            <div class="quiz-content">
+
+                <h3>
+
+                    Elemen manakah mempunyai
+                    isipadu dan ruang?
+
+                </h3>
+
+                <div class="options">
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Bentuk','Bentuk')">
+
+                        Bentuk
+
+                    </button>
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Garisan','Bentuk')">
+
+                        Garisan
+
+                    </button>
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Warna','Bentuk')">
+
+                        Warna
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- ===== TEKSTUR ===== -->
+        <!-- ===================================================== -->
+
+        <div class="quiz-card">
+
+            <img src="image/tekstur 2.jpg"
+                 class="quiz-image">
+
+            <div class="quiz-content">
+
+                <h3>
+
+                    Elemen apakah yang menunjukkan
+                    permukaan kasar atau licin?
+
+                </h3>
+
+                <div class="options">
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Tekstur','Tekstur')">
+
+                        Tekstur
+
+                    </button>
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Rupa','Tekstur')">
+
+                        Rupa
+
+                    </button>
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Saiz','Tekstur')">
+
+                        Saiz
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- ===== SAIZ ===== -->
+        <!-- ===================================================== -->
+
+        <div class="quiz-card">
+
+            <img src="image/saiz 2.jpg"
+                 class="quiz-image">
+
+            <div class="quiz-content">
+
+                <h3>
+
+                    Elemen apakah yang menunjukkan
+                    besar atau kecil sesuatu objek?
+
+                </h3>
+
+                <div class="options">
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Saiz','Saiz')">
+
+                        Saiz
+
+                    </button>
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Garisan','Saiz')">
+
+                        Garisan
+
+                    </button>
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Ruang','Saiz')">
+
+                        Ruang
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- ===== WARNA ===== -->
+        <!-- ===================================================== -->
+
+        <div class="quiz-card">
+
+            <img src="image/warna 2.jpg"
+                 class="quiz-image">
+
+            <div class="quiz-content">
+
+                <h3>
+
+                    Elemen manakah memberi kesan
+                    emosi dan tarikan?
+
+                </h3>
+
+                <div class="options">
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Warna','Warna')">
+
+                        Warna
+
+                    </button>
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Bentuk','Warna')">
+
+                        Bentuk
+
+                    </button>
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Tekstur','Warna')">
+
+                        Tekstur
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- ===== RUANG ===== -->
+        <!-- ===================================================== -->
+
+        <div class="quiz-card">
+
+            <img src="image/ruang 2.png"
+                 class="quiz-image">
+
+            <div class="quiz-content">
+
+                <h3>
+
+                    Elemen apakah yang menunjukkan
+                    jarak antara objek?
+
+                </h3>
+
+                <div class="options">
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Ruang','Ruang')">
+
+                        Ruang
+
+                    </button>
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Warna','Ruang')">
+
+                        Warna
+
+                    </button>
+
+                    <button class="option-btn"
+                            onclick="checkAnswer(this,'Tekstur','Ruang')">
+
+                        Tekstur
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- ===== COMPLETE ===== -->
+    <!-- ===================================================== -->
+
+    <div class="complete-box"
+         id="completeBox">
+
+        <h2>🏆 Tahniah!</h2>
+
+        <p>
+
+            Anda telah berjaya menyelesaikan
+            Mission Elemen Reka Bentuk.
+
+        </p>
+
+        <div class="badge"
+             id="badgeText">
+
+            🥇 Master Designer
+
+        </div>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- ===== POPUP ===== -->
+    <!-- ===================================================== -->
+
+    <div class="popup"
+         id="popup"></div>
+
+    <!-- ===================================================== -->
+    <!-- ===== HOME ===== -->
+    <!-- ===================================================== -->
+    <div class="top-right-buttons">
+        <a href="topik 2.html"
+           class="home">
+
+            ↩
+
+        </a>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- ===== SCRIPT ===== -->
+    <!-- ===================================================== -->
+
+    <script>
+
+        let score = 0;
+        let answered = 0;
+
+        function checkAnswer(button, selected, correct) {
+
+            const popup =
+                document.getElementById("popup");
+
+            const buttons =
+                button.parentElement.querySelectorAll("button");
+
+            buttons.forEach(btn => {
+
+                btn.disabled = true;
+
+            });
+
+            answered++;
+
+            if (selected === correct) {
+
+                button.classList.add("correct");
+
+                score++;
+
+                popup.innerHTML =
+                    "✅ Jawapan Betul!";
+
+            }
+
+            else {
+
+                button.classList.add("wrong");
+
+                popup.innerHTML =
+                    "❌ Jawapan Salah!";
+            }
+
+            document.getElementById("score")
+                .innerText = score;
+
+            popup.classList.add("show");
+
+            setTimeout(() => {
+
+                popup.classList.remove("show");
+
+            }, 1800);
+
+            /* ===== PROGRESS ===== */
+
+            let progress =
+                (answered / 7) * 100;
+
+            document.getElementById("progressBar")
+                .style.width = progress + "%";
+
+            /* ===== COMPLETE ===== */
+
+            if (answered === 7) {
+
+                document.getElementById("completeBox")
+                    .style.display = "block";
+
+                let badge =
+                    document.getElementById("badgeText");
+
+                if (score === 7) {
+
+                    badge.innerHTML =
+                        "🥇🥇🥇🥇🥇";
+
+                }
+
+                else if (score >= 5) {
+
+                    badge.innerHTML =
+                        "🥈🥇🥇🥇";
+
+                }
+
+                else {
+
+                    badge.innerHTML =
+                        "🥉🥇";
+
+                }
+
+            }
+
+        }
+
+    </script>
+
+    <div class="footer">
+
+        © Graynie Noellin 2026 - RBT Tingkatan 1
+
+    </div>
+
+</body>
+</html>
