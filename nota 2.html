@@ -1,358 +1,1007 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Elemen Reka Bentuk</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Nota Topik 2 : Elemen Reka Bentuk</title>
 
-<style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
-}
+    <style>
 
-body{
-    background:#ece7e2;
-    overflow-x:hidden;
-}
+        /* ===================================================== */
+        /* ===== RESET ===== */
+        /* ===================================================== */
 
-/* =========================
-   MAIN CONTAINER
-========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+        }
 
-.hero{
-    width:100%;
-    min-height:100vh;
-    padding:60px 70px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:50px;
-    background:
-    linear-gradient(rgba(255,255,255,0.75),
-    rgba(255,255,255,0.75)),
-    url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1400&auto=format&fit=crop');
-    background-size:cover;
-    background-position:center;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-/* =========================
-   LEFT CONTENT
-========================= */
+        body {
+            background: #f4f4f4;
+            overflow-x: hidden;
+        }
 
-.left-content{
-    width:55%;
-}
+        /* ===================================================== */
+        /* ===== HERO SECTION ===== */
+        /* ===================================================== */
 
-.small-title{
-    font-size:28px;
-    font-weight:700;
-    color:#1d2b44;
-    letter-spacing:2px;
-    margin-bottom:10px;
-}
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient( rgba(255,255,255,0.88), rgba(255,255,255,0.88) ), url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+            padding: 40px 8%;
+        }
 
-.big-title{
-    font-size:100px;
-    line-height:0.95;
-    font-weight:800;
-    color:#09152c;
-}
+        /* ===================================================== */
+        /* ===== TOP NAVIGATION ===== */
+        /* ===================================================== */
 
-.orange-title{
-    color:#f26101;
-}
+        .top-right-buttons {
+            position: absolute;
+            top: 22px;
+            right: 35px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1000;
+        }
 
-.description{
-    margin-top:35px;
-    font-size:26px;
-    line-height:1.7;
-    color:#2e2e2e;
-    max-width:700px;
-}
+            .top-right-buttons a {
+                text-decoration: none;
+                padding: 12px 22px;
+                border-radius: 50px;
+                font-size: 14px;
+                font-weight: 600;
+                transition: 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                backdrop-filter: blur(10px);
+            }
 
-/* =========================
-   RIGHT IMAGE AREA
-========================= */
+        /* ===== HOME BUTTON ===== */
 
-.right-content{
-    width:45%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
+        .home-btn {
+            background: rgba(255,255,255,0.92);
+            color: #0a2342;
+            border: 2px solid #0a2342;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
 
-.image-card{
-    width:100%;
-    max-width:620px;
-    background:rgba(255,255,255,0.7);
-    backdrop-filter:blur(10px);
-    border-radius:35px;
-    padding:30px;
-    box-shadow:0 20px 40px rgba(0,0,0,0.15);
-}
+            .home-btn:hover {
+                background: #0a2342;
+                color: white;
+                transform: translateY(-3px);
+            }
 
-.image-card img{
-    width:100%;
-    border-radius:25px;
-    object-fit:cover;
-}
+        /* ===== ACTIVITY BUTTON ===== */
 
-/* =========================
-   INFO SECTION
-========================= */
+        .activity-btn {
+            background: #ff6600;
+            color: white;
+            box-shadow: 0 4px 12px rgba(255,102,0,0.25);
+        }
 
-.info-section{
-    width:100%;
-    padding:80px 70px;
-    background:#f5f1ec;
-}
+            .activity-btn:hover {
+                background: #ff8533;
+                transform: translateY(-3px);
+            }
 
-.section-title{
-    text-align:center;
-    font-size:50px;
-    color:#09152c;
-    margin-bottom:50px;
-    font-weight:800;
-}
+        /* ===================================================== */
+        /* ===== TOP HEADER ===== */
+        /* ===================================================== */
 
-.card-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:30px;
-}
+        .top-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 70px;
+            animation: fadeDown 1s ease;
+        }
 
-.info-card{
-    background:white;
-    border-radius:25px;
-    padding:25px;
-    text-align:center;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    transition:0.3s;
-}
+        /* ===== LINE ===== */
 
-.info-card:hover{
-    transform:translateY(-10px);
-}
+        .line {
+            width: 180px;
+            height: 3px;
+            background: #0a2342;
+            position: relative;
+        }
 
-.info-card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-    border-radius:18px;
-    margin-bottom:20px;
-}
+            .line::after {
+                content: "";
+                width: 12px;
+                height: 12px;
+                background: #0a2342;
+                border-radius: 50%;
+                position: absolute;
+                right: -5px;
+                top: -4px;
+            }
 
-.info-card h3{
-    font-size:28px;
-    color:#f26101;
-    margin-bottom:15px;
-}
+        /* ===== TITLE BOX ===== */
 
-.info-card p{
-    font-size:18px;
-    color:#444;
-    line-height:1.6;
-}
+        .title-box {
+            border: 3px solid #0a2342;
+            padding: 25px 60px;
+            background: white;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
 
-/* =========================
-   RESPONSIVE
-========================= */
+            .title-box h1 {
+                color: #0a2342;
+                font-size: 42px;
+                margin-bottom: 10px;
+                font-weight: 900;
+            }
 
-@media(max-width:1200px){
+            .title-box p {
+                color: #0a2342;
+                font-size: 22px;
+            }
 
-    .big-title{
-        font-size:75px;
-    }
+        /* ===================================================== */
+        /* ===== MAIN CONTENT ===== */
+        /* ===================================================== */
 
-    .description{
-        font-size:22px;
-    }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 120px;
+        }
 
-}
+        /* ===================================================== */
+        /* ===== LEFT CONTENT ===== */
+        /* ===================================================== */
 
-@media(max-width:950px){
+        .content {
+            width: 50%;
+        }
 
-    .hero{
-        flex-direction:column;
-        padding:50px 30px;
-    }
+            .content h5 {
+                color: #0a2342;
+                font-size: 28px;
+                letter-spacing: 4px;
+                margin-bottom: 20px;
+            }
 
-    .left-content,
-    .right-content{
-        width:100%;
-    }
+            .content h1 {
+                line-height: 0.9;
+                margin-bottom: 30px;
+            }
 
-    .big-title{
-        font-size:65px;
-    }
+        .blue {
+            color: #001845;
+            font-size: 120px;
+            font-weight: 900;
+        }
 
-    .description{
-        font-size:20px;
-    }
+        .orange {
+            color: #ff6600;
+            font-size: 120px;
+            font-weight: 900;
+        }
 
-    .info-section{
-        padding:60px 30px;
-    }
+        .content p {
+            font-size: 28px;
+            line-height: 1.8;
+            color: #222;
+            margin-bottom: 40px;
+        }
 
-}
+        /* ===================================================== */
+        /* ===== VIDEO BOX ===== */
+        /* ===================================================== */
 
-@media(max-width:600px){
+        .video-box {
+            width: 45%;
+            background: white;
+            padding: 25px;
+            border-radius: 45px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+        }
 
-    .small-title{
-        font-size:20px;
-    }
+            .video-box:hover {
+                transform: scale(1.03);
+            }
 
-    .big-title{
-        font-size:48px;
-    }
+            .video-box img {
+                width: 100%;
+                height: 500px;
+                object-fit: cover;
+                border-radius: 35px;
+                transition: 0.4s;
+            }
 
-    .description{
-        font-size:18px;
-    }
+            .video-box:hover img {
+                transform: scale(1.05);
+            }
 
-    .section-title{
-        font-size:36px;
-    }
+        /* ===== PLAY BUTTON ===== */
 
-}
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 45px;
+            transition: 0.3s;
+        }
 
-</style>
+        .video-box:hover .play-button {
+            transform: translate(-50%,-50%) scale(1.1);
+            background: #111;
+        }
+
+        /* ===================================================== */
+        /* ===== SECTION TITLE ===== */
+        /* ===================================================== */
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+            .section-title h2 {
+                font-size: 55px;
+                color: #0a2342;
+                margin-bottom: 15px;
+            }
+
+            .section-title p {
+                font-size: 20px;
+                color: #555;
+            }
+
+        /* ===================================================== */
+        /* ===== FLIP CARD CONTAINER ===== */
+        /* ===================================================== */
+
+        .flip-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+            gap: 40px;
+            justify-items: center;
+        }
+
+        /* ===================================================== */
+        /* ===== FLIP CARD ===== */
+        /* ===================================================== */
+
+        .flip-card {
+            background: transparent;
+            width: 320px;
+            height: 430px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* ===== FRONT & BACK ===== */
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            overflow: hidden;
+            backface-visibility: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        /* ===== FRONT ===== */
+
+        .flip-card-front {
+            background: white;
+            text-align: center;
+        }
+
+            .flip-card-front img {
+                width: 100%;
+                height: 300px;
+                object-fit: cover;
+            }
+
+            .flip-card-front h3 {
+                margin-top: 25px;
+                font-size: 38px;
+                color: #ff6600;
+            }
+
+        /* ===== BACK ===== */
+
+        .flip-card-back {
+            background: #0a2342;
+            color: white;
+            transform: rotateY(180deg);
+            padding: 30px;
+        }
+
+            .flip-card-back h3 {
+                font-size: 38px;
+                margin-bottom: 20px;
+                color: #ff6600;
+            }
+
+            .flip-card-back p {
+                line-height: 1.8;
+                margin-bottom: 20px;
+                font-size: 18px;
+            }
+
+            .flip-card-back ul {
+                padding-left: 20px;
+                line-height: 2;
+                font-size: 17px;
+            }
+
+        /* ===================================================== */
+        /* ===== EXIT BUTTON ===== */
+        /* ===================================================== */
+
+        .exit-btn {
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            background: #08295a;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+            transition: 0.4s;
+            z-index: 9999;
+        }
+
+        /* ===== ICON ===== */
+
+        .exit-icon {
+            font-size: 42px;
+            line-height: 1;
+        }
+
+        /* ===== TEXT ===== */
+
+        .exit-text {
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* ===== HOVER ===== */
+
+        .exit-btn:hover {
+            background: #ff6600;
+            transform: scale(1.08) rotate(-5deg);
+            box-shadow: 0 15px 30px rgba(255,102,0,0.25);
+        }
+
+        /* ===================================================== */
+        /* ===== ANIMATION ===== */
+        /* ===================================================== */
+
+        @keyframes fadeDown {
+
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===================================================== */
+        /* ===== RESPONSIVE ===== */
+        /* ===================================================== */
+
+        @media(max-width:1100px) {
+
+            .container {
+                flex-direction: column;
+            }
+
+            .content,
+            .video-box {
+                width: 100%;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .blue,
+            .orange {
+                font-size: 85px;
+            }
+        }
+
+        /* ===== TABLET ===== */
+
+        @media(max-width:768px) {
+
+            .hero {
+                padding: 30px;
+            }
+
+            .top-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .line {
+                width: 100px;
+            }
+
+            .title-box h1 {
+                font-size: 24px;
+            }
+
+            .title-box p {
+                font-size: 16px;
+            }
+
+            .blue,
+            .orange {
+                font-size: 65px;
+            }
+
+            .content p {
+                font-size: 20px;
+            }
+
+            .video-box img {
+                height: 320px;
+            }
+
+            .section-title h2 {
+                font-size: 38px;
+            }
+
+            .top-right-buttons {
+                position: static;
+                justify-content: center;
+                margin-bottom: 30px;
+                flex-wrap: wrap;
+            }
+
+            .exit-btn {
+                width: 75px;
+                height: 75px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .exit-icon {
+                font-size: 32px;
+            }
+
+            .exit-text {
+                font-size: 11px;
+            }
+        }
+
+        /* ===== PHONE ===== */
+
+        @media(max-width:500px) {
+
+            .blue,
+            .orange {
+                font-size: 50px;
+            }
+
+            .content h5 {
+                font-size: 20px;
+            }
+
+            .content p {
+                font-size: 18px;
+            }
+
+            .play-button {
+                width: 70px;
+                height: 70px;
+                font-size: 30px;
+            }
+
+            .flip-card {
+                width: 100%;
+            }
+
+            .top-right-buttons a {
+                font-size: 13px;
+                padding: 9px 18px;
+            }
+        }
+
+        .footer {
+            padding: 40px;
+            text-align: center;
+            color: #4b5563;
+        }
+    </style>
+
 </head>
 
 <body>
 
-<!-- =========================
-     HERO SECTION
-========================= -->
+    <section class="hero">
 
-<section class="hero">
+        <!-- ===================================================== -->
+        <!-- ===== TOP NAVIGATION ===== -->
+        <!-- ===================================================== -->
 
-    <div class="left-content">
+        <div class="top-right-buttons">
 
-        <div class="small-title">
-            MENGENAL PASTI
+            <a href="main.html"
+               class="home-btn">
+
+                🏠 Laman Utama
+
+            </a>
+
+            <a href="aktiviti 2.html"
+               class="activity-btn">
+
+                📘 Aktiviti
+
+            </a>
+
         </div>
 
-        <div class="big-title">
-            ELEMEN <br>
-            <span class="orange-title">
-                REKA BENTUK
+        <!-- ===================================================== -->
+        <!-- ===== HEADER ===== -->
+        <!-- ===================================================== -->
+
+        <div class="top-header">
+
+            <div class="line"></div>
+
+            <div class="title-box">
+
+                <h1>
+
+                    NOTA TOPIK 2 : ELEMEN REKA BENTUK
+
+                </h1>
+
+                <p>
+
+                    STANDARD PEMBELAJARAN 1.1.2
+
+                </p>
+
+            </div>
+
+            <div class="line"></div>
+
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- ===== MAIN CONTENT ===== -->
+        <!-- ===================================================== -->
+
+        <div class="container">
+
+            <!-- ===== LEFT ===== -->
+
+            <div class="content">
+
+                <h5>MENGENAL PASTI</h5>
+
+                <h1>
+
+                    <span class="blue">ELEMEN</span><br>
+
+                    <span class="orange">REKA</span><br>
+
+                    <span class="orange">BENTUK</span>
+
+                </h1>
+
+                <p>
+
+                    Elemen reka bentuk ialah unsur asas
+                    yang digunakan untuk menghasilkan
+                    sesuatu karya visual yang kreatif,
+                    menarik dan berfungsi.
+
+                </p>
+
+            </div>
+
+            <!-- ===== RIGHT ===== -->
+
+            <div class="video-box">
+
+                <a href="https://youtu.be/crguzjdO2TI?si=Zv6v_VIeA5fTipc4"
+                   target="_blank">
+
+                    <img src="image/elemen.png"
+                         alt="Video Pembelajaran">
+
+                    <div class="play-button">
+
+                        ▶
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- ===== SECTION TITLE ===== -->
+        <!-- ===================================================== -->
+
+        <div class="section-title"
+             id="aktiviti">
+
+            <h2>
+
+                7 Elemen Reka Bentuk
+
+            </h2>
+
+            <p>
+
+                Klik kad untuk melihat penerangan
+
+            </p>
+
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- ===== FLIP CARD ===== -->
+        <!-- ===================================================== -->
+
+        <div class="flip-container">
+
+            <!-- GARISAN -->
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img src="image/garisan.png">
+
+                        <h3>Garisan</h3>
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <h3>Garisan</h3>
+
+                        <p>
+
+                            Cantuman titik yang mempunyai
+                            arah tertentu.
+
+                        </p>
+
+                        <ul>
+
+                            <li>✔ Jalan raya</li>
+                            <li>✔ Tali</li>
+                            <li>✔ Corak buku</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RUPA -->
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img src="image/rupa.png">
+
+                        <h3>Rupa</h3>
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <h3>Rupa</h3>
+
+                        <p>
+
+                            Hasil pertemuan hujung garisan.
+
+                        </p>
+
+                        <ul>
+
+                            <li>✔ Bulatan</li>
+                            <li>✔ Segi tiga</li>
+                            <li>✔ Segi empat</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- BENTUK -->
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img src="image/bentuk.png">
+
+                        <h3>Bentuk</h3>
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <h3>Bentuk</h3>
+
+                        <p>
+
+                            Objek tiga dimensi yang
+                            mempunyai isipadu.
+
+                        </p>
+
+                        <ul>
+
+                            <li>✔ Bola</li>
+                            <li>✔ Kotak</li>
+                            <li>✔ Tin minuman</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- TEKSTUR -->
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img src="image/tekstur.png">
+
+                        <h3>Tekstur</h3>
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <h3>Tekstur</h3>
+
+                        <p>
+
+                            Kesan pada permukaan
+                            sesuatu objek.
+
+                        </p>
+
+                        <ul>
+
+                            <li>✔ Kasar</li>
+                            <li>✔ Halus</li>
+                            <li>✔ Licin</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- SAIZ -->
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img src="image/saiz.png">
+
+                        <h3>Saiz</h3>
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <h3>Saiz</h3>
+
+                        <p>
+
+                            Ukuran besar atau kecil
+                            sesuatu objek.
+
+                        </p>
+
+                        <ul>
+
+                            <li>✔ Besar</li>
+                            <li>✔ Kecil</li>
+                            <li>✔ Panjang</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- WARNA -->
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img src="image/warna.png">
+
+                        <h3>Warna</h3>
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <h3>Warna</h3>
+
+                        <p>
+
+                            Unsur yang memberikan
+                            kesan emosi dan tarikan.
+
+                        </p>
+
+                        <ul>
+
+                            <li>✔ Merah</li>
+                            <li>✔ Biru</li>
+                            <li>✔ Kuning</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RUANG -->
+
+            <div class="flip-card">
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <img src="image/ruang.png">
+
+                        <h3>Ruang</h3>
+
+                    </div>
+
+                    <div class="flip-card-back">
+
+                        <h3>Ruang</h3>
+
+                        <p>
+
+                            Kawasan kosong antara objek
+                            dalam reka bentuk.
+
+                        </p>
+
+                        <ul>
+
+                            <li>✔ Jarak objek</li>
+                            <li>✔ Kedudukan objek</li>
+                            <li>✔ Susunan ruang</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- ===== EXIT BUTTON ===== -->
+        <!-- ===================================================== -->
+
+        <a href="topik 2.html"
+           class="exit-btn">
+
+            <span class="exit-icon">
+
+                ↩
+
             </span>
-        </div>
 
-        <div class="description">
-            Elemen reka bentuk ialah unsur asas yang digunakan
-            untuk menghasilkan sesuatu karya visual yang kreatif,
-            menarik dan berfungsi.
-        </div>
+        </a>
 
-    </div>
+        <div class="footer">
 
-    <div class="right-content">
-
-        <div class="image-card">
-
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Reka Bentuk">
+            © Graynie Noellin 2026 - RBT Tingkatan 1
 
         </div>
 
-    </div>
-
-</section>
-
-<!-- =========================
-     INFO SECTION
-========================= -->
-
-<section class="info-section">
-
-    <h2 class="section-title">
-        Jenis Elemen Reka Bentuk
-    </h2>
-
-    <div class="card-container">
-
-        <!-- CARD 1 -->
-        <div class="info-card">
-
-            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop" alt="Bentuk">
-
-            <h3>BENTUK</h3>
-
-            <p>
-                Rupa atau bentuk sesuatu objek
-                yang dapat dilihat secara visual.
-            </p>
-
-        </div>
-
-        <!-- CARD 2 -->
-        <div class="info-card">
-
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" alt="Garis">
-
-            <h3>GARIS</h3>
-
-            <p>
-                Laluan yang bergerak dari satu titik
-                ke titik yang lain.
-            </p>
-
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="info-card">
-
-            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200&auto=format&fit=crop" alt="Warna">
-
-            <h3>WARNA</h3>
-
-            <p>
-                Unsur yang menimbulkan kesan dan
-                mood dalam sesuatu reka bentuk.
-            </p>
-
-        </div>
-
-        <!-- CARD 4 -->
-        <div class="info-card">
-
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="Tona">
-
-            <h3>TONA</h3>
-
-            <p>
-                Kesan cerah dan gelap sesuatu warna
-                dalam reka bentuk.
-            </p>
-
-        </div>
-
-        <!-- CARD 5 -->
-        <div class="info-card">
-
-            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200&auto=format&fit=crop" alt="Jalinan">
-
-            <h3>JALINAN</h3>
-
-            <p>
-                Permukaan objek yang boleh dirasai
-                atau dilihat secara visual.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
+    </section>
 
 </body>
 </html>
