@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aktiviti Interaktif RBT</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* ===================================================== */
+        /* ===== RESET ===== */
+        /* ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+        }
+
+        body {
+            background: linear-gradient( 135deg, #00141b, #021f2f, #0a2f66 );
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
+            position: relative;
+        }
+
+            /* ===================================================== */
+            /* ===== GRID BACKGROUND ===== */
+            /* ===================================================== */
+
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background-image: linear-gradient( rgba(255,255,255,0.04) 1px, transparent 1px ), linear-gradient( 90deg, rgba(255,255,255,0.04) 1px, transparent 1px );
+                background-size: 110px 110px;
+                z-index: -2;
+            }
+
+        /* ===================================================== */
+        /* ===== GLOW ===== */
+        /* ===================================================== */
+
+        .glow {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: -1;
+        }
+
+        .glow1 {
+            background: rgba(34,211,238,0.18);
+            top: -100px;
+            left: -100px;
+        }
+
+        .glow2 {
+            background: rgba(59,130,246,0.18);
+            bottom: -100px;
+            right: -100px;
+        }
+
+        /* ===================================================== */
+        /* ===== RETURN BUTTON ===== */
+        /* ===================================================== */
+
+        .return-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #072b69;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 58px;
+            font-weight: 700;
+            z-index: 999;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.28);
+            transition: 0.35s;
+        }
+
+            /* ===== HOVER ===== */
+
+            .return-btn:hover {
+                transform: scale(1.08);
+                background: linear-gradient( 135deg, #0f4fa8, #072b69 );
+                box-shadow: 0 20px 45px rgba(7,43,105,0.45);
+            }
+
+        /* ===================================================== */
+        /* ===== SECTION ===== */
+        /* ===================================================== */
+
+        .activity-section {
+            width: 100%;
+            min-height: 100vh;
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ===================================================== */
+        /* ===== HEADER ===== */
+        /* ===================================================== */
+
+        .activity-header {
+            text-align: center;
+            margin-bottom: 50px;
+            z-index: 2;
+        }
+
+        .activity-subtitle {
+            color: #22d3ee;
+            letter-spacing: 4px;
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .activity-title {
+            font-size: clamp(40px,6vw,75px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #f8fafc;
+        }
+
+            .activity-title span {
+                color: #22d3ee;
+                text-shadow: 0 0 18px rgba(34,211,238,0.45), 0 0 35px rgba(34,211,238,0.25);
+            }
+
+        .activity-desc {
+            font-size: 20px;
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        /* ===================================================== */
+        /* ===== GAME CARD ===== */
+        /* ===================================================== */
+
+        .game-card {
+            width: 100%;
+            max-width: 950px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+            z-index: 2;
+            animation: fadeUp 1s ease;
+        }
+
+        /* ===================================================== */
+        /* ===== TOP SECTION ===== */
+        /* ===================================================== */
+
+        .game-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 45px;
+        }
+
+        .score-box {
+            font-size: 26px;
+            font-weight: 700;
+            color: #facc15;
+        }
+
+        /* ===================================================== */
+        /* ===== QUESTION ===== */
+        /* ===================================================== */
+
+        .question-box {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .question-icon {
+            width: 120px;
+            height: 120px;
+            margin: auto auto 35px;
+            border-radius: 35px;
+            background: linear-gradient( 135deg, #ff7b00, #ff9a3c );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 55px;
+            box-shadow: 0 15px 35px rgba(255,123,0,0.35);
+        }
+
+        .question-box h2 {
+            font-size: clamp(28px,4vw,48px);
+            line-height: 1.5;
+            font-weight: 800;
+            color: #f8fafc;
+        }
+
+        /* ===================================================== */
+        /* ===== ANSWER GRID ===== */
+        /* ===================================================== */
+
+        .answer-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+            .answer-grid button {
+                padding: 24px;
+                border: none;
+                border-radius: 25px;
+                background: rgba(255,255,255,0.08);
+                color: #e2e8f0;
+                font-size: 22px;
+                font-weight: 700;
+                cursor: pointer;
+                transition: 0.3s;
+                border: 1px solid rgba(255,255,255,0.08);
+                backdrop-filter: blur(10px);
+            }
+
+                .answer-grid button:hover {
+                    transform: translateY(-6px) scale(1.02);
+                    background: rgba(34,211,238,0.18);
+                    border: 1px solid rgba(34,211,238,0.35);
+                    box-shadow: 0 15px 30px rgba(34,211,238,0.18);
+                }
+
+        /* ===================================================== */
+        /* ===== CORRECT ===== */
+        /* ===================================================== */
+
+        .correct {
+            background: linear-gradient( 135deg, #16a34a, #22c55e ) !important;
+            color: white !important;
+        }
+
+        /* ===================================================== */
+        /* ===== WRONG ===== */
+        /* ===================================================== */
+
+        .wrong {
+            background: linear-gradient( 135deg, #dc2626, #ef4444 ) !important;
+            color: white !important;
+        }
+
+        /* ===================================================== */
+        /* ===== NEXT BUTTON ===== */
+        /* ===================================================== */
+
+        .next-btn {
+            margin-top: 45px;
+            width: 100%;
+            padding: 22px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient( 135deg, #22d3ee, #0ea5e9 );
+            color: #00141b;
+            font-size: 22px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 25px rgba(34,211,238,0.25);
+        }
+
+            .next-btn:hover {
+                transform: scale(1.02);
+                box-shadow: 0 15px 35px rgba(34,211,238,0.35);
+            }
+
+        /* ===================================================== */
+        /* ===== RESPONSIVE ===== */
+        /* ===================================================== */
+
+        @media(max-width:768px) {
+
+            .answer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .game-card {
+                padding: 30px 20px;
+            }
+
+            .question-box h2 {
+                font-size: 28px;
+            }
+
+            .answer-grid button {
+                font-size: 18px;
+            }
+
+            .activity-desc {
+                font-size: 17px;
+            }
+
+            .return-btn {
+                width: 75px;
+                height: 75px;
+                top: 20px;
+                right: 15px;
+                font-size: 42px;
+            }
+        }
+
+        /* ===================================================== */
+        /* ===== ANIMATION ===== */
+        /* ===================================================== */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ===================================================== -->
+    <!-- ===== RETURN BUTTON ===== -->
+    <!-- ===================================================== -->
+
+    <a href="index.html"
+       class="return-btn">
+
+        ↩
+
+    </a>
+
+    <!-- ===================================================== -->
+    <!-- ===== GLOW ===== -->
+    <!-- ===================================================== -->
+
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+
+    <!-- ===================================================== -->
+    <!-- ===== ACTIVITY SECTION ===== -->
+    <!-- ===================================================== -->
+
+    <section class="activity-section">
+
+        <!-- ===== HEADER ===== -->
+
+        <div class="activity-header">
+
+            <p class="activity-subtitle">
+
+                AKTIVITI
+
+            </p>
+
+            <h1 class="activity-title">
+
+                Kenali <span>Reka Bentuk</span> & Teknologi
+
+            </h1>
+
+            <p class="activity-desc">
+
+                Pilih jawapan yang betul berdasarkan situasi yang diberikan.
+
+            </p>
+
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- ===== GAME CARD ===== -->
+        <!-- ===================================================== -->
+
+        <div class="game-card">
+
+            <!-- ===== TOP ===== -->
+
+            <div class="game-top">
+
+                <div class="score-box">
+
+                    ⭐ Skor :
+                    <span id="score">
+
+                        0
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- ===== QUESTION ===== -->
+
+            <div class="question-box">
+
+                <div class="question-icon"
+                     id="questionIcon">
+
+                    💡
+
+                </div>
+
+                <h2 id="question">
+
+                    Telefon pintar digunakan untuk memudahkan komunikasi manusia.
+                    Apakah konsep yang terlibat?
+
+                </h2>
+
+            </div>
+
+            <!-- ===== ANSWERS ===== -->
+
+            <div class="answer-grid"
+                 id="answers">
+
+            </div>
+
+            <!-- ===== NEXT BUTTON ===== -->
+
+            <button class="next-btn"
+                    onclick="nextQuestion()">
+
+                Soalan Seterusnya →
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- ===== SCRIPT ===== -->
+    <!-- ===================================================== -->
+
+    <script>
+
+        const questions = [
+
+            {
+                icon: "📱",
+
+                question:
+                    "Telefon pintar digunakan untuk memudahkan komunikasi manusia. Apakah konsep yang terlibat?",
+
+                answers:
+                    ["Teknologi", "Warna", "Bentuk", "Ruang"],
+
+                correct: 0
+            },
+
+            {
+                icon: "✏️",
+
+                question:
+                    "Proses menghasilkan idea kreatif untuk membina produk dikenali sebagai?",
+
+                answers:
+                    ["Tekstur", "Reka Bentuk", "Saiz", "Garisan"],
+
+                correct: 1
+            },
+
+            {
+                icon: "🚀",
+
+                question:
+                    "Apakah tujuan utama teknologi dicipta?",
+
+                answers:
+                    [
+                        "Menyukarkan kerja",
+                        "Memudahkan kehidupan",
+                        "Menghasilkan bunyi",
+                        "Mengubah warna"
+                    ],
+
+                correct: 1
+            },
+
+            {
+                icon: "🪑",
+
+                question:
+                    "Kerusi ergonomik direka untuk memberikan keselesaan pengguna. Ini menunjukkan fungsi?",
+
+                answers:
+                    [
+                        "Teknologi dan reka bentuk",
+                        "Ruang negatif",
+                        "Warna neutral",
+                        "Bentuk geometri"
+                    ],
+
+                correct: 0
+            },
+
+            {
+                icon: "💡",
+
+                question:
+                    "Apakah kepentingan reka bentuk dalam penghasilan sesuatu produk?",
+
+                answers:
+                    [
+                        "Menjadikan produk lebih menarik dan berguna",
+                        "Meningkatkan bunyi produk",
+                        "Mengurangkan warna produk",
+                        "Menghapuskan fungsi produk"
+                    ],
+
+                correct: 0
+            }
+
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+
+            document.getElementById("question")
+                .innerText =
+                questions[currentQuestion].question;
+
+            document.getElementById("questionIcon")
+                .innerText =
+                questions[currentQuestion].icon;
+
+            const answerBox =
+                document.getElementById("answers");
+
+            answerBox.innerHTML = "";
+
+            questions[currentQuestion].answers
+                .forEach((answer, index) => {
+
+                    const button =
+                        document.createElement("button");
+
+                    button.innerText = answer;
+
+                    button.onclick = () => {
+
+                        if (index ===
+                            questions[currentQuestion].correct) {
+
+                            checkAnswer(button, 'correct');
+
+                        } else {
+
+                            checkAnswer(button, 'wrong');
+                        }
+                    };
+
+                    answerBox.appendChild(button);
+                });
+
+        }
+
+        function checkAnswer(button, status) {
+
+            const buttons =
+                document.querySelectorAll(".answer-grid button");
+
+            buttons.forEach(btn => {
+
+                btn.disabled = true;
+            });
+
+            if (status === "correct") {
+
+                button.classList.add("correct");
+
+                score++;
+
+                document.getElementById("score")
+                    .innerText = score;
+
+            } else {
+
+                button.classList.add("wrong");
+
+                buttons[
+                    questions[currentQuestion].correct
+                ].classList.add("correct");
+            }
+        }
+
+        function nextQuestion() {
+
+            currentQuestion++;
+
+            if (currentQuestion >= questions.length) {
+
+                document.querySelector(".game-card")
+                    .innerHTML = `
+
+                    <div style="text-align:center;padding:50px;">
+
+                        <h1 style="
+                        font-size:60px;
+                        margin-bottom:20px;
+                        color:#22d3ee;">
+
+                        🎉 Tahniah!
+
+                        </h1>
+
+                        <p style="
+                        font-size:28px;
+                        margin-bottom:30px;
+                        color:#e2e8f0;">
+
+                        Anda telah tamat aktiviti interaktif.
+
+                        </p>
+
+                        <h2 style="
+                        font-size:42px;
+                        color:#facc15;
+                        font-weight:900;">
+
+                        Skor Akhir: ${score}/5
+
+                        </h2>
+
+                    </div>
+
+                    `;
+
+                return;
+            }
+
+            loadQuestion();
+        }
+
+        loadQuestion();
+
+    </script>
+
+</body>
+</html>
