@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Topik 3 - Prinsip Reka Bentuk</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        /* ====================================================== */
+        /* ===================== RESET ========================== */
+        /* ====================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient( 180deg, #020617, #0f172a );
+            color: white;
+            overflow-x: hidden;
+        }
+
+            /* ====================================================== */
+            /* ================= BACKGROUND ========================= */
+            /* ====================================================== */
+
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background-image: linear-gradient( rgba(255,255,255,0.03) 1px, transparent 1px ), linear-gradient( 90deg, rgba(255,255,255,0.03) 1px, transparent 1px );
+                background-size: 90px 90px;
+                z-index: -5;
+            }
+
+        /* ====================================================== */
+        /* ================= GLOW ============================== */
+        /* ====================================================== */
+
+        .glow {
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -4;
+        }
+
+        .glow1 {
+            background: rgba(37,99,235,0.18);
+            top: -120px;
+            left: -100px;
+        }
+
+        .glow2 {
+            background: rgba(168,85,247,0.18);
+            bottom: -150px;
+            right: -100px;
+        }
+
+        /* ====================================================== */
+        /* ================= FLOAT BUTTON ====================== */
+        /* ====================================================== */
+
+        .floating-buttons {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 9999;
+        }
+
+        /* ====================================================== */
+        /* ================= BUTTON ============================ */
+        /* ====================================================== */
+
+        .nav-btn {
+            width: 90px;
+            height: 90px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 8px;
+            text-decoration: none;
+            color: white;
+            font-size: 34px;
+            transition: 0.4s;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+        }
+
+            /* ====================================================== */
+            /* ================= BUTTON TEXT ======================= */
+            /* ====================================================== */
+
+            .nav-btn span {
+                font-size: 13px;
+                font-weight: 700;
+                color: #e2e8f0;
+            }
+
+            /* ====================================================== */
+            /* ================= HOVER ============================= */
+            /* ====================================================== */
+
+            .nav-btn:hover {
+                transform: translateY(-8px) scale(1.08);
+                background: linear-gradient( 135deg, #2563eb, #60a5fa );
+                box-shadow: 0 22px 45px rgba(37,99,235,0.35);
+            }
+
+        /* ====================================================== */
+        /* ================= HERO ============================== */
+        /* ====================================================== */
+
+        .hero {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 100px 30px;
+            position: relative;
+        }
+
+        /* ===== HERO BADGE ===== */
+
+        .hero-badge {
+            padding: 16px 35px;
+            border-radius: 60px;
+            background: linear-gradient( 135deg, #2563eb, #60a5fa );
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 35px;
+            box-shadow: 0 15px 35px rgba(37,99,235,0.25);
+            animation: float 3s infinite ease-in-out;
+        }
+
+        /* ===== TITLE ===== */
+
+        .hero h1 {
+            font-size: clamp(70px,10vw,160px);
+            line-height: 0.9;
+            font-weight: 900;
+            margin-bottom: 35px;
+        }
+
+            .hero h1 span {
+                color: #60a5fa;
+                text-shadow: 0 0 30px rgba(96,165,250,0.45);
+            }
+
+        /* ===== DESCRIPTION ===== */
+
+        .hero p {
+            max-width: 850px;
+            font-size: 24px;
+            line-height: 1.9;
+            color: #cbd5e1;
+        }
+
+        /* ====================================================== */
+        /* ================= PRINCIPLE GRID ===================== */
+        /* ====================================================== */
+
+        .principle-grid {
+            width: 100%;
+            padding: 0 80px 120px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+            gap: 40px;
+        }
+
+        /* ====================================================== */
+        /* ================= PRINCIPLE CARD ===================== */
+        /* ====================================================== */
+
+        .principle-card {
+            min-height: 500px;
+            border-radius: 45px;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            transition: 0.5s;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+            /* ===== HOVER ===== */
+
+            .principle-card:hover {
+                transform: translateY(-15px) scale(1.02);
+                border: 1px solid rgba(96,165,250,0.25);
+                box-shadow: 0 25px 70px rgba(37,99,235,0.2);
+            }
+
+        /* ====================================================== */
+        /* ================= NUMBER ============================= */
+        /* ====================================================== */
+
+        .number {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-size: 70px;
+            font-weight: 900;
+            color: rgba(255,255,255,0.05);
+        }
+
+        /* ====================================================== */
+        /* ================= ICON =============================== */
+        /* ====================================================== */
+
+        .icon-box {
+            width: 110px;
+            height: 110px;
+            border-radius: 35px;
+            background: linear-gradient( 135deg, #2563eb, #60a5fa );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 55px;
+            margin-bottom: 35px;
+            box-shadow: 0 20px 45px rgba(37,99,235,0.25);
+            animation: float 4s infinite ease-in-out;
+        }
+
+        /* ====================================================== */
+        /* ================= TITLE ============================== */
+        /* ====================================================== */
+
+        .principle-card h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        /* ====================================================== */
+        /* ================= TEXT =============================== */
+        /* ====================================================== */
+
+        .principle-card p {
+            font-size: 20px;
+            line-height: 1.9;
+            color: #cbd5e1;
+        }
+
+        /* ====================================================== */
+        /* ================= VISUAL AREA ======================== */
+        /* ====================================================== */
+
+        .visual {
+            width: 100%;
+            height: 180px;
+            margin-top: 35px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.04);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ====================================================== */
+        /* ================= KESEIMBANGAN ======================= */
+        /* ====================================================== */
+
+        .balance {
+            display: flex;
+            gap: 50px;
+        }
+
+            .balance div {
+                width: 70px;
+                height: 70px;
+                border-radius: 20px;
+                background: linear-gradient( 135deg, #3b82f6, #60a5fa );
+                animation: balanceMove 3s infinite;
+            }
+
+                .balance div:nth-child(2) {
+                    animation-delay: 1.5s;
+                }
+
+        /* ====================================================== */
+        /* ================= PENGULANGAN ======================== */
+        /* ====================================================== */
+
+        .repeat {
+            display: flex;
+            gap: 18px;
+        }
+
+            .repeat div {
+                width: 40px;
+                height: 40px;
+                border-radius: 12px;
+                background: linear-gradient( 135deg, #8b5cf6, #c084fc );
+                animation: repeatPulse 2s infinite;
+            }
+
+        /* ====================================================== */
+        /* ================= KONTRAS ============================ */
+        /* ====================================================== */
+
+        .contrast {
+            display: flex;
+            gap: 40px;
+        }
+
+        .dark {
+            width: 90px;
+            height: 90px;
+            border-radius: 25px;
+            background: #111827;
+        }
+
+        .light {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        /* ====================================================== */
+        /* ================= KEPELBAGAIAN ======================= */
+        /* ====================================================== */
+
+        .variety {
+            display: flex;
+            gap: 18px;
+        }
+
+            .variety div {
+                width: 45px;
+                height: 90px;
+                border-radius: 18px;
+                animation: float 3s infinite;
+            }
+
+                .variety div:nth-child(1) {
+                    background: #3b82f6;
+                }
+
+                .variety div:nth-child(2) {
+                    background: #8b5cf6;
+                }
+
+                .variety div:nth-child(3) {
+                    background: #ec4899;
+                }
+
+                .variety div:nth-child(4) {
+                    background: #f59e0b;
+                }
+
+                .variety div:nth-child(5) {
+                    background: #22c55e;
+                }
+
+        /* ====================================================== */
+        /* ================= KESATUAN =========================== */
+        /* ====================================================== */
+
+        .unity {
+            position: relative;
+            width: 180px;
+            height: 180px;
+        }
+
+            .unity div {
+                position: absolute;
+                width: 80px;
+                height: 80px;
+                border-radius: 22px;
+                background: linear-gradient( 135deg, #2563eb, #60a5fa );
+            }
+
+                .unity div:nth-child(1) {
+                    top: 0;
+                    left: 0;
+                }
+
+                .unity div:nth-child(2) {
+                    top: 0;
+                    right: 0;
+                }
+
+                .unity div:nth-child(3) {
+                    bottom: 0;
+                    left: 0;
+                }
+
+                .unity div:nth-child(4) {
+                    bottom: 0;
+                    right: 0;
+                }
+
+        /* ====================================================== */
+        /* ================= KERINGKASAN ======================== */
+        /* ====================================================== */
+
+        .simple {
+            width: 180px;
+            height: 18px;
+            border-radius: 50px;
+            background: linear-gradient( 90deg, #2563eb, #60a5fa );
+        }
+
+        /* ====================================================== */
+        /* ================= HARMONI ============================ */
+        /* ====================================================== */
+
+        .harmony {
+            display: flex;
+            gap: 20px;
+        }
+
+            .harmony div {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                background: linear-gradient( 135deg, #60a5fa, #93c5fd );
+                animation: harmonyMove 4s infinite ease-in-out;
+            }
+
+                .harmony div:nth-child(2) {
+                    animation-delay: 1s;
+                }
+
+                .harmony div:nth-child(3) {
+                    animation-delay: 2s;
+                }
+
+        /* ====================================================== */
+        /* ================= VIDEO ============================== */
+        /* ====================================================== */
+
+        .video-section {
+            width: 100%;
+            padding: 0 80px 120px;
+        }
+
+        .video-card {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 50px;
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+            .video-card h2 {
+                font-size: 60px;
+                margin-bottom: 20px;
+            }
+
+            .video-card p {
+                font-size: 22px;
+                color: #cbd5e1;
+                margin-bottom: 35px;
+            }
+
+        .video-box {
+            overflow: hidden;
+            border-radius: 35px;
+        }
+
+            .video-box iframe {
+                width: 100%;
+                height: 500px;
+                border: none;
+                border-radius: 35px;
+            }
+
+        /* ====================================================== */
+        /* ================= FOOTER ============================= */
+        /* ====================================================== */
+
+        .footer {
+            width: 100%;
+            padding: 35px 20px;
+            text-align: center;
+            background: rgba(255,255,255,0.04);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(12px);
+            margin-top: 80px;
+        }
+
+            .footer p {
+                font-size: 20px;
+                color: #cbd5e1;
+                font-weight: 500;
+                letter-spacing: 0.5px;
+            }
+
+        /* ====================================================== */
+        /* ================= ANIMATION ========================== */
+        /* ====================================================== */
+
+        @keyframes float {
+
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes balanceMove {
+
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes repeatPulse {
+
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes harmonyMove {
+
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* ====================================================== */
+        /* ================= RESPONSIVE ========================= */
+        /* ====================================================== */
+
+        @media(max-width:768px) {
+
+            .hero {
+                padding: 100px 25px;
+            }
+
+                .hero h1 {
+                    font-size: 70px;
+                }
+
+                .hero p {
+                    font-size: 18px;
+                }
+
+            .principle-grid,
+            .video-section {
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+
+            .principle-card {
+                min-height: auto;
+            }
+
+                .principle-card h2 {
+                    font-size: 32px;
+                }
+
+                .principle-card p {
+                    font-size: 18px;
+                }
+
+            .video-card h2 {
+                font-size: 38px;
+            }
+
+            .floating-buttons {
+                right: 15px;
+                gap: 15px;
+            }
+
+            .nav-btn {
+                width: 70px;
+                height: 70px;
+                font-size: 24px;
+            }
+
+                .nav-btn span {
+                    font-size: 10px;
+                }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ====================================================== -->
+    <!-- ================= FLOAT BUTTON ====================== -->
+    <!-- ====================================================== -->
+
+    <div class="floating-buttons">
+
+        <!-- ===== KEMBALI ===== -->
+
+        <a href="topik 3.html" class="nav-btn">
+
+            ↩
+
+            <span>
+
+                Kembali
+
+            </span>
+
+        </a>
+
+        <!-- ===== HALAMAN UTAMA ===== -->
+
+        <a href="main.html" class="nav-btn">
+
+            🏠
+
+            <span>
+
+                Utama
+
+            </span>
+
+        </a>
+
+        <!-- ===== AKTIVITI ===== -->
+
+        <a href="aktiviti 3.html" class="nav-btn">
+
+            🎮
+
+            <span>
+
+                Aktiviti
+
+            </span>
+
+        </a>
+
+    </div>
+
+    <!-- ====================================================== -->
+    <!-- ================= GLOW ============================== -->
+    <!-- ====================================================== -->
+
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+
+    <!-- ====================================================== -->
+    <!-- ================= HERO ============================== -->
+    <!-- ====================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-badge">
+
+            NOTA TOPIK 3
+
+        </div>
+
+        <h1>
+
+            7 PRINSIP
+            <span>REKA BENTUK</span>
+
+        </h1>
+
+        <p>
+
+            Prinsip reka bentuk ialah panduan asas yang digunakan untuk menghasilkan reka bentuk yang menarik, tersusun dan harmoni.
+
+        </p>
+
+    </section>
+
+    <!-- ====================================================== -->
+    <!-- ================= GRID ============================== -->
+    <!-- ====================================================== -->
+
+    <section class="principle-grid">
+
+        <!-- ================= KESEIMBANGAN ================= -->
+
+        <div class="principle-card">
+
+            <div class="number">01</div>
+
+            <div class="icon-box">⚖️</div>
+
+            <h2>Keseimbangan</h2>
+
+            <p>
+
+                Susunan elemen yang stabil dan seimbang supaya reka bentuk kelihatan harmoni.
+
+            </p>
+
+            <div class="visual">
+
+                <div class="balance">
+
+                    <div></div>
+                    <div></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= PENGULANGAN ================= -->
+
+        <div class="principle-card">
+
+            <div class="number">02</div>
+
+            <div class="icon-box">🔄</div>
+
+            <h2>Pengulangan</h2>
+
+            <p>
+
+                Penggunaan elemen yang sama secara berulang untuk menghasilkan keseragaman reka bentuk.
+
+            </p>
+
+            <div class="visual">
+
+                <div class="repeat">
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= KONTRAS ================= -->
+
+        <div class="principle-card">
+
+            <div class="number">03</div>
+
+            <div class="icon-box">✨</div>
+
+            <h2>Kontras</h2>
+
+            <p>
+
+                Perbezaan warna, bentuk atau saiz untuk menarik perhatian terhadap sesuatu elemen.
+
+            </p>
+
+            <div class="visual">
+
+                <div class="contrast">
+
+                    <div class="dark"></div>
+                    <div class="light"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= KEPELBAGAIAN ================= -->
+
+        <div class="principle-card">
+
+            <div class="number">04</div>
+
+            <div class="icon-box">🎨</div>
+
+            <h2>Kepelbagaian</h2>
+
+            <p>
+
+                Gabungan pelbagai elemen reka bentuk untuk menghasilkan reka bentuk yang lebih menarik.
+
+            </p>
+
+            <div class="visual">
+
+                <div class="variety">
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= KESATUAN ================= -->
+
+        <div class="principle-card">
+
+            <div class="number">05</div>
+
+            <div class="icon-box">🧩</div>
+
+            <h2>Kesatuan</h2>
+
+            <p>
+
+                Gabungan elemen yang saling berkait untuk menghasilkan reka bentuk yang lengkap.
+
+            </p>
+
+            <div class="visual">
+
+                <div class="unity">
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= KERINGKASAN ================= -->
+
+        <div class="principle-card">
+
+            <div class="number">06</div>
+
+            <div class="icon-box">📄</div>
+
+            <h2>Keringkasan</h2>
+
+            <p>
+
+                Reka bentuk yang mudah dan tidak terlalu padat supaya lebih jelas dan mudah difahami.
+
+            </p>
+
+            <div class="visual">
+
+                <div class="simple"></div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= HARMONI ================= -->
+
+        <div class="principle-card">
+
+            <div class="number">07</div>
+
+            <div class="icon-box">🌊</div>
+
+            <h2>Harmoni</h2>
+
+            <p>
+
+                Susunan elemen yang serasi untuk menghasilkan reka bentuk yang menarik dan selesa dilihat.
+
+            </p>
+
+            <div class="visual">
+
+                <div class="harmony">
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="video-section">
+
+        <div class="video-card">
+
+            <h2>
+
+                🎥 Video Pembelajaran
+
+            </h2>
+
+            <p>
+
+                Tonton video interaktif untuk memahami prinsip reka bentuk dengan lebih jelas dan menarik.
+
+            </p>
+
+            <div class="video-box">
+
+                <iframe width="100%"
+                        height="500"
+                        src="https://www.youtube.com/embed/uEgbypx6hQc"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ====================================================== -->
+    <!-- ================= FOOTER ============================= -->
+    <!-- ====================================================== -->
+
+    <footer class="footer">
+
+        <p>
+
+            © Graynie Noellin 2026 – RBT Tingkatan 1
+
+        </p>
+
+    </footer>
+
+</body>
+</html>
