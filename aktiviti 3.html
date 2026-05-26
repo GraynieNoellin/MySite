@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aktiviti Drag & Match</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ========================= */
+/* GLOBAL */
+/* ========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:
+    linear-gradient(135deg,#020b2c,#071b4d,#1a0836);
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    color:white;
+
+    position:relative;
+
+}
+
+/* GRID BACKGROUND */
+
+body::before{
+
+    content:'';
+
+    position:fixed;
+
+    width:100%;
+    height:100%;
+
+    background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+
+    background-size:60px 60px;
+
+    z-index:-1;
+
+}
+
+/* ========================= */
+/* BUTTON BACK */
+/* ========================= */
+
+.back-btn{
+
+    position:fixed;
+
+    top:30px;
+    right:30px;
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:
+    linear-gradient(135deg,#0d47a1,#1565c0);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    z-index:999;
+
+    box-shadow:
+    0 0 20px rgba(33,150,243,0.5);
+
+}
+
+.back-btn:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+    0 0 30px rgba(33,150,243,0.8);
+
+}
+
+.back-btn span{
+
+    font-size:50px;
+
+    color:white;
+
+}
+
+/* ========================= */
+/* MAIN SECTION */
+/* ========================= */
+
+.main-section{
+
+    padding:60px 8%;
+
+}
+
+/* TOP TITLE */
+
+.top-label{
+
+    text-align:center;
+
+    font-size:42px;
+
+    color:#00bfff;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+/* MAIN TITLE */
+
+.main-title{
+
+    text-align:center;
+
+    font-size:90px;
+
+    line-height:1;
+
+    font-weight:800;
+
+    margin-bottom:25px;
+
+}
+
+.main-title span{
+
+    color:#66b3ff;
+
+    text-shadow:
+    0 0 20px rgba(102,179,255,0.8);
+
+}
+
+/* SUBTITLE */
+
+.subtitle{
+
+    text-align:center;
+
+    font-size:24px;
+
+    color:#d8d8d8;
+
+    margin-bottom:60px;
+
+}
+
+/* ========================= */
+/* GAME CONTAINER */
+/* ========================= */
+
+.game-wrapper{
+
+    display:grid;
+
+    grid-template-columns:1fr 120px 1fr;
+
+    align-items:center;
+
+    gap:30px;
+
+}
+
+/* PANEL */
+
+.panel{
+
+    background:
+    rgba(12,25,65,0.7);
+
+    border:
+    2px solid rgba(120,120,255,0.3);
+
+    border-radius:35px;
+
+    padding:35px;
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+    0 0 25px rgba(0,0,0,0.3);
+
+}
+
+/* PANEL LABEL */
+
+.panel-label{
+
+    background:
+    linear-gradient(90deg,#00c6ff,#7b2ff7);
+
+    padding:15px 30px;
+
+    border-radius:50px;
+
+    width:max-content;
+
+    margin:auto;
+
+    margin-top:-60px;
+
+    margin-bottom:35px;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+/* ========================= */
+/* DRAG ITEMS */
+/* ========================= */
+
+.drag-items,
+.drop-items{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+/* DRAG BOX */
+
+.drag-box{
+
+    background:
+    linear-gradient(90deg,#00c6ff,#7b2ff7);
+
+    padding:30px;
+
+    border-radius:22px;
+
+    font-size:32px;
+
+    font-weight:600;
+
+    cursor:grab;
+
+    transition:0.3s;
+
+    text-align:center;
+
+}
+
+.drag-box:hover{
+
+    transform:scale(1.03);
+
+}
+
+/* DROP BOX */
+
+.drop-box{
+
+    border:
+    2px dashed rgba(0,191,255,0.5);
+
+    background:
+    rgba(255,255,255,0.03);
+
+    padding:28px;
+
+    border-radius:22px;
+
+    min-height:120px;
+
+    display:flex;
+
+    align-items:center;
+
+    font-size:24px;
+
+    transition:0.3s;
+
+}
+
+/* HOVER */
+
+.drop-box.hovered{
+
+    background:
+    rgba(0,191,255,0.15);
+
+    border-color:#00c6ff;
+
+}
+
+/* CORRECT */
+
+.correct{
+
+    background:#00b894 !important;
+
+    border:none !important;
+
+}
+
+/* WRONG */
+
+.wrong{
+
+    background:#d63031 !important;
+
+    border:none !important;
+
+}
+
+/* ARROW */
+
+.arrow{
+
+    text-align:center;
+
+    font-size:80px;
+
+    color:#7b2ff7;
+
+    font-weight:800;
+
+}
+
+/* ========================= */
+/* SCORE */
+/* ========================= */
+
+.score-box{
+
+    margin-top:60px;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.score-content{
+
+    background:
+    rgba(15,20,55,0.8);
+
+    border:
+    2px solid rgba(120,120,255,0.2);
+
+    border-radius:60px;
+
+    padding:20px 40px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+    font-size:30px;
+
+    font-weight:700;
+
+}
+
+/* RESET */
+
+.reset-btn{
+
+    padding:14px 35px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:
+    linear-gradient(90deg,#00c6ff,#7b2ff7);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+.reset-btn:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* RESULT */
+
+#resultMessage{
+
+    text-align:center;
+
+    margin-top:35px;
+
+    font-size:34px;
+
+    font-weight:700;
+
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media(max-width:1100px){
+
+.game-wrapper{
+
+    grid-template-columns:1fr;
+
+}
+
+.arrow{
+
+    display:none;
+
+}
+
+.main-title{
+
+    font-size:60px;
+
+}
+
+.drop-box{
+
+    font-size:20px;
+
+}
+
+.drag-box{
+
+    font-size:24px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.main-title{
+
+    font-size:42px;
+
+}
+
+.subtitle{
+
+    font-size:18px;
+
+}
+
+.panel-label{
+
+    font-size:18px;
+
+}
+
+.back-btn{
+
+    width:70px;
+    height:70px;
+
+}
+
+.back-btn span{
+
+    font-size:38px;
+
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- BUTTON BACK -->
+<!-- ========================= -->
+
+<button class="back-btn" onclick="goBack()">
+
+<span>
+↩
+</span>
+
+</button>
+
+<!-- ========================= -->
+<!-- MAIN SECTION -->
+<!-- ========================= -->
+
+<section class="main-section">
+
+<div class="top-label">
+🧩 AKTIVITI
+</div>
+
+<h1 class="main-title">
+DRAG & <span>MATCH</span>
+</h1>
+
+<p class="subtitle">
+Padankan prinsip reka bentuk dengan penerangan yang betul.
+</p>
+
+<!-- ========================= -->
+<!-- GAME -->
+<!-- ========================= -->
+
+<div class="game-wrapper">
+
+<!-- LEFT PANEL -->
+
+<div class="panel">
+
+<div class="panel-label">
+PRINSIP REKA BENTUK
+</div>
+
+<div class="drag-items">
+
+<div class="drag-box"
+draggable="true"
+id="penegasan">
+
+Penegasan
+
+</div>
+
+<div class="drag-box"
+draggable="true"
+id="kontras">
+
+Kontras
+
+</div>
+
+<div class="drag-box"
+draggable="true"
+id="harmoni">
+
+Harmoni
+
+</div>
+
+<div class="drag-box"
+draggable="true"
+id="pengulangan">
+
+Pengulangan
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ARROW -->
+
+<div class="arrow">
+≫
+</div>
+
+<!-- RIGHT PANEL -->
+
+<div class="panel">
+
+<div class="panel-label">
+PENERANGAN
+</div>
+
+<div class="drop-items">
+
+<div class="drop-box"
+data-match="pengulangan">
+
+Penggunaan elemen yang berulang untuk menghasilkan corak.
+
+</div>
+
+<div class="drop-box"
+data-match="harmoni">
+
+Gabungan elemen yang kelihatan serasi dan sesuai.
+
+</div>
+
+<div class="drop-box"
+data-match="penegasan">
+
+Menonjolkan objek utama dalam reka bentuk.
+
+</div>
+
+<div class="drop-box"
+data-match="kontras">
+
+Perbezaan warna, bentuk atau saiz untuk menarik perhatian.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- SCORE -->
+<!-- ========================= -->
+
+<div class="score-box">
+
+<div class="score-content">
+
+🏆 SKOR:
+<span id="score">
+0
+</span>
+/ 4
+
+<button class="reset-btn"
+onclick="resetGame()">
+
+RESET
+
+</button>
+
+</div>
+
+</div>
+
+<!-- RESULT -->
+
+<div id="resultMessage"></div>
+
+</section>
+
+<!-- ========================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================= -->
+
+<script>
+
+/* ========================= */
+/* DRAG & DROP */
+/* ========================= */
+
+const dragBoxes =
+document.querySelectorAll('.drag-box');
+
+const dropBoxes =
+document.querySelectorAll('.drop-box');
+
+let score = 0;
+
+/* DRAG START */
+
+dragBoxes.forEach(box => {
+
+    box.addEventListener(
+    'dragstart',
+    dragStart
+
+    );
+
+});
+
+function dragStart(e){
+
+    e.dataTransfer.setData(
+    "text",
+    e.target.id
+
+    );
+
+}
+
+/* DROP EVENTS */
+
+dropBoxes.forEach(box => {
+
+    box.addEventListener(
+    'dragover',
+    dragOver
+
+    );
+
+    box.addEventListener(
+    'dragleave',
+    dragLeave
+
+    );
+
+    box.addEventListener(
+    'drop',
+    dropItem
+
+    );
+
+});
+
+/* DRAG OVER */
+
+function dragOver(e){
+
+    e.preventDefault();
+
+    this.classList.add('hovered');
+
+}
+
+/* DRAG LEAVE */
+
+function dragLeave(){
+
+    this.classList.remove('hovered');
+
+}
+
+/* DROP ITEM */
+
+function dropItem(e){
+
+    e.preventDefault();
+
+    this.classList.remove('hovered');
+
+    const draggedId =
+    e.dataTransfer.getData("text");
+
+    const correctAnswer =
+    this.getAttribute("data-match");
+
+    const draggedElement =
+    document.getElementById(draggedId);
+
+    /* CORRECT */
+
+    if(draggedId === correctAnswer){
+
+        this.classList.add('correct');
+
+        this.innerHTML =
+        "✅ " + draggedElement.innerHTML;
+
+        draggedElement.style.display =
+        "none";
+
+        score++;
+
+        document.getElementById("score")
+        .innerHTML = score;
+
+        /* ALL CORRECT */
+
+        if(score === 4){
+
+            document.getElementById("resultMessage")
+            .innerHTML =
+            "🎉 Tahniah! Semua jawapan betul!";
+
+        }
+
+    }
+
+    /* WRONG */
+
+    else{
+
+        this.classList.add('wrong');
+
+        setTimeout(() => {
+
+            this.classList.remove('wrong');
+
+        },1000);
+
+    }
+
+}
+
+/* ========================= */
+/* RESET */
+/* ========================= */
+
+function resetGame(){
+
+    location.reload();
+
+}
+
+/* ========================= */
+/* BACK BUTTON */
+/* ========================= */
+
+function goBack(){
+
+    window.location.href = "topik 3.html";
+
+    }
+
+
+</script>
+
+</body>
+</html>
